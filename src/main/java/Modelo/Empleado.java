@@ -7,6 +7,8 @@ import java.util.List;
 
 
 public class Empleado implements Serializable {
+    
+    private String codigo;
     private String dni;
     private String nombre;
     private ArrayList<Proyecto> proyectosAsignados;
@@ -15,14 +17,23 @@ public class Empleado implements Serializable {
         proyectosAsignados = new ArrayList<>();
     }
 
-    public Empleado(String id, String nombre) {
+    public Empleado(String codigo, String id, String nombre) {
+        this.codigo = codigo;
         this.dni = id;
         this.nombre = nombre;
         proyectosAsignados = new ArrayList<>();
     }
 
-    public String getDNI() {
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public String getDni() {
         return dni;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
     public String getNombre() {

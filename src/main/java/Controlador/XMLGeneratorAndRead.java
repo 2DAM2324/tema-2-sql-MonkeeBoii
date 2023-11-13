@@ -4,7 +4,6 @@ import Modelo.Empleado;
 import Modelo.Producto;
 import Modelo.Proveedor;
 import Modelo.Proyecto;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -15,17 +14,14 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import javax.swing.JOptionPane;
-import org.w3c.dom.NodeList;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-import javax.xml.parsers.ParserConfigurationException;
-import org.w3c.dom.DOMException;
-import org.xml.sax.SAXException;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class XMLGeneratorAndRead{
     
@@ -109,27 +105,69 @@ public class XMLGeneratorAndRead{
     }
     
     public List<Empleado> leerXMLDeEmpleados(String nombreArchivo) {
-         List<Empleado> empleados = null;
-        ObjectInputStream deserializador = null;
-
-        try {
-            deserializador = new ObjectInputStream(new FileInputStream(nombreArchivo));
-            empleados = (List<Empleado>) deserializador.readObject();
-            System.out.println("Empleados deserializados con éxito desde " + nombreArchivo);
-        } catch (FileNotFoundException fnfe) {
-            fnfe.printStackTrace();
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-        } catch (ClassNotFoundException cnfe) {
-            cnfe.printStackTrace();
-        } finally {
-            if (deserializador != null) {
-                try {
-                    deserializador.close();
-                } catch (IOException ioe) {
-                    ioe.printStackTrace();
-                }
+         List<Empleado> empleados = new ArrayList<>();
+         
+          try{
+        Class.forName("org.sqlite.JDBC");
+        }
+        catch(Exception E){
+            System.out.println("nop");
+        }
+        
+        Connection conn = null;
+        
+        try{
+            String url = "jdbc:sqlite:/home/monkeeboi/Instituto/tema-2-sql-MonkeeBoii/baseDeDatos.db3 ";
+            conn = DriverManager.getConnection(url);
+        }
+        catch(SQLException e){
+            System.out.println(e.getMessage());
+        }
+        catch(Exception e){}
+        
+        
+        String cons = "SELECT * FROM Empleado";
+        PreparedStatement consulta = null;
+        ResultSet resultado = null;
+        
+        try{
+            consulta = conn.prepareStatement(cons);
+            resultado = consulta.executeQuery();
+            
+            while(resultado.next()){
+                
+                String codigo = resultado.getString(1);
+                String dni = resultado.getString(2);
+                String nombre = resultado.getString(3);
+                
+                Empleado empleado = new Empleado(codigo, dni, nombre);
+                empleados.add(empleado);
             }
+        }
+        catch(SQLException sqle){
+            sqle.printStackTrace();
+        }
+        finally{
+            if (consulta != null){
+                try{
+                   consulta.close();
+                    resultado.close(); 
+                }
+                catch(SQLException sqle2){
+                    sqle2.printStackTrace();
+                }
+                
+            }
+        }
+        
+        
+        // Cerrar conexion con la base de datos
+        try{
+            if (conn != null)
+                conn.close();
+        }
+        catch(SQLException e2){
+            System.out.println(e2.getMessage());
         }
 
         return empleados;
