@@ -4,22 +4,22 @@ import java.io.Serializable;
 
 public class Proveedor implements Serializable{
     
-    private String codigoProveedor;
+    private int codigoProveedor;
     private String nombreProveedor;
     private String codigoProducto;
 
     public Proveedor(){
     }
 
-    public Proveedor(String codigoProveedor, String nombreProveedor){
+    public Proveedor(int codigoProveedor, String nombreProveedor){
 
         this.codigoProveedor = codigoProveedor;
         this.nombreProveedor = nombreProveedor;
     }
-
+    
     //SET 
 
-    public void setCodigoProveedor(String codigoProveedor) {
+    public void setCodigoProveedor(int codigoProveedor) {
         this.codigoProveedor = codigoProveedor;
     }
 
@@ -32,7 +32,7 @@ public class Proveedor implements Serializable{
     }
     
     //GET
-    public String getCodigoProveedor() {
+    public int getCodigoProveedor() {
         return codigoProveedor;
     }
 

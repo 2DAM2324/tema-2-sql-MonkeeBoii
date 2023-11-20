@@ -17,11 +17,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 public class XMLGeneratorAndRead{
     
@@ -197,7 +192,7 @@ public class XMLGeneratorAndRead{
             for (Producto producto : productos) {
                 String Codigo = producto.getCodigoProductos();
                 String nombre = producto.getNombreProductos();
-                String precio = producto.getPrecio();
+                int precio = producto.getPrecio();
                 modelo.addRow(new Object[]{Codigo, nombre, precio});
             }
         }
@@ -211,7 +206,7 @@ public class XMLGeneratorAndRead{
         if(producto != null){
                 String Codigo = producto.getCodigoProductos();
                 String nombre = producto.getNombreProductos();
-                String precio = producto.getPrecio();
+                int precio = producto.getPrecio();
                 modelo.addRow(new Object[]{Codigo, nombre, precio});
             
         }
