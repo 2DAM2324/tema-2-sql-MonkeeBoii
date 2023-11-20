@@ -2,30 +2,32 @@ package Modelo;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class Proyecto implements Serializable{
     private String id;
     private String nombre;
     private String presupuesto;
-    private Producto productoProyecto;
-    private ArrayList<Empleado> empleados;
+    private String codigoProducto;
+    private ArrayList<String> dnis;
 
     public Proyecto() {
-        productoProyecto = new Producto();
-        empleados = new ArrayList<>();
     }
 
     public Proyecto(String id, String nombre, String presupuesto) {
         this.id = id;
         this.nombre = nombre;
         this.presupuesto = presupuesto;
-        this.empleados = new ArrayList<>();
-        this.productoProyecto = new Producto();
 
     }
 
+    public String getCodigoProducto() {
+        return codigoProducto;
+    }
+
+    public void setCodigoProducto(String codigoProducto) {
+        this.codigoProducto = codigoProducto;
+    }
+    
     public String getId() {
         return id;
     }
@@ -36,14 +38,6 @@ public class Proyecto implements Serializable{
     
     public String getPresupuesto() {
         return presupuesto;
-    }
-   
-    public ArrayList<Empleado> getAsignacionesEmpleados() {
-        return empleados;
-    }
-
-    public Producto getProductoProyecto() {
-        return productoProyecto;
     }
 
     public void setId(String id) {
@@ -58,28 +52,12 @@ public class Proyecto implements Serializable{
         this.presupuesto = presupuesto;
     }
 
-    public void setProductoProyecto(Producto productoProyecto) {
-        this.productoProyecto = productoProyecto;
+    public ArrayList<String> getDnis() {
+        return dnis;
     }
 
-    public void setEmpleados(ArrayList<Empleado> Empleados) {
-        this.empleados = Empleados;
-    }
-   
-    public void agregarProyecto(Empleado a){
-        this.empleados.add(a);
-    }
-    
-    public void eliminarProyectoDeProducto(Empleado empleadoA, Proyecto proyecto) {
-        List<Empleado> proyectosEmpleado = proyecto.getAsignacionesEmpleados();
-        Iterator<Empleado> iterator = proyectosEmpleado.iterator();
-
-        while (iterator.hasNext()) {
-            Empleado pro = iterator.next();
-            if (pro.getDNI().equals(empleadoA.getDNI())) {
-                iterator.remove();
-            }
-        }
+    public void setDnis(String dni) {
+        this.dnis.add(dni);
     }
 }
 

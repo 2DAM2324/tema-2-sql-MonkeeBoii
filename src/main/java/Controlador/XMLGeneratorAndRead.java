@@ -104,74 +104,7 @@ public class XMLGeneratorAndRead{
         }
     }
     
-    public List<Empleado> leerXMLDeEmpleados(String nombreArchivo) {
-         List<Empleado> empleados = new ArrayList<>();
-         
-          try{
-        Class.forName("org.sqlite.JDBC");
-        }
-        catch(Exception E){
-            System.out.println("nop");
-        }
-        
-        Connection conn = null;
-        
-        try{
-            String url = "jdbc:sqlite:/home/monkeeboi/Instituto/tema-2-sql-MonkeeBoii/baseDeDatos.db3 ";
-            conn = DriverManager.getConnection(url);
-        }
-        catch(SQLException e){
-            System.out.println(e.getMessage());
-        }
-        catch(Exception e){}
-        
-        
-        String cons = "SELECT * FROM Empleado";
-        PreparedStatement consulta = null;
-        ResultSet resultado = null;
-        
-        try{
-            consulta = conn.prepareStatement(cons);
-            resultado = consulta.executeQuery();
-            
-            while(resultado.next()){
-                
-                String codigo = resultado.getString(1);
-                String dni = resultado.getString(2);
-                String nombre = resultado.getString(3);
-                
-                Empleado empleado = new Empleado(codigo, dni, nombre);
-                empleados.add(empleado);
-            }
-        }
-        catch(SQLException sqle){
-            sqle.printStackTrace();
-        }
-        finally{
-            if (consulta != null){
-                try{
-                   consulta.close();
-                    resultado.close(); 
-                }
-                catch(SQLException sqle2){
-                    sqle2.printStackTrace();
-                }
-                
-            }
-        }
-        
-        
-        // Cerrar conexion con la base de datos
-        try{
-            if (conn != null)
-                conn.close();
-        }
-        catch(SQLException e2){
-            System.out.println(e2.getMessage());
-        }
-
-        return empleados;
-    }
+    
     
     public void cargarDatosEnJTableEmpleados(List<Empleado> empleados, JTable tablaEmpleados) {
         DefaultTableModel modelo = (DefaultTableModel) tablaEmpleados.getModel();

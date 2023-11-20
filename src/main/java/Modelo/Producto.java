@@ -8,25 +8,20 @@ public class Producto implements Serializable {
     
     private String codigoProductos;
     private String nombreProductos;
-    private String precio;
-    private Proveedor proveedorProducto;
-    private ArrayList<Proyecto> proyectosProducto;
+    private int precio;
+    private String proveedorProducto;
+    private ArrayList<String> proyectosProducto;
 
     public Producto(){
-
-        this.nombreProductos = "";
-        this.codigoProductos = "";
-        this.precio = "";
         this.proyectosProducto = new ArrayList<>();
     }
 
     // Constructor por parametro
-    public Producto(String codigo, String nombre, String precio){
+    public Producto(String codigo, String nombre, int precio){
 
         this.nombreProductos = nombre;
         this.codigoProductos = codigo;
         this.precio = precio;
-        this.proveedorProducto = new Proveedor();
         this.proyectosProducto = new ArrayList<>();
     }
 
@@ -40,15 +35,15 @@ public class Producto implements Serializable {
         this.codigoProductos = codigoProductos;
     }
 
-    public void setPrecio(String precio) {
+    public void setPrecio(int precio) {
         this.precio = precio;
     }
 
-    public void setProveedorProducto(Proveedor proveedorProducto) {
+    public void setProveedorProducto(String proveedorProducto) {
         this.proveedorProducto = proveedorProducto;
     }
 
-    public void setProyectosProducto(ArrayList<Proyecto> proyectosProducto) {
+    public void setProyectosProducto(ArrayList<String> proyectosProducto) {
         this.proyectosProducto = proyectosProducto;
     }
 
@@ -60,33 +55,20 @@ public class Producto implements Serializable {
         return codigoProductos;
     }
 
-    public String getPrecio() {
+    public int getPrecio() {
         return precio;
     }
 
-    public Proveedor getProveedorProducto() {
+    public String getProveedorProducto() {
         return proveedorProducto;
     }
 
-    public ArrayList<Proyecto> getProyectosProducto() {
+    public ArrayList<String> getProyectosProducto() {
         return proyectosProducto;
     }
     
-    public void agregarProyecto(Proyecto a){
+    public void agregarProyecto(String a){
         this.proyectosProducto.add(a);
     }
-    
-    public void eliminarProyecto(Proyecto a, Producto b) {
-    List<Proyecto> proyectosProducto = b.getProyectosProducto();
-    Iterator<Proyecto> iterator = proyectosProducto.iterator();
-
-    while (iterator.hasNext()) {
-        Proyecto pro = iterator.next();
-        if (pro.getId().equals(a.getId())) {
-            iterator.remove(); // Usar el iterator para eliminar el elemento
-        }
-    }
-}
-
 
 }

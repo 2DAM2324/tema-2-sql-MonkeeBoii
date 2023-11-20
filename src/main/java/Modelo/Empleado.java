@@ -2,29 +2,27 @@ package Modelo;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 
 public class Empleado implements Serializable {
     
-    private String codigo;
+    private int codigo;
     private String dni;
     private String nombre;
-    private ArrayList<Proyecto> proyectosAsignados;
+    private ArrayList<String> codigoProyecto;
 
     public Empleado() {
-        proyectosAsignados = new ArrayList<>();
+        codigoProyecto = new ArrayList<>();
     }
 
-    public Empleado(String codigo, String id, String nombre) {
+    public Empleado(int codigo, String id, String nombre) {
         this.codigo = codigo;
         this.dni = id;
         this.nombre = nombre;
-        proyectosAsignados = new ArrayList<>();
+        codigoProyecto = new ArrayList<>();
     }
 
-    public String getCodigo() {
+    public int getCodigo() {
         return codigo;
     }
 
@@ -32,7 +30,7 @@ public class Empleado implements Serializable {
         return dni;
     }
 
-    public void setCodigo(String codigo) {
+    public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 
@@ -40,8 +38,8 @@ public class Empleado implements Serializable {
         return nombre;
     }
 
-    public ArrayList<Proyecto> getProyectosAsignados() {
-        return proyectosAsignados;
+    public ArrayList<String> getProyectosAsignados() {
+        return codigoProyecto;
     }
 
     public void setDni(String dni) {
@@ -51,25 +49,8 @@ public class Empleado implements Serializable {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
-    public void setProyectosAsignados(ArrayList<Proyecto> proyectosAsignados) {
-        this.proyectosAsignados = proyectosAsignados;
-    }
     
-    public void agregarProyecto(Proyecto a){
-        this.proyectosAsignados.add(a);
+    public void agregarProyecto(String a){
+        this.codigoProyecto.add(a);
     }
-    
-    public void eliminarProyecto(Proyecto a, Empleado b) {
-        List<Proyecto> proyectosAsignados = b.getProyectosAsignados();
-        Iterator<Proyecto> iterator = proyectosAsignados.iterator();
-
-        while (iterator.hasNext()) {
-            Proyecto pro = iterator.next();
-            if (pro.getId().equals(a.getId())) {
-                iterator.remove(); // Usar el iterator para eliminar el elemento
-            }
-        }
-    }
-
 }

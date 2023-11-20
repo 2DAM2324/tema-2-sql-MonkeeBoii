@@ -6,19 +6,15 @@ public class Proveedor implements Serializable{
     
     private String codigoProveedor;
     private String nombreProveedor;
-    private Producto productoProveedor;
+    private String codigoProducto;
 
     public Proveedor(){
-        codigoProveedor = "";
-        nombreProveedor = "";
-        productoProveedor = new Producto();
     }
 
     public Proveedor(String codigoProveedor, String nombreProveedor){
 
         this.codigoProveedor = codigoProveedor;
         this.nombreProveedor = nombreProveedor;
-        this.productoProveedor = new Producto();
     }
 
     //SET 
@@ -30,9 +26,9 @@ public class Proveedor implements Serializable{
     public void setNombreProveedor(String nombreProveedor) {
         this.nombreProveedor = nombreProveedor;
     }
-
-    public void setProductoProveedor(Producto productoProveedor) {
-        this.productoProveedor = productoProveedor;
+    
+    public void setCodigoProducto(String codigoProducto) {
+        this.codigoProducto = codigoProducto;
     }
     
     //GET
@@ -44,7 +40,8 @@ public class Proveedor implements Serializable{
         return nombreProveedor;
     }
 
-    public Producto getProductoProveedor() {
-        return productoProveedor;
+    public String getCodigoProducto() {
+        return codigoProducto;
     }
+    
 }
