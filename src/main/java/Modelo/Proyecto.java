@@ -4,31 +4,31 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Proyecto implements Serializable{
-    private String id;
+    private int id;
     private String nombre;
-    private String presupuesto;
-    private String codigoProducto;
+    private int presupuesto;
+    private int codigoProducto;
     private ArrayList<String> dnis;
 
     public Proyecto() {
     }
 
-    public Proyecto(String id, String nombre, String presupuesto) {
+    public Proyecto(int id, String nombre, int presupuesto) {
         this.id = id;
         this.nombre = nombre;
         this.presupuesto = presupuesto;
 
     }
 
-    public String getCodigoProducto() {
+    public int getCodigoProducto() {
         return codigoProducto;
     }
 
-    public void setCodigoProducto(String codigoProducto) {
+    public void setCodigoProducto(int codigoProducto) {
         this.codigoProducto = codigoProducto;
     }
     
-    public String getId() {
+    public int getId() {
         return id;
     }
 
@@ -36,11 +36,11 @@ public class Proyecto implements Serializable{
         return nombre;
     }
     
-    public String getPresupuesto() {
+    public int getPresupuesto() {
         return presupuesto;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -48,7 +48,7 @@ public class Proyecto implements Serializable{
         this.nombre = nombre;
     }
 
-    public void setPresupuesto(String presupuesto) {
+    public void setPresupuesto(int presupuesto) {
         this.presupuesto = presupuesto;
     }
 

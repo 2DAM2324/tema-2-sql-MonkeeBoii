@@ -9,7 +9,7 @@ public class Empleado implements Serializable {
     private int codigo;
     private String dni;
     private String nombre;
-    private ArrayList<String> codigoProyecto;
+    private ArrayList<Integer> codigoProyecto;
 
     public Empleado() {
         codigoProyecto = new ArrayList<>();
@@ -38,7 +38,7 @@ public class Empleado implements Serializable {
         return nombre;
     }
 
-    public ArrayList<String> getProyectosAsignados() {
+    public ArrayList<Integer> getProyectosAsignados() {
         return codigoProyecto;
     }
 
@@ -50,7 +50,7 @@ public class Empleado implements Serializable {
         this.nombre = nombre;
     }
     
-    public void agregarProyecto(String a){
+    public void agregarProyecto(Integer a){
         this.codigoProyecto.add(a);
     }
 }

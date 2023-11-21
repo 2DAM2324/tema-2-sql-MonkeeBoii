@@ -1,23 +1,21 @@
 package Modelo;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class Producto implements Serializable {
     
-    private String codigoProductos;
+    private int codigoProductos;
     private String nombreProductos;
     private int precio;
-    private String proveedorProducto;
-    private ArrayList<String> proyectosProducto;
+    private int proveedorProducto;
+    private ArrayList<Integer> proyectosProducto;
 
     public Producto(){
         this.proyectosProducto = new ArrayList<>();
     }
 
     // Constructor por parametro
-    public Producto(String codigo, String nombre, int precio){
+    public Producto(int codigo, String nombre, int precio){
 
         this.nombreProductos = nombre;
         this.codigoProductos = codigo;
@@ -31,7 +29,7 @@ public class Producto implements Serializable {
         this.nombreProductos = nombreProductos;
     }
 
-    public void setCodigoProductos(String codigoProductos) {
+    public void setCodigoProductos(int codigoProductos) {
         this.codigoProductos = codigoProductos;
     }
 
@@ -39,11 +37,11 @@ public class Producto implements Serializable {
         this.precio = precio;
     }
 
-    public void setProveedorProducto(String proveedorProducto) {
+    public void setProveedorProducto(int proveedorProducto) {
         this.proveedorProducto = proveedorProducto;
     }
 
-    public void setProyectosProducto(ArrayList<String> proyectosProducto) {
+    public void setProyectosProducto(ArrayList<Integer> proyectosProducto) {
         this.proyectosProducto = proyectosProducto;
     }
 
@@ -51,7 +49,7 @@ public class Producto implements Serializable {
         return nombreProductos;
     }
 
-    public String getCodigoProductos() {
+    public int getCodigoProductos() {
         return codigoProductos;
     }
 
@@ -59,15 +57,15 @@ public class Producto implements Serializable {
         return precio;
     }
 
-    public String getProveedorProducto() {
+    public int getProveedorProducto() {
         return proveedorProducto;
     }
 
-    public ArrayList<String> getProyectosProducto() {
+    public ArrayList<Integer> getProyectosProducto() {
         return proyectosProducto;
     }
     
-    public void agregarProyecto(String a){
+    public void agregarProyecto(Integer a){
         this.proyectosProducto.add(a);
     }
 

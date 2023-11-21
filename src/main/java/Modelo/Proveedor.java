@@ -6,7 +6,7 @@ public class Proveedor implements Serializable{
     
     private int codigoProveedor;
     private String nombreProveedor;
-    private String codigoProducto;
+    private int codigoProducto;
 
     public Proveedor(){
     }
@@ -27,7 +27,7 @@ public class Proveedor implements Serializable{
         this.nombreProveedor = nombreProveedor;
     }
     
-    public void setCodigoProducto(String codigoProducto) {
+    public void setCodigoProducto(int codigoProducto) {
         this.codigoProducto = codigoProducto;
     }
     
@@ -40,7 +40,7 @@ public class Proveedor implements Serializable{
         return nombreProveedor;
     }
 
-    public String getCodigoProducto() {
+    public int getCodigoProducto() {
         return codigoProducto;
     }
     
