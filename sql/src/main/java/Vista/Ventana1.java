@@ -10,26 +10,32 @@ import Modelo.Empleado;
 import Modelo.Producto;
 import Modelo.Proveedor;
 import Modelo.Proyecto;
-import Controlador.XMLGeneratorAndRead;
+import Controlador.GeneratorAndRead;
+import Modelo.Conector;
 import javax.swing.JOptionPane;
 
 public class Ventana1 extends javax.swing.JFrame {
-    XMLGeneratorAndRead generador = new XMLGeneratorAndRead();
+    GeneratorAndRead generador = new GeneratorAndRead();
+    Conector conector = new Conector();
     boolean continuar = false;
+    
     
     public Ventana1() throws IOException, FileNotFoundException, ClassNotFoundException, NotSerializableException, SAXException {
         initComponents();
-        empleados = (ArrayList<Empleado>) generador.leerXMLDeEmpleados("empleados.dat");
+        
+        empleados = (ArrayList<Empleado>) conector.consultarBaseDatosEmpleado(conector.conectorBaseDatos());
         generador.cargarDatosEnJTableEmpleados(empleados, jTable_Empleado);
         
-        proyectos = (ArrayList<Proyecto>) generador.leerXMLDeProyectos("proyectos.dat");
+        proyectos = (ArrayList<Proyecto>) conector.consultarBaseDatosProyecto(conector.conectorBaseDatos());
         generador.cargarDatosEnJTableProyectos(proyectos, jTable_Proyectos);
         
-        productos = (ArrayList<Producto>) generador.leerXMLDeProductos("productos.dat");
+        productos = (ArrayList<Producto>) conector.consultarBaseDatosProducto(conector.conectorBaseDatos());
         generador.cargarDatosEnJTableProductos(productos, jTable_Productos);
  
-        proveedor = (ArrayList<Proveedor>) generador.leerXMLDeProveedores("proveedores.dat");
+        proveedor = (ArrayList<Proveedor>) conector.consultarBaseDatosProveedor(conector.conectorBaseDatos());
         generador.cargarDatosEnJTableProveedores(proveedor, jTable_Proveedores);
+        
+        conector.cerrarConexion(conector.conectorBaseDatos());
 
     }
    
@@ -1076,16 +1082,16 @@ public class Ventana1 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_anadir_productosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_anadir_productosActionPerformed
-        String col1;
+        Integer col1;
         String col2;
-        String col3;
+        Integer col3;
         
-        col1 = jTextField_codigo_Productos.getText();
+        col1 = Integer.valueOf(jTextField_codigo_Productos.getText());
         col2 = jTextField_nombre_productos.getText();
         col3 = jTextField_precio_productos.getText();
         
-        pasaFiltro1 = generador.comprobarSiElObjetoYaExisteProducto(productos, col1);
-        pasaFiltro2 = generador.tieneAlgunAtributoVacio(col1, col2, col3);
+        pasaFiltro1 = generador.comprobarSiElObjetoYaExisteProducto(productos, col1.toString());
+        pasaFiltro2 = generador.tieneAlgunAtributoVacio(col1.toString(), col2, col3);
         
         if(pasaFiltro1 && pasaFiltro2){
             Producto producto = new Producto(col1, col2, col3);
