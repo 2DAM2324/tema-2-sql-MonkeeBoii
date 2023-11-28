@@ -4,10 +4,6 @@ import Modelo.Empleado;
 import Modelo.Producto;
 import Modelo.Proveedor;
 import Modelo.Proyecto;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -54,8 +50,6 @@ public class GeneratorAndRead {
 
         tablaProyecto.setModel(modelo);
     }
-
-    
 
     public void cargarDatosEnJTableProductos(List<Producto> productos, JTable tablaProducto) {
         DefaultTableModel modelo = (DefaultTableModel) tablaProducto.getModel();
@@ -636,7 +630,7 @@ public class GeneratorAndRead {
     }
 
     public boolean comprobarSiHayRelacionesEnELObjeto(Producto a) {
-        if (a.getCodigoProyectos()== null && a.getCodigoProveedor() == null) {
+        if (a.getCodigoProyectos() == null && a.getCodigoProveedor() == null) {
             return true;
         } else if ((a.getCodigoProyectos().isEmpty())) {
             return true;

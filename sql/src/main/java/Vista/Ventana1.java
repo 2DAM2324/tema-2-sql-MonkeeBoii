@@ -35,7 +35,7 @@ public class Ventana1 extends javax.swing.JFrame {
         proveedor = (ArrayList<Proveedor>) conector.consultarBaseDatosProveedor(conector.conectorBaseDatos());
         generador.cargarDatosEnJTableProveedores(proveedor, jTable_Proveedores);
         
-        conector.cerrarConexion(conector.conectorBaseDatos());
+        
 
     }
    

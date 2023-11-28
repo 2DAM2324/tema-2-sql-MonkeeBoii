@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class Conector {
 
-    Connection conn;
+    private Connection conn;
 
     public Connection conectorBaseDatos() {
         try {
@@ -67,9 +67,9 @@ public class Conector {
                 while (resultado1.next()) {
                     empleado.setCodigoProyecto(resultado1.getInt(3));
                 }
-                    
+
                 empleados.add(empleado);
-                
+
                 if (consulta1 != null) {
                     try {
                         consulta1.close();
@@ -96,7 +96,7 @@ public class Conector {
         }
         return empleados;
     }
-    
+
     public List<Proyecto> consultarBaseDatosProyecto(Connection conn) {
         PreparedStatement consulta = null;
         ResultSet resultado = null;
@@ -111,11 +111,11 @@ public class Conector {
                 PreparedStatement consulta1 = conn.prepareStatement("SELECT * FROM trabajan WHERE codigoProyecto==" + resultado.getInt(1));
                 ResultSet resultado1 = consulta1.executeQuery();
                 proyecto.setCodigoProducto(resultado.getInt(4));
-                
+
                 while (resultado1.next()) {
                     proyecto.setCodigoEmpleado(resultado1.getInt(2));
                 }
-                
+
                 proyectos.add(proyecto);
                 if (consulta1 != null) {
                     try {
@@ -143,7 +143,7 @@ public class Conector {
         }
         return proyectos;
     }
-    
+
     public List<Producto> consultarBaseDatosProducto(Connection conn) {
         PreparedStatement consulta = null;
         ResultSet resultado = null;
@@ -158,11 +158,11 @@ public class Conector {
                 PreparedStatement consulta1 = conn.prepareStatement("SELECT * FROM proyecto WHERE codigoProducto==" + resultado.getInt(1));
                 ResultSet resultado1 = consulta1.executeQuery();
                 producto.setCodigoProveedor(resultado.getInt(4));
-                
+
                 while (resultado1.next()) {
                     producto.setCodigoProyectos(resultado1.getInt(2));
                 }
-                
+
                 productos.add(producto);
                 if (consulta1 != null) {
                     try {
@@ -189,5 +189,187 @@ public class Conector {
             }
         }
         return productos;
+    }
+
+    public List<Proveedor> consultarBaseDatosProveedor(Connection conn) {
+        PreparedStatement consulta = null;
+        ResultSet resultado = null;
+        List<Proveedor> proveedores = new ArrayList<Proveedor>();
+
+        try {
+            consulta = conn.prepareStatement("SELECT * FROM proveedor");
+            resultado = consulta.executeQuery();
+
+            while (resultado.next()) {
+                Proveedor proveedor = new Proveedor(resultado.getInt(1), resultado.getString(2));
+                proveedor.setProductoProveedor(resultado.getInt(3));
+
+                proveedores.add(proveedor);
+
+            }
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+        } finally {
+            if (consulta != null) {
+                try {
+                    consulta.close();
+                    if (resultado != null) {
+                        resultado.close();
+                    }
+                } catch (SQLException sqle2) {
+                    sqle2.printStackTrace();
+                }
+
+            }
+        }
+        return proveedores;
+    }
+
+    public void anadirProductoBaseDatos(String nombre, Integer precio) throws SQLException {
+        String sent = "INSERT INTO producto (Codigo, Nombre, Precio) VALUES (?, ?, ?)";
+        PreparedStatement stat = null;
+        final boolean oldAutoCommit = stat.getConnection().getAutoCommit();
+        stat.getConnection().setAutoCommit(false);
+        try {
+            try {
+                stat = conn.prepareStatement(sent);
+
+                stat.setString(2, nombre);
+                stat.setInt(3, precio);
+
+                stat.executeUpdate();
+                
+                ResultSet generateKeys = stat.getGeneratedKeys();
+                if(generateKeys.next()){
+                    int id = generateKeys.getInt(1);
+                    stat.setInt(1, id);
+                }
+            } catch (SQLException sqle) {
+                sqle.printStackTrace();
+            } finally {
+                try {
+                    if (stat != null) {
+                        stat.close();
+                    }
+                } catch (SQLException sqle2) {
+                    sqle2.printStackTrace();
+                }
+            }
+        } catch (Exception e) {
+            stat.getConnection().rollback();
+        } finally {
+            stat.getConnection().commit();
+            stat.getConnection().setAutoCommit(oldAutoCommit);
+        }
+    }
+    
+    public void anadirEmpleadoBaseDatos(String dni, String nombre) throws SQLException {
+        String sent = "INSERT INTO empleado (Codigo, DNI, Nombre) VALUES (?, ?, ?)";
+        PreparedStatement stat = null;
+        final boolean oldAutoCommit = stat.getConnection().getAutoCommit();
+        stat.getConnection().setAutoCommit(false);
+        try {
+            try {
+                stat = conn.prepareStatement(sent);
+
+                stat.setString(2, dni);
+                stat.setString(3, nombre);
+
+                stat.executeUpdate();
+                ResultSet generateKeys = stat.getGeneratedKeys();
+                if(generateKeys.next()){
+                    int id = generateKeys.getInt(1);
+                    stat.setInt(1, id);
+                }
+            } catch (SQLException sqle) {
+                sqle.printStackTrace();
+            } finally {
+                try {
+                    if (stat != null) {
+                        stat.close();
+                    }
+                } catch (SQLException sqle2) {
+                    sqle2.printStackTrace();
+                }
+            }
+        } catch (Exception e) {
+            stat.getConnection().rollback();
+        } finally {
+            stat.getConnection().commit();
+            stat.getConnection().setAutoCommit(oldAutoCommit);
+        }
+    }
+    
+    public void anadirProyectoBaseDatos(String nombre, Integer presupuesto) throws SQLException {
+        String sent = "INSERT INTO proyecto (Codigo, Nombre, Presupuesto) VALUES (?, ?, ?)";
+        PreparedStatement stat = null;
+        final boolean oldAutoCommit = stat.getConnection().getAutoCommit();
+        stat.getConnection().setAutoCommit(false);
+        try {
+            try {
+                stat = conn.prepareStatement(sent);
+
+                stat.setString(2, nombre);
+                stat.setInt(3, presupuesto);
+
+                stat.executeUpdate();
+                ResultSet generateKeys = stat.getGeneratedKeys();
+                if(generateKeys.next()){
+                    int id = generateKeys.getInt(1);
+                    stat.setInt(1, id);
+                }
+            } catch (SQLException sqle) {
+                sqle.printStackTrace();
+            } finally {
+                try {
+                    if (stat != null) {
+                        stat.close();
+                    }
+                } catch (SQLException sqle2) {
+                    sqle2.printStackTrace();
+                }
+            }
+        } catch (Exception e) {
+            stat.getConnection().rollback();
+        } finally {
+            stat.getConnection().commit();
+            stat.getConnection().setAutoCommit(oldAutoCommit);
+        }
+    }
+    
+    public void anadirProveedorBaseDatos(String nombre) throws SQLException {
+        String sent = "INSERT INTO Proveedor (Codigo, Nombre) VALUES (?, ?)";
+        PreparedStatement stat = null;
+        final boolean oldAutoCommit = stat.getConnection().getAutoCommit();
+        stat.getConnection().setAutoCommit(false);
+        try {
+            try {
+                stat = conn.prepareStatement(sent);
+
+                stat.setString(2, nombre);
+
+                stat.executeUpdate();
+                ResultSet generateKeys = stat.getGeneratedKeys();
+                if(generateKeys.next()){
+                    int id = generateKeys.getInt(1);
+                    stat.setInt(1, id);
+                }
+            } catch (SQLException sqle) {
+                sqle.printStackTrace();
+            } finally {
+                try {
+                    if (stat != null) {
+                        stat.close();
+                    }
+                } catch (SQLException sqle2) {
+                    sqle2.printStackTrace();
+                }
+            }
+        } catch (Exception e) {
+            stat.getConnection().rollback();
+        } finally {
+            stat.getConnection().commit();
+            stat.getConnection().setAutoCommit(oldAutoCommit);
+        }
     }
 }

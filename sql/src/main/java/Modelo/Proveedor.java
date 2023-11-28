@@ -1,8 +1,5 @@
 package Modelo;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Proveedor{
     
     private Integer codigoProveedor;
