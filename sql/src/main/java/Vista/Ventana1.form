@@ -47,6 +47,8 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JScrollBar" name="jScrollBar1">
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
@@ -55,6 +57,9 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowClosing" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowClosing"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -216,13 +221,19 @@
                 <Component class="javax.swing.JTable" name="jTable_Empleado">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="2" rowCount="1">
+                      <Table columnCount="3" rowCount="1">
+                        <Column editable="false" title="codigo" type="java.lang.Object"/>
                         <Column editable="false" title="DNI" type="java.lang.String"/>
                         <Column editable="false" title="Nombre" type="java.lang.String"/>
                       </Table>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                       <TableColumnModel selectionModel="0">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
                         <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                           <Title/>
                           <Editor/>
@@ -398,65 +409,59 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jSeparator2" alignment="1" max="32767" attributes="0"/>
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" max="-2" attributes="0"/>
+                              <Component id="jScrollPane2" min="-2" pref="452" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jButton_modificar_Proyectos" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jButton_anadir_proyectos" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jButton_borrar_Proyecto" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                                      <Component id="jScrollPane2" min="-2" pref="452" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="jButton_modificar_Proyectos" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jButton_anadir_proyectos" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jButton_borrar_Proyecto" alignment="0" max="32767" attributes="0"/>
-                                      </Group>
+                                  <Component id="jLabel_telefono" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel_direccion" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel_ciudades_bibliotecas" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jTextField_Nombre_Proyectos" max="32767" attributes="0"/>
+                                  <Component id="jTextField_Presupuesto_Proyecto" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jButton_guardar_biblioteca" min="-2" pref="85" max="-2" attributes="0"/>
+                                  <Component id="jButton_cancelar_biblioteca" min="-2" pref="85" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="jLabel7" min="-2" pref="96" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="texto_relacion_proyecto_empleado" min="-2" pref="245" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="boton_relacion_proyecto_empleado" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel_nombre_biblioteca" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel_telefono" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel_direccion" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel_ciudades_bibliotecas" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="jTextField_Codigo_proyectos" alignment="0" pref="245" max="32767" attributes="0"/>
-                                          <Component id="jTextField_Nombre_Proyectos" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jTextField_Presupuesto_Proyecto" alignment="0" max="32767" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="jButton_guardar_biblioteca" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jButton_cancelar_biblioteca" alignment="0" pref="85" max="32767" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Component id="jLabel7" min="-2" pref="96" max="-2" attributes="0"/>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="texto_relacion_proyecto_empleado" min="-2" pref="245" max="-2" attributes="0"/>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="boton_relacion_proyecto_empleado" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Component id="jLabel6" min="-2" pref="96" max="-2" attributes="0"/>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="texto_codigo_producto" min="-2" pref="245" max="-2" attributes="0"/>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="jButton6" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jScrollPane7" min="-2" pref="452" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="Eliminar_relacion_empleados1" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="jLabel6" min="-2" pref="96" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="texto_codigo_producto" min="-2" pref="245" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="jButton6" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jScrollPane7" min="-2" pref="452" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="Eliminar_relacion_empleados1" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -487,12 +492,7 @@
                               <Component id="jScrollPane2" min="-2" pref="92" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel_nombre_biblioteca" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField_Codigo_proyectos" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel_telefono" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jTextField_Nombre_Proyectos" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -516,7 +516,7 @@
                                   <Component id="jButton6" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="12" max="32767" attributes="0"/>
+                              <EmptySpace pref="13" max="32767" attributes="0"/>
                               <Component id="jScrollPane8" min="-2" pref="92" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
@@ -530,7 +530,7 @@
                           <Component id="boton_relacion_proyecto_empleado" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="12" max="32767" attributes="0"/>
+                      <EmptySpace pref="14" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jScrollPane7" alignment="1" min="-2" pref="92" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
@@ -589,11 +589,6 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JLabel" name="jLabel_nombre_biblioteca">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Codigo"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JLabel" name="jLabel_telefono">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Nombre"/>
@@ -603,14 +598,6 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Presupuesto"/>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="jTextField_Codigo_proyectos">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField_Codigo_proyectosActionPerformed"/>
-              </Events>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField_Nombre_Proyectos">
               <AuxValues>
@@ -828,14 +815,12 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel_nombre_libro" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel_autor" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel_edad_recomendada" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="jTextField_codigo_Productos" alignment="0" pref="245" max="32767" attributes="0"/>
-                                          <Component id="jTextField_nombre_productos" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jTextField_nombre_productos" alignment="0" pref="245" max="32767" attributes="0"/>
                                           <Component id="jTextField_precio_productos" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
@@ -845,7 +830,7 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace min="0" pref="29" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="44" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -869,12 +854,7 @@
                               <Component id="jScrollPane3" min="-2" pref="92" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel_nombre_libro" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField_codigo_Productos" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel_autor" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jTextField_nombre_productos" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -888,7 +868,7 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jSeparator3" min="-2" pref="10" max="-2" attributes="0"/>
-                      <EmptySpace pref="290" max="32767" attributes="0"/>
+                      <EmptySpace pref="293" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -939,11 +919,6 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JLabel" name="jLabel_nombre_libro">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Codigo"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JLabel" name="jLabel_autor">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Nombre"/>
@@ -955,11 +930,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField_precio_productos">
-            </Component>
-            <Component class="javax.swing.JTextField" name="jTextField_codigo_Productos">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField_codigo_ProductosActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField_nombre_productos">
             </Component>
@@ -1042,15 +1012,9 @@
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel_nombre_persona" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel_DNI" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
+                                      <Component id="jLabel_DNI" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="jTextField_codigo_Proveedor" alignment="0" pref="245" max="32767" attributes="0"/>
-                                          <Component id="jTextField_Nombre_proveedor" alignment="0" max="32767" attributes="0"/>
-                                      </Group>
+                                      <Component id="jTextField_Nombre_proveedor" min="-2" pref="245" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="jButton_guardar_persona" alignment="0" max="32767" attributes="0"/>
@@ -1097,14 +1061,9 @@
                               <Component id="jScrollPane4" min="-2" pref="92" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="42" max="32767" attributes="0"/>
+                      <EmptySpace pref="80" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel_nombre_persona" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField_codigo_Proveedor" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel_DNI" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jTextField_Nombre_proveedor" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1173,20 +1132,10 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JLabel" name="jLabel_nombre_persona">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Codigo"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JLabel" name="jLabel_DNI">
               <Properties>
                 <Property name="text" type="java.lang.String" value="NombreProveedor"/>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="jTextField_codigo_Proveedor">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField_codigo_ProveedorActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField_Nombre_proveedor">
             </Component>

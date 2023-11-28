@@ -20,23 +20,17 @@ public class Conector {
 
     private Connection conn;
 
-    public Connection conectorBaseDatos() {
+    public Conector() {
         try {
-            Class.forName("org.sqlite.JDBC");
-        } catch (Exception E) {
-            System.out.println("nop");
+            String url = "jdbc:sqlite:/home/monkeeboi/Instituto/tema-2-sql-MonkeeBoii/sql/baseDeDatos.db3";
+            conn = DriverManager.getConnection(url);
+            System.out.println("Connection to SQLite has been established.");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
-        if (conn == null) {
-            try {
-                String url = "jdbc:sqlite:/home/monkeeboi/Instituto/tema-2-sql-MonkeeBoii/sql/baseDeDatos.db3";
-                conn = DriverManager.getConnection(url);
+    }
 
-                System.out.println("Conexion establecida olee");
-            } catch (SQLException e) {
-                System.out.println(e.getMessage());
-            } catch (Exception e) {
-            }
-        }
+    public Connection conectorBaseDatos() {
         return conn;
     }
 
@@ -150,7 +144,7 @@ public class Conector {
         List<Producto> productos = new ArrayList<Producto>();
 
         try {
-            consulta = conn.prepareStatement("SELECT * FROM productos");
+            consulta = conn.prepareStatement("SELECT * FROM producto");
             resultado = consulta.executeQuery();
 
             while (resultado.next()) {
@@ -227,7 +221,7 @@ public class Conector {
 
     public void anadirProductoBaseDatos(String nombre, Integer precio) throws SQLException {
         String sent = "INSERT INTO producto (Codigo, Nombre, Precio) VALUES (?, ?, ?)";
-        PreparedStatement stat = null;
+        PreparedStatement stat = conn.prepareStatement(sent);
         final boolean oldAutoCommit = stat.getConnection().getAutoCommit();
         stat.getConnection().setAutoCommit(false);
         try {
@@ -238,9 +232,9 @@ public class Conector {
                 stat.setInt(3, precio);
 
                 stat.executeUpdate();
-                
+
                 ResultSet generateKeys = stat.getGeneratedKeys();
-                if(generateKeys.next()){
+                if (generateKeys.next()) {
                     int id = generateKeys.getInt(1);
                     stat.setInt(1, id);
                 }
@@ -262,10 +256,10 @@ public class Conector {
             stat.getConnection().setAutoCommit(oldAutoCommit);
         }
     }
-    
+
     public void anadirEmpleadoBaseDatos(String dni, String nombre) throws SQLException {
         String sent = "INSERT INTO empleado (Codigo, DNI, Nombre) VALUES (?, ?, ?)";
-        PreparedStatement stat = null;
+        PreparedStatement stat = conn.prepareStatement(sent);
         final boolean oldAutoCommit = stat.getConnection().getAutoCommit();
         stat.getConnection().setAutoCommit(false);
         try {
@@ -277,7 +271,7 @@ public class Conector {
 
                 stat.executeUpdate();
                 ResultSet generateKeys = stat.getGeneratedKeys();
-                if(generateKeys.next()){
+                if (generateKeys.next()) {
                     int id = generateKeys.getInt(1);
                     stat.setInt(1, id);
                 }
@@ -299,10 +293,10 @@ public class Conector {
             stat.getConnection().setAutoCommit(oldAutoCommit);
         }
     }
-    
+
     public void anadirProyectoBaseDatos(String nombre, Integer presupuesto) throws SQLException {
         String sent = "INSERT INTO proyecto (Codigo, Nombre, Presupuesto) VALUES (?, ?, ?)";
-        PreparedStatement stat = null;
+        PreparedStatement stat = conn.prepareStatement(sent);
         final boolean oldAutoCommit = stat.getConnection().getAutoCommit();
         stat.getConnection().setAutoCommit(false);
         try {
@@ -314,7 +308,7 @@ public class Conector {
 
                 stat.executeUpdate();
                 ResultSet generateKeys = stat.getGeneratedKeys();
-                if(generateKeys.next()){
+                if (generateKeys.next()) {
                     int id = generateKeys.getInt(1);
                     stat.setInt(1, id);
                 }
@@ -336,10 +330,10 @@ public class Conector {
             stat.getConnection().setAutoCommit(oldAutoCommit);
         }
     }
-    
+
     public void anadirProveedorBaseDatos(String nombre) throws SQLException {
         String sent = "INSERT INTO Proveedor (Codigo, Nombre) VALUES (?, ?)";
-        PreparedStatement stat = null;
+        PreparedStatement stat = conn.prepareStatement(sent);
         final boolean oldAutoCommit = stat.getConnection().getAutoCommit();
         stat.getConnection().setAutoCommit(false);
         try {
@@ -350,7 +344,7 @@ public class Conector {
 
                 stat.executeUpdate();
                 ResultSet generateKeys = stat.getGeneratedKeys();
-                if(generateKeys.next()){
+                if (generateKeys.next()) {
                     int id = generateKeys.getInt(1);
                     stat.setInt(1, id);
                 }

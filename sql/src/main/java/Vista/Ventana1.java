@@ -4,7 +4,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.NotSerializableException;
 import java.util.ArrayList;
-import javax.swing.table.DefaultTableModel;
 import org.xml.sax.SAXException;
 import Modelo.Empleado;
 import Modelo.Producto;
@@ -12,6 +11,7 @@ import Modelo.Proveedor;
 import Modelo.Proyecto;
 import Controlador.GeneratorAndRead;
 import Modelo.Conector;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 public class Ventana1 extends javax.swing.JFrame {
@@ -22,7 +22,6 @@ public class Ventana1 extends javax.swing.JFrame {
     
     public Ventana1() throws IOException, FileNotFoundException, ClassNotFoundException, NotSerializableException, SAXException {
         initComponents();
-        
         empleados = (ArrayList<Empleado>) conector.consultarBaseDatosEmpleado(conector.conectorBaseDatos());
         generador.cargarDatosEnJTableEmpleados(empleados, jTable_Empleado);
         
@@ -35,7 +34,6 @@ public class Ventana1 extends javax.swing.JFrame {
         proveedor = (ArrayList<Proveedor>) conector.consultarBaseDatosProveedor(conector.conectorBaseDatos());
         generador.cargarDatosEnJTableProveedores(proveedor, jTable_Proveedores);
         
-        
 
     }
    
@@ -45,6 +43,7 @@ public class Ventana1 extends javax.swing.JFrame {
 
         jScrollPane5 = new javax.swing.JScrollPane();
         jTable_Proyectos1 = new javax.swing.JTable();
+        jScrollBar1 = new javax.swing.JScrollBar();
         jTabbedPane = new javax.swing.JTabbedPane();
         jPanel_ciudad = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -68,10 +67,8 @@ public class Ventana1 extends javax.swing.JFrame {
         jPanel_biblioteca = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable_Proyectos = new javax.swing.JTable();
-        jLabel_nombre_biblioteca = new javax.swing.JLabel();
         jLabel_telefono = new javax.swing.JLabel();
         jLabel_direccion = new javax.swing.JLabel();
-        jTextField_Codigo_proyectos = new javax.swing.JTextField();
         jTextField_Nombre_Proyectos = new javax.swing.JTextField();
         jTextField_Presupuesto_Proyecto = new javax.swing.JTextField();
         jButton_guardar_biblioteca = new javax.swing.JButton();
@@ -96,11 +93,9 @@ public class Ventana1 extends javax.swing.JFrame {
         jPanel_libro = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable_Productos = new javax.swing.JTable();
-        jLabel_nombre_libro = new javax.swing.JLabel();
         jLabel_autor = new javax.swing.JLabel();
         jLabel_edad_recomendada = new javax.swing.JLabel();
         jTextField_precio_productos = new javax.swing.JTextField();
-        jTextField_codigo_Productos = new javax.swing.JTextField();
         jTextField_nombre_productos = new javax.swing.JTextField();
         jButton_guardar_libro = new javax.swing.JButton();
         jButton_cancelar_libro = new javax.swing.JButton();
@@ -111,9 +106,7 @@ public class Ventana1 extends javax.swing.JFrame {
         jPanel_persona = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable_Proveedores = new javax.swing.JTable();
-        jLabel_nombre_persona = new javax.swing.JLabel();
         jLabel_DNI = new javax.swing.JLabel();
-        jTextField_codigo_Proveedor = new javax.swing.JTextField();
         jTextField_Nombre_proveedor = new javax.swing.JTextField();
         jButton_guardar_persona = new javax.swing.JButton();
         jButton_cancelar_persona = new javax.swing.JButton();
@@ -164,20 +157,25 @@ public class Ventana1 extends javax.swing.JFrame {
         }
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jTable_Empleado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null}
+                {null, null, null}
             },
             new String [] {
-                "DNI", "Nombre"
+                "codigo", "DNI", "Nombre"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -197,6 +195,7 @@ public class Ventana1 extends javax.swing.JFrame {
         if (jTable_Empleado.getColumnModel().getColumnCount() > 0) {
             jTable_Empleado.getColumnModel().getColumn(0).setResizable(false);
             jTable_Empleado.getColumnModel().getColumn(1).setResizable(false);
+            jTable_Empleado.getColumnModel().getColumn(2).setResizable(false);
         }
 
         jButton_anadir_empleados.setText("Añadir");
@@ -320,7 +319,7 @@ public class Ventana1 extends javax.swing.JFrame {
                         .addGap(38, 38, 38)
                         .addGroup(jPanel_ciudadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButton_guardar_empleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton_cancelar_Empleado, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)))
+                            .addComponent(jButton_cancelar_Empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 85, Short.MAX_VALUE)))
                     .addGroup(jPanel_ciudadLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -420,17 +419,9 @@ public class Ventana1 extends javax.swing.JFrame {
             jTable_Proyectos.getColumnModel().getColumn(2).setResizable(false);
         }
 
-        jLabel_nombre_biblioteca.setText("Codigo");
-
         jLabel_telefono.setText("Nombre");
 
         jLabel_direccion.setText("Presupuesto");
-
-        jTextField_Codigo_proyectos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_Codigo_proyectosActionPerformed(evt);
-            }
-        });
 
         jButton_guardar_biblioteca.setText("Guardar");
         jButton_guardar_biblioteca.addActionListener(new java.awt.event.ActionListener() {
@@ -576,52 +567,48 @@ public class Ventana1 extends javax.swing.JFrame {
                 .addGroup(jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton_modificar_Proyectos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton_anadir_proyectos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton_borrar_Proyecto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
+                        .addGap(27, 27, 27)
                         .addGroup(jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButton_modificar_Proyectos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton_anadir_proyectos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton_borrar_Proyecto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
-                                .addGap(27, 27, 27)
-                                .addGroup(jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel_nombre_biblioteca)
-                                    .addComponent(jLabel_telefono)
-                                    .addComponent(jLabel_direccion)
-                                    .addComponent(jLabel_ciudades_bibliotecas))
-                                .addGap(24, 24, 24)
-                                .addGroup(jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField_Codigo_proyectos, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
-                                    .addComponent(jTextField_Nombre_Proyectos)
-                                    .addComponent(jTextField_Presupuesto_Proyecto))
-                                .addGap(38, 38, 38)
-                                .addGroup(jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButton_guardar_biblioteca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton_cancelar_biblioteca, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)))
-                            .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addGroup(jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_bibliotecaLayout.createSequentialGroup()
-                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(texto_relacion_proyecto_empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(boton_relacion_proyecto_empleado))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_bibliotecaLayout.createSequentialGroup()
-                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(texto_codigo_producto, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jButton6))))
-                            .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Eliminar_relacion_empleados1)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(jLabel_telefono)
+                            .addComponent(jLabel_direccion)
+                            .addComponent(jLabel_ciudades_bibliotecas))
+                        .addGap(24, 24, 24)
+                        .addGroup(jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField_Nombre_Proyectos)
+                            .addComponent(jTextField_Presupuesto_Proyecto))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton_guardar_biblioteca, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton_cancelar_biblioteca, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(47, 47, 47))
+                    .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_bibliotecaLayout.createSequentialGroup()
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(texto_relacion_proyecto_empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(boton_relacion_proyecto_empleado))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_bibliotecaLayout.createSequentialGroup()
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(texto_codigo_producto, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton6))))
+                    .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Eliminar_relacion_empleados1)))
                 .addContainerGap())
             .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
                 .addContainerGap()
@@ -644,11 +631,7 @@ public class Ventana1 extends javax.swing.JFrame {
                     .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
                         .addGap(11, 11, 11)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(42, 42, 42)
-                .addGroup(jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel_nombre_biblioteca)
-                    .addComponent(jTextField_Codigo_proyectos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(75, 75, 75)
                 .addGroup(jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel_telefono)
                     .addComponent(jTextField_Nombre_Proyectos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -669,7 +652,7 @@ public class Ventana1 extends javax.swing.JFrame {
                             .addComponent(texto_codigo_producto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton6)
                             .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                         .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -679,7 +662,7 @@ public class Ventana1 extends javax.swing.JFrame {
                     .addComponent(texto_relacion_proyecto_empleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(boton_relacion_proyecto_empleado)
                     .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addGroup(jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
@@ -725,17 +708,9 @@ public class Ventana1 extends javax.swing.JFrame {
             jTable_Productos.getColumnModel().getColumn(2).setResizable(false);
         }
 
-        jLabel_nombre_libro.setText("Codigo");
-
         jLabel_autor.setText("Nombre");
 
         jLabel_edad_recomendada.setText("Precio");
-
-        jTextField_codigo_Productos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_codigo_ProductosActionPerformed(evt);
-            }
-        });
 
         jButton_guardar_libro.setText("Guardar");
         jButton_guardar_libro.addActionListener(new java.awt.event.ActionListener() {
@@ -792,19 +767,17 @@ public class Ventana1 extends javax.swing.JFrame {
                             .addGroup(jPanel_libroLayout.createSequentialGroup()
                                 .addGap(27, 27, 27)
                                 .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel_nombre_libro)
                                     .addComponent(jLabel_autor)
                                     .addComponent(jLabel_edad_recomendada))
                                 .addGap(39, 39, 39)
                                 .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jTextField_codigo_Productos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
-                                    .addComponent(jTextField_nombre_productos, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextField_nombre_productos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
                                     .addComponent(jTextField_precio_productos, javax.swing.GroupLayout.Alignment.LEADING))
                                 .addGap(38, 38, 38)
                                 .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jButton_guardar_libro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton_cancelar_libro, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE))))
-                        .addGap(0, 29, Short.MAX_VALUE)))
+                                    .addComponent(jButton_cancelar_libro, javax.swing.GroupLayout.PREFERRED_SIZE, 85, Short.MAX_VALUE))))
+                        .addGap(0, 44, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel_libroLayout.setVerticalGroup(
@@ -821,11 +794,7 @@ public class Ventana1 extends javax.swing.JFrame {
                     .addGroup(jPanel_libroLayout.createSequentialGroup()
                         .addGap(11, 11, 11)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(42, 42, 42)
-                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel_nombre_libro)
-                    .addComponent(jTextField_codigo_Productos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(78, 78, 78)
                 .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel_autor)
                     .addComponent(jTextField_nombre_productos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -837,7 +806,7 @@ public class Ventana1 extends javax.swing.JFrame {
                     .addComponent(jButton_cancelar_libro))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(290, Short.MAX_VALUE))
+                .addContainerGap(293, Short.MAX_VALUE))
         );
 
         jTabbedPane.addTab("Productos", jPanel_libro);
@@ -876,15 +845,7 @@ public class Ventana1 extends javax.swing.JFrame {
             jTable_Proveedores.getColumnModel().getColumn(1).setResizable(false);
         }
 
-        jLabel_nombre_persona.setText("Codigo");
-
         jLabel_DNI.setText("NombreProveedor");
-
-        jTextField_codigo_Proveedor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_codigo_ProveedorActionPerformed(evt);
-            }
-        });
 
         jButton_guardar_persona.setText("Guardar");
         jButton_guardar_persona.addActionListener(new java.awt.event.ActionListener() {
@@ -991,17 +952,13 @@ public class Ventana1 extends javax.swing.JFrame {
                                     .addComponent(jButton_borrar_proveedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(jPanel_personaLayout.createSequentialGroup()
                                 .addGap(27, 27, 27)
-                                .addGroup(jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel_nombre_persona)
-                                    .addComponent(jLabel_DNI))
+                                .addComponent(jLabel_DNI)
                                 .addGap(24, 24, 24)
-                                .addGroup(jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField_codigo_Proveedor, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
-                                    .addComponent(jTextField_Nombre_proveedor))
+                                .addComponent(jTextField_Nombre_proveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(38, 38, 38)
                                 .addGroup(jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jButton_guardar_persona, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton_cancelar_persona, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)))
+                                    .addComponent(jButton_cancelar_persona, javax.swing.GroupLayout.PREFERRED_SIZE, 85, Short.MAX_VALUE)))
                             .addGroup(jPanel_personaLayout.createSequentialGroup()
                                 .addGap(27, 27, 27)
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1032,13 +989,9 @@ public class Ventana1 extends javax.swing.JFrame {
                     .addGroup(jPanel_personaLayout.createSequentialGroup()
                         .addGap(11, 11, 11)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
                 .addGroup(jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_personaLayout.createSequentialGroup()
-                        .addGroup(jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel_nombre_persona)
-                            .addComponent(jTextField_codigo_Proveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel_DNI)
                             .addComponent(jTextField_Nombre_proveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1082,54 +1035,54 @@ public class Ventana1 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_anadir_productosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_anadir_productosActionPerformed
-        Integer col1;
         String col2;
         Integer col3;
         
-        col1 = Integer.valueOf(jTextField_codigo_Productos.getText());
         col2 = jTextField_nombre_productos.getText();
-        col3 = jTextField_precio_productos.getText();
+        col3 = Integer.valueOf(jTextField_precio_productos.getText());
         
-        pasaFiltro1 = generador.comprobarSiElObjetoYaExisteProducto(productos, col1.toString());
-        pasaFiltro2 = generador.tieneAlgunAtributoVacio(col1.toString(), col2, col3);
+        pasaFiltro2 = generador.tieneAlgunAtributoVacio(col2, col3.toString());
         
-        if(pasaFiltro1 && pasaFiltro2){
-            Producto producto = new Producto(col1, col2, col3);
-            productos.add(producto);
-            generador.generarXMLParaProducto(productos, "Productos.dat");
-            productos = (ArrayList<Producto>) generador.leerXMLDeProductos("Productos.dat");
+        if(pasaFiltro2){
+            try {
+                conector.anadirProductoBaseDatos(col2, col3);
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "ERROR: Fallo al añadir un producto.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            
+            productos = (ArrayList<Producto>) conector.consultarBaseDatosProducto(conector.conectorBaseDatos());
             generador.cargarDatosEnJTableProductos(productos, jTable_Productos);
-            generador.resetearCamposProducto(jTextField_codigo_Productos, jTextField_nombre_productos, jTextField_precio_productos);
+            generador.resetearCamposProducto(jTextField_nombre_productos, jTextField_precio_productos);
         }
     }//GEN-LAST:event_jButton_anadir_productosActionPerformed
 
     private void jButton_modificar_ProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_modificar_ProductosActionPerformed
         boolean funcionamientoCorrecto;
-        funcionamientoCorrecto = generador.generarCamposVistaProducto(jTextField_codigo_Productos, jTextField_nombre_productos, jTextField_precio_productos, jTable_Productos);
-        col1Antiguo = jTextField_codigo_Productos.getText();
+        funcionamientoCorrecto = generador.generarCamposVistaProducto(jTextField_nombre_productos, jTextField_precio_productos, jTable_Productos);
+        col1Antiguo = jTable_Productos.getValueAt(jTable_Productos.getSelectedRow(), 0).toString();
         if(funcionamientoCorrecto)
            continuar = true;
     }//GEN-LAST:event_jButton_modificar_ProductosActionPerformed
 
     private void jButton_borrar_productosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_borrar_productosActionPerformed
-        
+        /*
         pasaFiltroBorrar = generador.comprobarSiHayRelacionesEnELObjeto(generador.buscarObjetoEnArrayProducto(jTable_Productos.getValueAt(jTable_Productos.getSelectedRow(), 0).toString(), productos));
         if(pasaFiltroBorrar){
             generador.eliminarFilaSeleccionadaProducto(jTable_Productos, productos);
             generador.generarXMLParaProducto(productos, "Productos.dat");
             productos = (ArrayList<Producto>) generador.leerXMLDeProductos("Productos.dat");
             generador.cargarDatosEnJTableProductos(productos, jTable_Productos);
-        }
+        }*/
     }//GEN-LAST:event_jButton_borrar_productosActionPerformed
 
     private void jButton_cancelar_libroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_cancelar_libroActionPerformed
-        generador.resetearCamposProducto(jTextField_codigo_Productos, jTextField_nombre_productos, jTextField_precio_productos);
+        generador.resetearCamposProducto(jTextField_nombre_productos, jTextField_precio_productos);
         continuar = false;
         jTable_Productos.clearSelection();
     }//GEN-LAST:event_jButton_cancelar_libroActionPerformed
 
     private void jButton_guardar_libroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_guardar_libroActionPerformed
-
+        /*
         if(continuar){
             String col1 = jTextField_codigo_Productos.getText();
             String col2 = jTextField_nombre_productos.getText();
@@ -1165,30 +1118,26 @@ public class Ventana1 extends javax.swing.JFrame {
                     }
                 }
             }
-        }
+        }*/
     }//GEN-LAST:event_jButton_guardar_libroActionPerformed
-
-    private void jTextField_codigo_ProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_codigo_ProductosActionPerformed
-        //NADA
-    }//GEN-LAST:event_jTextField_codigo_ProductosActionPerformed
 
     private void jTable_ProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_ProductosMouseClicked
         //NADA
     }//GEN-LAST:event_jTable_ProductosMouseClicked
 
     private void jButton_borrar_ProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_borrar_ProyectoActionPerformed
-        
+        /*
         pasaFiltroBorrar = generador.comprobarSiHayRelacionesEnELObjeto(generador.buscarObjetoEnArrayProyecto(jTable_Proyectos.getValueAt(jTable_Proyectos.getSelectedRow(), 0).toString(), proyectos));
         if(pasaFiltroBorrar){
             generador.eliminarFilaSeleccionadaProyecto(jTable_Proyectos, proyectos);
             generador.generarXMLParaProyecto(proyectos, "Proyectos.dat");
             proyectos = (ArrayList<Proyecto>) generador.leerXMLDeProyectos("Proyectos.dat");
             generador.cargarDatosEnJTableProyectos(proyectos, jTable_Proyectos);
-        }
+        }*/
     }//GEN-LAST:event_jButton_borrar_ProyectoActionPerformed
 
     private void jButton_modificar_ProyectosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_modificar_ProyectosActionPerformed
-        boolean funcionamientoCorrecto;
+        /*boolean funcionamientoCorrecto;
         funcionamientoCorrecto = generador.generarCamposVistaProyecto(jTextField_Codigo_proyectos, jTextField_Nombre_Proyectos, jTextField_Presupuesto_Proyecto, jTable_Proyectos);
         col1Antiguo = jTextField_Codigo_proyectos.getText();
         
@@ -1196,40 +1145,39 @@ public class Ventana1 extends javax.swing.JFrame {
            continuar = true;
            int fila = jTable_Proyectos.getSelectedRow();
            proyectoAntiguo = new Proyecto(jTable_Proyectos.getValueAt(fila, 0).toString(), jTable_Proyectos.getValueAt(fila, 1).toString(), jTable_Proyectos.getValueAt(fila, 2).toString());
-        }
+        }*/
     }//GEN-LAST:event_jButton_modificar_ProyectosActionPerformed
 
     private void jButton_anadir_proyectosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_anadir_proyectosActionPerformed
-
-        String col1;
         String col2;
-        String col3;
+        Integer col3;
         
-        col1 = jTextField_Codigo_proyectos.getText();
         col2 = jTextField_Nombre_Proyectos.getText();
-        col3 = jTextField_Presupuesto_Proyecto.getText();
+        col3 = Integer.valueOf(jTextField_Presupuesto_Proyecto.getText());
         
-        pasaFiltro1 = generador.comprobarSiElObjetoYaExisteProyecto(proyectos, col1);
-        pasaFiltro2 = generador.tieneAlgunAtributoVacio(col1, col2, col3);
+        pasaFiltro2 = generador.tieneAlgunAtributoVacio(col2, col3.toString());
         
-        if(pasaFiltro1 && pasaFiltro2){
-            Proyecto proyecto = new Proyecto(col1, col2, col3);
-            proyectos.add(proyecto);
-            generador.generarXMLParaProyecto(proyectos, "Proyectos.dat");
-            proyectos = (ArrayList<Proyecto>) generador.leerXMLDeProyectos("Proyectos.dat");
+        if(pasaFiltro2){
+            try {
+                conector.anadirProyectoBaseDatos(col2, col3);
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "ERROR: Fallo al añadir un proyecto.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            
+            proyectos = (ArrayList<Proyecto>) conector.consultarBaseDatosProyecto(conector.conectorBaseDatos());
             generador.cargarDatosEnJTableProyectos(proyectos, jTable_Proyectos);
-            generador.resetearCamposProyecto(jTextField_Codigo_proyectos, jTextField_Nombre_Proyectos, jTextField_Presupuesto_Proyecto);
+            generador.resetearCamposProyecto(jTextField_nombre_productos, jTextField_precio_productos);
         }
     }//GEN-LAST:event_jButton_anadir_proyectosActionPerformed
 
     private void jButton_cancelar_bibliotecaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_cancelar_bibliotecaActionPerformed
-        generador.resetearCamposProyecto(jTextField_Codigo_proyectos, jTextField_Nombre_Proyectos, jTextField_Presupuesto_Proyecto);
+        /*generador.resetearCamposProyecto(jTextField_Codigo_proyectos, jTextField_Nombre_Proyectos, jTextField_Presupuesto_Proyecto);
         continuar = false;
-        jTable_Proyectos.clearSelection();
+        jTable_Proyectos.clearSelection();*/
     }//GEN-LAST:event_jButton_cancelar_bibliotecaActionPerformed
 
     private void jButton_guardar_bibliotecaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_guardar_bibliotecaActionPerformed
-        
+       /* 
         if(continuar){
             String col1 = jTextField_Codigo_proyectos.getText();
             String col2 = jTextField_Nombre_Proyectos.getText();
@@ -1273,15 +1221,11 @@ public class Ventana1 extends javax.swing.JFrame {
                     }  
                 }
             }
-        }
+        }*/
     }//GEN-LAST:event_jButton_guardar_bibliotecaActionPerformed
 
-    private void jTextField_Codigo_proyectosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_Codigo_proyectosActionPerformed
-       
-    }//GEN-LAST:event_jTextField_Codigo_proyectosActionPerformed
-
     private void jTable_ProyectosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_ProyectosMouseClicked
-
+        /*
         int filaSeleccionada = jTable_Proyectos.getSelectedRow();
         String dni = jTable_Proyectos.getValueAt(filaSeleccionada, 0).toString();
         if(generador.buscarObjetoEnArrayProyecto(dni, proyectos) != null)
@@ -1296,7 +1240,7 @@ public class Ventana1 extends javax.swing.JFrame {
                 Producto p = null;
                 generador.cargarDatosEnJTableProductos(p, tabla_producto_relacion);
             }
-        }
+        }*/
     }//GEN-LAST:event_jTable_ProyectosMouseClicked
 
     private void jTextField_dni_EmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_dni_EmpleadoActionPerformed
@@ -1304,7 +1248,7 @@ public class Ventana1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField_dni_EmpleadoActionPerformed
 
     private void jButton_borrar_EmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_borrar_EmpleadosActionPerformed
-        
+        /*
         pasaFiltroBorrar = generador.comprobarSiHayRelacionesEnELObjeto(generador.buscarObjetoEnArrayEmpleado(jTable_Empleado.getValueAt(jTable_Empleado.getSelectedRow(), 0).toString(), empleados));
         if(pasaFiltroBorrar){
         
@@ -1312,11 +1256,11 @@ public class Ventana1 extends javax.swing.JFrame {
             generador.generarXMLParaEmpleados(empleados, "empleados.dat");
             empleados = (ArrayList<Empleado>) generador.leerXMLDeEmpleados("empleados.dat");
             generador.cargarDatosEnJTableEmpleados(empleados, jTable_Empleado);
-        }
+        }*/
     }//GEN-LAST:event_jButton_borrar_EmpleadosActionPerformed
 
     private void jButton_modificar_EmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_modificar_EmpleadoActionPerformed
-
+        /*
        boolean funcionamientoCorrecto;
        funcionamientoCorrecto = generador.generarCamposVistaEmpleado(jTextField_dni_Empleado, jTextField_Nombre_Empleado, jTable_Empleado);
        col1Antiguo = jTextField_dni_Empleado.getText();
@@ -1325,46 +1269,50 @@ public class Ventana1 extends javax.swing.JFrame {
            int fila = jTable_Empleado.getSelectedRow();
            empleadoAntiguo = new Empleado(jTable_Empleado.getValueAt(fila, 0).toString(), jTable_Empleado.getValueAt(fila, 1).toString());
         
-       }
+       }*/
     }//GEN-LAST:event_jButton_modificar_EmpleadoActionPerformed
 
     private void jTable_EmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_EmpleadoMouseClicked
-
+        /*
         int filaSeleccionada = jTable_Empleado.getSelectedRow();
         String dni = jTable_Empleado.getValueAt(filaSeleccionada, 0).toString();
         if(generador.buscarObjetoEnArrayEmpleado(dni, empleados) != null)
             generador.cargarDatosEnJTableProyectos(generador.buscarObjetoEnArrayEmpleado(dni, empleados).getProyectosAsignados(), jTable_Proyectos_Empleados_Relacion);
+            */
     }//GEN-LAST:event_jTable_EmpleadoMouseClicked
 
     private void jButton_anadir_empleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_anadir_empleadosActionPerformed
-        
-        String col1;
         String col2;
+        String col3;
         
-        col1 = jTextField_dni_Empleado.getText();
         col2 = jTextField_Nombre_Empleado.getText();
+        col3 = jTextField_dni_Empleado.getText();
         
-        pasaFiltro1 = generador.comprobarSiElObjetoYaExisteEmpleado(empleados, col1);
-        pasaFiltro2 = generador.tieneAlgunAtributoVacio(col1, col2, null);
+        pasaFiltro2 = generador.tieneAlgunAtributoVacio(col2, col3);
         
-        if(pasaFiltro1 && pasaFiltro2){
-            Empleado empleado = new Empleado(col1, col2);
-            empleados.add(empleado);
-            generador.generarXMLParaEmpleados(empleados, "empleados.dat");
-            empleados = (ArrayList<Empleado>) generador.leerXMLDeEmpleados("empleados.dat");
+        if(pasaFiltro2){
+            try {
+                conector.anadirEmpleadoBaseDatos(col3, col2);
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "ERROR: Fallo al añadir un proyecto.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            
+            empleados = (ArrayList<Empleado>) conector.consultarBaseDatosEmpleado(conector.conectorBaseDatos());
             generador.cargarDatosEnJTableEmpleados(empleados, jTable_Empleado);
             generador.resetearCamposEmpleado(jTextField_dni_Empleado, jTextField_Nombre_Empleado);
         }
     }//GEN-LAST:event_jButton_anadir_empleadosActionPerformed
 
     private void jButton_cancelar_EmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_cancelar_EmpleadoActionPerformed
+        /*
         generador.resetearCamposEmpleado(jTextField_dni_Empleado, jTextField_Nombre_Empleado);
         continuar = false;
         jTable_Empleado.clearSelection();
+*/
     }//GEN-LAST:event_jButton_cancelar_EmpleadoActionPerformed
 
     private void jButton_guardar_empleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_guardar_empleadoActionPerformed
-
+/*
         if(continuar){
             String col1 = jTextField_dni_Empleado.getText();
             String col2 = jTextField_Nombre_Empleado.getText();
@@ -1395,39 +1343,39 @@ public class Ventana1 extends javax.swing.JFrame {
                     }
                 }
             }
-        }
+        }*/
     }//GEN-LAST:event_jButton_guardar_empleadoActionPerformed
 
     private void jButton_anadir_proveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_anadir_proveedoresActionPerformed
-        String col1;
         String col2;
-        
-        col1 = jTextField_codigo_Proveedor.getText();
+
         col2 = jTextField_Nombre_proveedor.getText();
+
+        pasaFiltro2 = col2.isBlank();
         
-        pasaFiltro1 = generador.comprobarSiElObjetoYaExisteProveedor(proveedor, col1);
-        pasaFiltro2 = generador.tieneAlgunAtributoVacio(col1, col2, null);
-        
-        if(pasaFiltro1 && pasaFiltro2){
-            Proveedor proveedores = new Proveedor(col1, col2);
-            proveedor.add(proveedores);
-            generador.generarXMLParaProveedor(proveedor, "proveedores.dat");
-            proveedor = (ArrayList<Proveedor>) generador.leerXMLDeProveedores("proveedores.dat");
+        if(!pasaFiltro2){
+            try {
+                conector.anadirProveedorBaseDatos(col2);
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "ERROR: Fallo al añadir un proveedores.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            
+            proveedor = (ArrayList<Proveedor>) conector.consultarBaseDatosProveedor(conector.conectorBaseDatos());
             generador.cargarDatosEnJTableProveedores(proveedor, jTable_Proveedores);
-            generador.resetearCamposProveedor(jTextField_codigo_Proveedor, jTextField_Nombre_proveedor);  
+            generador.resetearCamposProveedor(jTextField_Nombre_proveedor);
         }
     }//GEN-LAST:event_jButton_anadir_proveedoresActionPerformed
 
     private void jButton_modificar_ProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_modificar_ProveedoresActionPerformed
-        boolean funcionamientoCorrecto;
+       /* boolean funcionamientoCorrecto;
         funcionamientoCorrecto = generador.generarCamposVistaProveedor(jTextField_codigo_Proveedor, jTextField_Nombre_proveedor, jTable_Proveedores);
         col1Antiguo = jTextField_codigo_Proveedor.getText();
         if(funcionamientoCorrecto)
-           continuar = true;
+           continuar = true;*/
     }//GEN-LAST:event_jButton_modificar_ProveedoresActionPerformed
 
     private void jButton_borrar_proveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_borrar_proveedorActionPerformed
-        
+        /*
         pasaFiltroBorrar = generador.comprobarSiHayRelacionesEnELObjeto(generador.buscarObjetoEnArrayProveedor(jTable_Proveedores.getValueAt(jTable_Proveedores.getSelectedRow(), 0).toString(), proveedor));
         
         if(pasaFiltroBorrar){
@@ -1435,11 +1383,11 @@ public class Ventana1 extends javax.swing.JFrame {
             generador.generarXMLParaProveedor(proveedor, "proveedores.dat");
             proveedor = (ArrayList<Proveedor>) generador.leerXMLDeProveedores("proveedores.dat");
             generador.cargarDatosEnJTableProveedores(proveedor, jTable_Proveedores);
-        }
+        }*/
     }//GEN-LAST:event_jButton_borrar_proveedorActionPerformed
 
     private void jButton_guardar_personaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_guardar_personaActionPerformed
-         if(continuar){
+         /*if(continuar){
             String col1 = jTextField_codigo_Proveedor.getText();
             String col2 = jTextField_Nombre_proveedor.getText();
             
@@ -1465,23 +1413,20 @@ public class Ventana1 extends javax.swing.JFrame {
                     }
                 }
             }
-       }
+       }*/
     }//GEN-LAST:event_jButton_guardar_personaActionPerformed
 
-    private void jTextField_codigo_ProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_codigo_ProveedorActionPerformed
-        
-    }//GEN-LAST:event_jTextField_codigo_ProveedorActionPerformed
-
     private void jTable_ProveedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_ProveedoresMouseClicked
-
+/*
         int filaSeleccionada = jTable_Proveedores.getSelectedRow();
         String dni = jTable_Proveedores.getValueAt(filaSeleccionada, 0).toString();
         if(!generador.buscarObjetoEnArrayProveedor(dni, proveedor).getProductoProveedor().getCodigoProductos().isBlank())
             generador.cargarDatosEnJTableProductos(generador.buscarObjetoEnArrayProveedor(dni, proveedor).getProductoProveedor(), jTable_Productos1);
+*/
     }//GEN-LAST:event_jTable_ProveedoresMouseClicked
 
     private void anadir_relacion_EmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anadir_relacion_EmpleadoActionPerformed
-        
+      /*  
         String id = texto_relacion_empleados.getText();
         DefaultTableModel modelo = (DefaultTableModel) jTable_Empleado.getModel();
         int filaSeleccionada = jTable_Empleado.getSelectedRow();
@@ -1510,10 +1455,11 @@ public class Ventana1 extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Por favor, Tienes que seleccionar en la tabla a quien quieres añadir la relacion.", "Error", JOptionPane.ERROR_MESSAGE);
         }
         texto_relacion_empleados.setText("");
+*/
     }//GEN-LAST:event_anadir_relacion_EmpleadoActionPerformed
 
     private void Eliminar_relacion_empleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Eliminar_relacion_empleadosActionPerformed
-
+/*
         DefaultTableModel modeloEmpleado = (DefaultTableModel) jTable_Empleado.getModel();
         int filaSeleccionadaEmpleado = jTable_Empleado.getSelectedRow();
         
@@ -1538,7 +1484,7 @@ public class Ventana1 extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Por favor, Tienes que seleccionar en la tabla que relacion quieres eliminar.", "Error", JOptionPane.ERROR_MESSAGE);
             else
                JOptionPane.showMessageDialog(null, "Por favor, Tienes que seleccionar el empleado en la tabla.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
+        }*/
     }//GEN-LAST:event_Eliminar_relacion_empleadosActionPerformed
 
     private void jTable_Proyectos1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_Proyectos1MouseClicked
@@ -1554,7 +1500,7 @@ public class Ventana1 extends javax.swing.JFrame {
     }//GEN-LAST:event_texto_relacion_empleadosActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        //TODO: (1) HACER LA ASIGNACION DE PRODUCTO
+        /*
         String codigo = texto_codigo_producto.getText();
         int filaSeleccionada = jTable_Proyectos.getSelectedRow();
         
@@ -1573,11 +1519,11 @@ public class Ventana1 extends javax.swing.JFrame {
                 generador.generarXMLParaProducto(productos, "Productos.dat");
                 productos = (ArrayList<Producto>) generador.leerXMLDeProductos("Productos.dat");
             }
-        }
+        }*/
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void boton_relacion_proyecto_empleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_relacion_proyecto_empleadoActionPerformed
-        String dni = texto_relacion_proyecto_empleado.getText();
+        /*String dni = texto_relacion_proyecto_empleado.getText();
         DefaultTableModel modelo = (DefaultTableModel) jTable_Proyectos.getModel();
         int filaSeleccionada = jTable_Proyectos.getSelectedRow();
         
@@ -1606,6 +1552,7 @@ public class Ventana1 extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Por favor, Tienes que seleccionar en la tabla a quien quieres añadir la relacion.", "Error", JOptionPane.ERROR_MESSAGE);
         }
         texto_relacion_empleados.setText("");
+*/
     }//GEN-LAST:event_boton_relacion_proyecto_empleadoActionPerformed
 
     private void tabla_relacion_proyecto_empleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_relacion_proyecto_empleadoMouseClicked
@@ -1613,7 +1560,7 @@ public class Ventana1 extends javax.swing.JFrame {
     }//GEN-LAST:event_tabla_relacion_proyecto_empleadoMouseClicked
 
     private void Eliminar_relacion_empleados1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Eliminar_relacion_empleados1ActionPerformed
-        DefaultTableModel modeloEmpleado = (DefaultTableModel) jTable_Proyectos.getModel();
+        /*DefaultTableModel modeloEmpleado = (DefaultTableModel) jTable_Proyectos.getModel();
         int filaSeleccionadaEmpleado = jTable_Proyectos.getSelectedRow();
         
         DefaultTableModel modeloProyecto = (DefaultTableModel) tabla_relacion_proyecto_empleado.getModel();
@@ -1641,7 +1588,7 @@ public class Ventana1 extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Por favor, Tienes que seleccionar en la tabla que relacion quieres eliminar.", "Error", JOptionPane.ERROR_MESSAGE);
             else
                JOptionPane.showMessageDialog(null, "Por favor, Tienes que seleccionar el empleado en la tabla.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
+        }*/
     }//GEN-LAST:event_Eliminar_relacion_empleados1ActionPerformed
 
     private void tabla_producto_relacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_producto_relacionMouseClicked
@@ -1649,7 +1596,7 @@ public class Ventana1 extends javax.swing.JFrame {
     }//GEN-LAST:event_tabla_producto_relacionMouseClicked
 
     private void Eliminar_relacion_empleados3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Eliminar_relacion_empleados3ActionPerformed
-
+        /*
         DefaultTableModel modeloEmpleado = (DefaultTableModel) jTable_Proyectos.getModel();
         int filaSeleccionadaEmpleado = jTable_Proyectos.getSelectedRow();
         
@@ -1685,7 +1632,7 @@ public class Ventana1 extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Por favor, Tienes que seleccionar en la tabla que relacion quieres eliminar.", "Error", JOptionPane.ERROR_MESSAGE);
             else
                JOptionPane.showMessageDialog(null, "Por favor, Tienes que seleccionar el empleado en la tabla.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
+        }*/
     }//GEN-LAST:event_Eliminar_relacion_empleados3ActionPerformed
 
     private void jTable_Productos1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_Productos1MouseClicked
@@ -1693,7 +1640,7 @@ public class Ventana1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jTable_Productos1MouseClicked
 
     private void Eliminar_relacion_empleados2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Eliminar_relacion_empleados2ActionPerformed
-        // TODO (1):
+        /*// TODO (1):
         DefaultTableModel modeloEmpleado = (DefaultTableModel) jTable_Proveedores.getModel();
         int filaSeleccionadaEmpleado = jTable_Proveedores.getSelectedRow();
         
@@ -1726,12 +1673,12 @@ public class Ventana1 extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Por favor, Tienes que seleccionar en la tabla que relacion quieres eliminar.", "Error", JOptionPane.ERROR_MESSAGE);
             else
                JOptionPane.showMessageDialog(null, "Por favor, Tienes que seleccionar el empleado en la tabla.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
+        }*/
         
     }//GEN-LAST:event_Eliminar_relacion_empleados2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        String codigo = jTextField4.getText();
+       /* String codigo = jTextField4.getText();
         int filaSeleccionada = jTable_Proveedores.getSelectedRow();
         
         
@@ -1756,14 +1703,18 @@ public class Ventana1 extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(null, "Por favor, Tienes que seleccionar en la tabla a quien quieres añadir la relacion.", "Error", JOptionPane.ERROR_MESSAGE);
         }
-        jTextField4.setText("");
+        jTextField4.setText("");*/
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton_cancelar_personaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_cancelar_personaActionPerformed
-        generador.resetearCamposProveedor(jTextField_codigo_Proveedor, jTextField_Nombre_proveedor);
+        generador.resetearCamposProveedor(jTextField_Nombre_proveedor);
         continuar = false;
         jTable_Proveedores.clearSelection();
     }//GEN-LAST:event_jButton_cancelar_personaActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        conector.cerrarConexion(conector.conectorBaseDatos());
+    }//GEN-LAST:event_formWindowClosing
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Eliminar_relacion_empleados;
@@ -1803,16 +1754,14 @@ public class Ventana1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_ciudades_bibliotecas;
     private javax.swing.JLabel jLabel_direccion;
     private javax.swing.JLabel jLabel_edad_recomendada;
-    private javax.swing.JLabel jLabel_nombre_biblioteca;
     private javax.swing.JLabel jLabel_nombre_ciudad;
-    private javax.swing.JLabel jLabel_nombre_libro;
-    private javax.swing.JLabel jLabel_nombre_persona;
     private javax.swing.JLabel jLabel_pais;
     private javax.swing.JLabel jLabel_telefono;
     private javax.swing.JPanel jPanel_biblioteca;
     private javax.swing.JPanel jPanel_ciudad;
     private javax.swing.JPanel jPanel_libro;
     private javax.swing.JPanel jPanel_persona;
+    private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -1835,13 +1784,10 @@ public class Ventana1 extends javax.swing.JFrame {
     private javax.swing.JTable jTable_Proyectos1;
     private javax.swing.JTable jTable_Proyectos_Empleados_Relacion;
     private javax.swing.JTextField jTextField4;
-    public javax.swing.JTextField jTextField_Codigo_proyectos;
     public javax.swing.JTextField jTextField_Nombre_Empleado;
     public javax.swing.JTextField jTextField_Nombre_Proyectos;
     private javax.swing.JTextField jTextField_Nombre_proveedor;
     public javax.swing.JTextField jTextField_Presupuesto_Proyecto;
-    private javax.swing.JTextField jTextField_codigo_Productos;
-    private javax.swing.JTextField jTextField_codigo_Proveedor;
     public javax.swing.JTextField jTextField_dni_Empleado;
     private javax.swing.JTextField jTextField_nombre_productos;
     private javax.swing.JTextField jTextField_precio_productos;

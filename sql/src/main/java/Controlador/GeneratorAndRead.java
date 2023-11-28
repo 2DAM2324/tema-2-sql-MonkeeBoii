@@ -26,10 +26,11 @@ public class GeneratorAndRead {
         modelo.setRowCount(0); // Limpia las filas existentes en el modelo
 
         for (Empleado empleado : empleados) {
+            Integer codigo = empleado.getCodigo();
             String dni = empleado.getDni();
             String nombre = empleado.getNombre();
 
-            modelo.addRow(new Object[]{dni, nombre});
+            modelo.addRow(new Object[]{codigo, dni, nombre});
         }
 
         // Asigna el modelo actualizado a la tabla
@@ -236,8 +237,7 @@ public class GeneratorAndRead {
         return a;
     }
 
-    public void resetearCamposProyecto(JTextField dni, JTextField nombre, JTextField presupuesto) {
-        dni.setText("");
+    public void resetearCamposProyecto(JTextField nombre, JTextField presupuesto) {
         nombre.setText("");
         presupuesto.setText("");
     }
@@ -264,17 +264,15 @@ public class GeneratorAndRead {
         return null;
     }
 
-    public boolean generarCamposVistaProducto(JTextField id, JTextField nombre, JTextField precio, JTable tabla) {
+    public boolean generarCamposVistaProducto(JTextField nombre, JTextField precio, JTable tabla) {
         boolean a = false;
         DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
         int filaSeleccionada = tabla.getSelectedRow();
 
         if (filaSeleccionada != -1) {
-            String valor1 = modelo.getValueAt(filaSeleccionada, 0).toString();
             String valor2 = modelo.getValueAt(filaSeleccionada, 1).toString();
             String valor3 = modelo.getValueAt(filaSeleccionada, 2).toString();
 
-            id.setText(valor1);
             nombre.setText(valor2);
             precio.setText(valor3);
             a = true;
@@ -282,8 +280,7 @@ public class GeneratorAndRead {
         return a;
     }
 
-    public void resetearCamposProducto(JTextField dni, JTextField nombre, JTextField presupuesto) {
-        dni.setText("");
+    public void resetearCamposProducto(JTextField nombre, JTextField presupuesto) {
         nombre.setText("");
         presupuesto.setText("");
     }
@@ -325,8 +322,7 @@ public class GeneratorAndRead {
         return a;
     }
 
-    public void resetearCamposProveedor(JTextField dni, JTextField nombre) {
-        dni.setText("");
+    public void resetearCamposProveedor(JTextField nombre) {
         nombre.setText("");
     }
 
@@ -566,39 +562,34 @@ public class GeneratorAndRead {
         return true;
     }
 
-    public boolean tieneAlgunAtributoVacio(String a, String b, String c) {
+    public boolean tieneAlgunAtributoVacio(String b, String c) {
 
-        if (a != null && b != null && c != null) {
-            if (a.isBlank() || b.isBlank() || c.isBlank()) {
-                JOptionPane.showMessageDialog(null, "Por favor, No puede contener espacios en blanco", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-            return !a.isBlank() && !b.isBlank() && !c.isBlank();
-        } else if (a != null && b != null && c == null) {
-            if (a.isBlank() || b.isBlank()) {
-                JOptionPane.showMessageDialog(null, "Por favor, No puede contener espacios en blanco", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-            return !a.isBlank() && !b.isBlank();
-        } else if (a != null && b == null && c == null) {
-            if (a.isBlank()) {
-                JOptionPane.showMessageDialog(null, "Por favor, No puede contener espacios en blanco", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-            return !a.isBlank();
-        } else if (a == null && b != null && c != null) {
+        if (b != null && c != null) {
             if (b.isBlank() || c.isBlank()) {
                 JOptionPane.showMessageDialog(null, "Por favor, No puede contener espacios en blanco", "Error", JOptionPane.ERROR_MESSAGE);
             }
             return !b.isBlank() && !c.isBlank();
-        } else if (a == null && b == null && c != null) {
+        } else if (b != null && c == null) {
+            if (b.isBlank()) {
+                JOptionPane.showMessageDialog(null, "Por favor, No puede contener espacios en blanco", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            return !b.isBlank();
+        } else if (b != null && c != null) {
+            if (b.isBlank() || c.isBlank()) {
+                JOptionPane.showMessageDialog(null, "Por favor, No puede contener espacios en blanco", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            return !b.isBlank() && !c.isBlank();
+        } else if (b == null && c != null) {
             if (c.isBlank()) {
                 JOptionPane.showMessageDialog(null, "Por favor, No puede contener espacios en blanco", "Error", JOptionPane.ERROR_MESSAGE);
             }
             return !c.isBlank();
-        } else if (a != null && b == null && c != null) {
-            if (a.isBlank() || c.isBlank()) {
+        } else if (b == null && c != null) {
+            if (c.isBlank()) {
                 JOptionPane.showMessageDialog(null, "Por favor, No puede contener espacios en blanco", "Error", JOptionPane.ERROR_MESSAGE);
             }
-            return !a.isBlank() && !c.isBlank();
-        } else if (a == null && b != null && c == null) {
+            return !c.isBlank();
+        } else if (b != null && c == null) {
             if (b.isBlank()) {
                 JOptionPane.showMessageDialog(null, "Por favor, No puede contener espacios en blanco", "Error", JOptionPane.ERROR_MESSAGE);
             }
