@@ -366,4 +366,32 @@ public class Conector {
             stat.getConnection().setAutoCommit(oldAutoCommit);
         }
     }
+
+    public void eliminarObjetoBaseDatos(int codigo, String consulta) throws SQLException {
+    try (PreparedStatement stat = conn.prepareStatement(consulta)) {
+        final boolean oldAutoCommit = conn.getAutoCommit();
+        conn.setAutoCommit(false);
+
+        try {
+            stat.setInt(1, codigo);
+            stat.executeUpdate();
+            conn.commit();
+        } catch (SQLException sqle) {
+            if (conn != null) {
+                try {
+                    conn.rollback();
+                } catch (SQLException rollbackException) {
+                    rollbackException.printStackTrace();
+                }
+            }
+            sqle.printStackTrace();
+        } finally {
+            conn.setAutoCommit(oldAutoCommit);
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+
+
 }

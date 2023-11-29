@@ -12,6 +12,8 @@ import Modelo.Proyecto;
 import Controlador.GeneratorAndRead;
 import Modelo.Conector;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class Ventana1 extends javax.swing.JFrame {
@@ -1065,14 +1067,18 @@ public class Ventana1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_modificar_ProductosActionPerformed
 
     private void jButton_borrar_productosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_borrar_productosActionPerformed
-        /*
-        pasaFiltroBorrar = generador.comprobarSiHayRelacionesEnELObjeto(generador.buscarObjetoEnArrayProducto(jTable_Productos.getValueAt(jTable_Productos.getSelectedRow(), 0).toString(), productos));
+        Producto productoBuscado = generador.buscarObjetoEnArrayProducto(Integer.valueOf(jTable_Productos.getValueAt(jTable_Productos.getSelectedRow(), 0).toString()), productos);
+        pasaFiltroBorrar = generador.comprobarSiHayRelacionesEnELObjeto(productoBuscado);
         if(pasaFiltroBorrar){
-            generador.eliminarFilaSeleccionadaProducto(jTable_Productos, productos);
-            generador.generarXMLParaProducto(productos, "Productos.dat");
-            productos = (ArrayList<Producto>) generador.leerXMLDeProductos("Productos.dat");
+            generador.eliminarFilaSeleccionada(jTable_Productos);
+            try {
+                conector.eliminarObjetoBaseDatos(productoBuscado.getCodigo(),"DELETE FROM producto WHERE Codigo = ?");
+            } catch (SQLException ex) {
+                Logger.getLogger(Ventana1.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            productos = (ArrayList<Producto>) conector.consultarBaseDatosProducto(conector.conectorBaseDatos());
             generador.cargarDatosEnJTableProductos(productos, jTable_Productos);
-        }*/
+        }
     }//GEN-LAST:event_jButton_borrar_productosActionPerformed
 
     private void jButton_cancelar_libroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_cancelar_libroActionPerformed
@@ -1126,14 +1132,18 @@ public class Ventana1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jTable_ProductosMouseClicked
 
     private void jButton_borrar_ProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_borrar_ProyectoActionPerformed
-        /*
-        pasaFiltroBorrar = generador.comprobarSiHayRelacionesEnELObjeto(generador.buscarObjetoEnArrayProyecto(jTable_Proyectos.getValueAt(jTable_Proyectos.getSelectedRow(), 0).toString(), proyectos));
+        Proyecto proyectoBuscado = generador.buscarObjetoEnArrayProyecto(Integer.valueOf(jTable_Proyectos.getValueAt(jTable_Proyectos.getSelectedRow(), 0).toString()), proyectos);
+        pasaFiltroBorrar = generador.comprobarSiHayRelacionesEnELObjeto(proyectoBuscado);
         if(pasaFiltroBorrar){
-            generador.eliminarFilaSeleccionadaProyecto(jTable_Proyectos, proyectos);
-            generador.generarXMLParaProyecto(proyectos, "Proyectos.dat");
-            proyectos = (ArrayList<Proyecto>) generador.leerXMLDeProyectos("Proyectos.dat");
+            generador.eliminarFilaSeleccionada(jTable_Proyectos);
+            try {
+                conector.eliminarObjetoBaseDatos(proyectoBuscado.getCodigo(),"DELETE FROM proyecto WHERE Codigo = ?");
+            } catch (SQLException ex) {
+                Logger.getLogger(Ventana1.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            proyectos = (ArrayList<Proyecto>) conector.consultarBaseDatosProyecto(conector.conectorBaseDatos());
             generador.cargarDatosEnJTableProyectos(proyectos, jTable_Proyectos);
-        }*/
+        }
     }//GEN-LAST:event_jButton_borrar_ProyectoActionPerformed
 
     private void jButton_modificar_ProyectosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_modificar_ProyectosActionPerformed

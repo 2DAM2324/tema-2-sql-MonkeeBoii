@@ -95,61 +95,13 @@ public class GeneratorAndRead {
         tablaProveedores.setModel(modelo);
     }
 
-    public void eliminarFilaSeleccionadaEmpleados(JTable tabla, ArrayList<Empleado> lista) {
+    public void eliminarFilaSeleccionada(JTable tabla) {
         DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
         int filaSeleccionada = tabla.getSelectedRow();
 
         if (filaSeleccionada != -1) {
             modelo.removeRow(filaSeleccionada);
 
-            if (filaSeleccionada < lista.size()) {
-                lista.remove(filaSeleccionada);
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "Por favor, selecciona una fila para eliminar.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
-    public void eliminarFilaSeleccionadaProyecto(JTable tabla, ArrayList<Proyecto> lista) {
-        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
-        int filaSeleccionada = tabla.getSelectedRow();
-
-        if (filaSeleccionada != -1) {
-            modelo.removeRow(filaSeleccionada);
-
-            if (filaSeleccionada < lista.size()) {
-                lista.remove(filaSeleccionada);
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "Por favor, selecciona una fila para eliminar.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
-    public void eliminarFilaSeleccionadaProveedor(JTable tabla, ArrayList<Proveedor> lista) {
-        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
-        int filaSeleccionada = tabla.getSelectedRow();
-
-        if (filaSeleccionada != -1) {
-            modelo.removeRow(filaSeleccionada);
-
-            if (filaSeleccionada < lista.size()) {
-                lista.remove(filaSeleccionada);
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "Por favor, selecciona una fila para eliminar.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
-    public void eliminarFilaSeleccionadaProducto(JTable tabla, ArrayList<Producto> lista) {
-        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
-        int filaSeleccionada = tabla.getSelectedRow();
-
-        if (filaSeleccionada != -1) {
-            modelo.removeRow(filaSeleccionada);
-
-            if (filaSeleccionada < lista.size()) {
-                lista.remove(filaSeleccionada);
-            }
         } else {
             JOptionPane.showMessageDialog(null, "Por favor, selecciona una fila para eliminar.", "Error", JOptionPane.ERROR_MESSAGE);
         }
