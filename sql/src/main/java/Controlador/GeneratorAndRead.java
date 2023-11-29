@@ -292,13 +292,13 @@ public class GeneratorAndRead {
         return null;
     }
 
-    public Empleado buscarObjetoEnArrayEmpleado(String id, ArrayList<Empleado> empleados) {
+    public Empleado buscarObjetoEnArrayEmpleado(Integer id, ArrayList<Empleado> empleados) {
         if (id.equals("")) {
-            JOptionPane.showMessageDialog(null, "Por favor, introduzca el dni del empleado que quiere añadir", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Por favor, introduzca el codigo del empleado que quiere añadir", "Error", JOptionPane.ERROR_MESSAGE);
             return null;
         }
         for (Empleado empleado : empleados) {
-            if (empleado.getDni().equals(id)) {
+            if (empleado.getCodigo().equals(id)) {
                 return empleado;
             }
         }

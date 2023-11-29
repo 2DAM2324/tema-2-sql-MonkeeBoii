@@ -1258,15 +1258,18 @@ public class Ventana1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField_dni_EmpleadoActionPerformed
 
     private void jButton_borrar_EmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_borrar_EmpleadosActionPerformed
-        /*
-        pasaFiltroBorrar = generador.comprobarSiHayRelacionesEnELObjeto(generador.buscarObjetoEnArrayEmpleado(jTable_Empleado.getValueAt(jTable_Empleado.getSelectedRow(), 0).toString(), empleados));
+        Empleado empleadoBuscado = generador.buscarObjetoEnArrayEmpleado(Integer.valueOf(jTable_Empleado.getValueAt(jTable_Empleado.getSelectedRow(), 0).toString()), empleados);
+        pasaFiltroBorrar = generador.comprobarSiHayRelacionesEnELObjeto(empleadoBuscado);
         if(pasaFiltroBorrar){
-        
-            generador.eliminarFilaSeleccionadaEmpleados(jTable_Empleado, empleados);
-            generador.generarXMLParaEmpleados(empleados, "empleados.dat");
-            empleados = (ArrayList<Empleado>) generador.leerXMLDeEmpleados("empleados.dat");
+            generador.eliminarFilaSeleccionada(jTable_Empleado);
+            try {
+                conector.eliminarObjetoBaseDatos(empleadoBuscado.getCodigo(),"DELETE FROM empleado WHERE Codigo = ?");
+            } catch (SQLException ex) {
+                Logger.getLogger(Ventana1.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            empleados = (ArrayList<Empleado>) conector.consultarBaseDatosEmpleado(conector.conectorBaseDatos());
             generador.cargarDatosEnJTableEmpleados(empleados, jTable_Empleado);
-        }*/
+        }
     }//GEN-LAST:event_jButton_borrar_EmpleadosActionPerformed
 
     private void jButton_modificar_EmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_modificar_EmpleadoActionPerformed
