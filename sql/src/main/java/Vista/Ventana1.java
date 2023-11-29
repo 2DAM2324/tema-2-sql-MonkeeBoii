@@ -1149,15 +1149,11 @@ public class Ventana1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_borrar_ProyectoActionPerformed
 
     private void jButton_modificar_ProyectosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_modificar_ProyectosActionPerformed
-        /*boolean funcionamientoCorrecto;
-        funcionamientoCorrecto = generador.generarCamposVistaProyecto(jTextField_Codigo_proyectos, jTextField_Nombre_Proyectos, jTextField_Presupuesto_Proyecto, jTable_Proyectos);
-        col1Antiguo = jTextField_Codigo_proyectos.getText();
-        
-        if(funcionamientoCorrecto){
+        boolean funcionamientoCorrecto;
+        funcionamientoCorrecto = generador.generarCamposVistaProyecto(jTextField_Nombre_Proyectos, jTextField_Presupuesto_Proyecto, jTable_Proyectos);
+        col1Antiguo = jTable_Proyectos.getValueAt(jTable_Proyectos.getSelectedRow(), 0).toString();
+        if(funcionamientoCorrecto)
            continuar = true;
-           int fila = jTable_Proyectos.getSelectedRow();
-           proyectoAntiguo = new Proyecto(jTable_Proyectos.getValueAt(fila, 0).toString(), jTable_Proyectos.getValueAt(fila, 1).toString(), jTable_Proyectos.getValueAt(fila, 2).toString());
-        }*/
     }//GEN-LAST:event_jButton_modificar_ProyectosActionPerformed
 
     private void jButton_anadir_proyectosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_anadir_proyectosActionPerformed

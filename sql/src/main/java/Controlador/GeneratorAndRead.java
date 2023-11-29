@@ -171,17 +171,16 @@ public class GeneratorAndRead {
         return null;
     }
 
-    public boolean generarCamposVistaProyecto(JTextField id, JTextField nombre, JTextField presupuesto, JTable tabla) {
+    public boolean generarCamposVistaProyecto( JTextField nombre, JTextField presupuesto, JTable tabla) {
         boolean a = false;
         DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
         int filaSeleccionada = tabla.getSelectedRow();
 
         if (filaSeleccionada != -1) {
-            String valor1 = modelo.getValueAt(filaSeleccionada, 0).toString();
+
             String valor2 = modelo.getValueAt(filaSeleccionada, 1).toString();
             String valor3 = modelo.getValueAt(filaSeleccionada, 2).toString();
 
-            id.setText(valor1);
             nombre.setText(valor2);
             presupuesto.setText(valor3);
             a = true;
