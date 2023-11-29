@@ -20,9 +20,9 @@ public class Conector {
 
     private Connection conn;
 
-    public Conector() {
+    public Conector() { 
         try {
-            String url = "jdbc:sqlite:/home/monkeeboi/Instituto/tema-2-sql-MonkeeBoii/sql/baseDeDatos.db3";
+            String url = "jdbc:sqlite:baseDeDatos.db3";
             conn = DriverManager.getConnection(url);
             System.out.println("Connection to SQLite has been established.");
         } catch (SQLException e) {
@@ -443,7 +443,7 @@ public class Conector {
     }
 
     public void modificarProyectoBaseDatos(Integer id, String nombre, Integer presupuesto) throws SQLException {
-        String sentencia = "UPDATE proyecto SET DNI = ?, Nombre = ? WHERE Codigo = ?";
+        String sentencia = "UPDATE proyecto SET Nombre = ?, Presupuesto = ? WHERE Codigo = ?";
         try (PreparedStatement stat = conn.prepareStatement(sentencia)) {
             stat.setString(1, nombre);
             stat.setInt(2, presupuesto);

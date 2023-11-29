@@ -134,8 +134,8 @@ public class GeneratorAndRead {
         int filaSeleccionada = tabla.getSelectedRow();
 
         if (filaSeleccionada != -1) {
-            String valor1 = modelo.getValueAt(filaSeleccionada, 0).toString();
-            String valor2 = modelo.getValueAt(filaSeleccionada, 1).toString();
+            String valor1 = modelo.getValueAt(filaSeleccionada, 1).toString();
+            String valor2 = modelo.getValueAt(filaSeleccionada, 2).toString();
 
             dni.setText(valor1);
             nombre.setText(valor2);
