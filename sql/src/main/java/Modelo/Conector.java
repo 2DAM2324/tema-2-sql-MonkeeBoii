@@ -151,9 +151,10 @@ public class Conector {
                 Producto producto = new Producto(resultado.getInt(1), resultado.getString(2), resultado.getInt(3));
                 PreparedStatement consulta1 = conn.prepareStatement("SELECT * FROM proyecto WHERE codigoProducto==" + resultado.getInt(1));
                 ResultSet resultado1 = consulta1.executeQuery();
-                
-                if(resultado.getInt(4) != 0)
-                producto.setCodigoProveedor(resultado.getInt(4));
+
+                if (resultado.getInt(4) != 0) {
+                    producto.setCodigoProveedor(resultado.getInt(4));
+                }
 
                 while (resultado1.next()) {
                     producto.setCodigoProyectos(resultado1.getInt(2));
@@ -198,8 +199,9 @@ public class Conector {
 
             while (resultado.next()) {
                 Proveedor proveedor = new Proveedor(resultado.getInt(1), resultado.getString(2));
-                if(resultado.getInt(3) != 0)
-                proveedor.setProductoProveedor(resultado.getInt(3));
+                if (resultado.getInt(3) != 0) {
+                    proveedor.setProductoProveedor(resultado.getInt(3));
+                }
 
                 proveedores.add(proveedor);
 
@@ -371,30 +373,115 @@ public class Conector {
     }
 
     public void eliminarObjetoBaseDatos(int codigo, String consulta) throws SQLException {
-    try (PreparedStatement stat = conn.prepareStatement(consulta)) {
-        final boolean oldAutoCommit = conn.getAutoCommit();
-        conn.setAutoCommit(false);
+        try (PreparedStatement stat = conn.prepareStatement(consulta)) {
+            final boolean oldAutoCommit = conn.getAutoCommit();
+            conn.setAutoCommit(false);
 
-        try {
-            stat.setInt(1, codigo);
-            stat.executeUpdate();
-            conn.commit();
-        } catch (SQLException sqle) {
-            if (conn != null) {
-                try {
-                    conn.rollback();
-                } catch (SQLException rollbackException) {
-                    rollbackException.printStackTrace();
+            try {
+                stat.setInt(1, codigo);
+                stat.executeUpdate();
+                conn.commit();
+            } catch (SQLException sqle) {
+                if (conn != null) {
+                    try {
+                        conn.rollback();
+                    } catch (SQLException rollbackException) {
+                        rollbackException.printStackTrace();
+                    }
                 }
+                sqle.printStackTrace();
+            } finally {
+                conn.setAutoCommit(oldAutoCommit);
             }
-            sqle.printStackTrace();
-        } finally {
-            conn.setAutoCommit(oldAutoCommit);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-    } catch (SQLException e) {
-        e.printStackTrace();
     }
-}
 
+    public void modificarProductoBaseDatos(Integer id, String nuevoNombre, Integer nuevoPrecio) throws SQLException {
+        String sentencia = "UPDATE producto SET Nombre = ?, Precio = ? WHERE Codigo = ?";
+        try (PreparedStatement stat = conn.prepareStatement(sentencia)) {
+            stat.setString(1, nuevoNombre);
+            stat.setInt(2, nuevoPrecio);
+            stat.setInt(3, id);
 
+            int filasAfectadas = stat.executeUpdate();
+
+            if (filasAfectadas == 0) {
+                System.out.println("No se encontró ningún producto con la ID proporcionada.");
+            } else {
+                System.out.println("Producto modificado exitosamente.");
+            }
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+            if (conn != null) {
+                conn.rollback();
+            }
+        }
+    }
+
+    public void modificarEmpleadoBaseDatos(Integer id, String dni, String nombre) throws SQLException {
+        String sentencia = "UPDATE empleado SET DNI = ?, Nombre = ? WHERE Codigo = ?";
+        try (PreparedStatement stat = conn.prepareStatement(sentencia)) {
+            stat.setString(1, dni);
+            stat.setString(2, nombre);
+            stat.setInt(3, id);
+
+            int filasAfectadas = stat.executeUpdate();
+
+            if (filasAfectadas == 0) {
+                System.out.println("No se encontró ningún producto con la ID proporcionada.");
+            } else {
+                System.out.println("Producto modificado exitosamente.");
+            }
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+            if (conn != null) {
+                conn.rollback();
+            }
+        }
+    }
+
+    public void modificarProyectoBaseDatos(Integer id, String nombre, Integer presupuesto) throws SQLException {
+        String sentencia = "UPDATE proyecto SET DNI = ?, Nombre = ? WHERE Codigo = ?";
+        try (PreparedStatement stat = conn.prepareStatement(sentencia)) {
+            stat.setString(1, nombre);
+            stat.setInt(2, presupuesto);
+            stat.setInt(3, id);
+
+            int filasAfectadas = stat.executeUpdate();
+
+            if (filasAfectadas == 0) {
+                System.out.println("No se encontró ningún producto con la ID proporcionada.");
+            } else {
+                System.out.println("Producto modificado exitosamente.");
+            }
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+            if (conn != null) {
+                conn.rollback();
+            }
+        }
+    }
+
+    public void modificarProveedorBaseDatos(Integer id, String nombre) throws SQLException {
+        String sentencia = "UPDATE empleado SET Nombre = ? WHERE Codigo = ?";
+        try (PreparedStatement stat = conn.prepareStatement(sentencia)) {
+            stat.setString(1, nombre);
+            stat.setInt(2, id);
+
+            int filasAfectadas = stat.executeUpdate();
+
+            if (filasAfectadas == 0) {
+                System.out.println("No se encontró ningún producto con la ID proporcionada.");
+            } else {
+                System.out.println("Producto modificado exitosamente.");
+            }
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+            if (conn != null) {
+                conn.rollback();
+            }
+        }
+    }
 }

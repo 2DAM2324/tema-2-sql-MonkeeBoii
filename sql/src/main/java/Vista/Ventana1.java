@@ -1088,26 +1088,28 @@ public class Ventana1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_cancelar_libroActionPerformed
 
     private void jButton_guardar_libroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_guardar_libroActionPerformed
-        /*
+        
         if(continuar){
-            String col1 = jTextField_codigo_Productos.getText();
+            String col1 = jTable_Productos.getValueAt(jTable_Productos.getSelectedRow(), 0).toString();
             String col2 = jTextField_nombre_productos.getText();
             String col3 = jTextField_precio_productos.getText();
             
             if(!col1.equals(col1Antiguo)){
-                pasaFiltro1 = generador.comprobarSiElObjetoYaExisteProducto(productos, col1); 
+                pasaFiltro1 = generador.comprobarSiElObjetoYaExisteProducto(productos, Integer.valueOf(col1)); 
             }
             if(col1.equals(col1Antiguo) || pasaFiltro1){
-                pasaFiltro2 = generador.tieneAlgunAtributoVacio(col1, col2, col3);
+                pasaFiltro2 = generador.tieneAlgunAtributoVacio(col2, col3);
                 if(pasaFiltro2){
-                    productos.add(generador.modificarProductos(col1, col2, col3, jTable_Productos, productos));
-                    generador.eliminarFilaSeleccionadaProducto(jTable_Productos, productos);
-                    generador.generarXMLParaProducto(productos, "Productos.dat");
-                    productos = (ArrayList<Producto>) generador.leerXMLDeProductos("Productos.dat");
+                    try {
+                        conector.modificarProductoBaseDatos(Integer.valueOf(col1), col2, Integer.valueOf(col3));
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Ventana1.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    productos = (ArrayList<Producto>) conector.consultarBaseDatosProducto(conector.conectorBaseDatos());
                     generador.cargarDatosEnJTableProductos(productos, jTable_Productos);
-                    generador.resetearCamposProducto(jTextField_codigo_Productos, jTextField_nombre_productos, jTextField_precio_productos);
+                    generador.resetearCamposProducto(jTextField_nombre_productos, jTextField_precio_productos);
                 }
-                
+                /*
                 for(Proveedor pro : proveedor){
                     if(pro.getProductoProveedor().getCodigoProductos().equals(col1)){
                         pro.setProductoProveedor(generador.buscarObjetoEnArrayProducto(col1, productos));
@@ -1122,9 +1124,9 @@ public class Ventana1 extends javax.swing.JFrame {
                         generador.generarXMLParaProyecto(proyectos, "Proyectos.dat");
                         proyectos = (ArrayList<Proyecto>) generador.leerXMLDeProyectos("Proyectos.dat");
                     }
-                }
+                }*/
             }
-        }*/
+        }
     }//GEN-LAST:event_jButton_guardar_libroActionPerformed
 
     private void jTable_ProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_ProductosMouseClicked
