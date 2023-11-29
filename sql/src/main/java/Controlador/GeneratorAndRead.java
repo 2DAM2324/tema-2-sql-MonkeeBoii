@@ -586,7 +586,7 @@ public class GeneratorAndRead {
         if (a.getProductoProveedor() == null) {
             return true;
         }
-        JOptionPane.showMessageDialog(null, "Por favor, No puedes eliminar un Proveedor con relaciones.", "Error", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Por favor, No puedes eliminar un Proveedor con relaciones." + a.getProductoProveedor(), "Error", JOptionPane.ERROR_MESSAGE);
         return false;
     }
 }

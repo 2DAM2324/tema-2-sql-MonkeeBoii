@@ -1388,15 +1388,18 @@ public class Ventana1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_modificar_ProveedoresActionPerformed
 
     private void jButton_borrar_proveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_borrar_proveedorActionPerformed
-        /*
-        pasaFiltroBorrar = generador.comprobarSiHayRelacionesEnELObjeto(generador.buscarObjetoEnArrayProveedor(jTable_Proveedores.getValueAt(jTable_Proveedores.getSelectedRow(), 0).toString(), proveedor));
-        
+        Proveedor proveedorBuscado = generador.buscarObjetoEnArrayProveedor(Integer.valueOf(jTable_Proveedores.getValueAt(jTable_Proveedores.getSelectedRow(), 0).toString()), proveedor);
+        pasaFiltroBorrar = generador.comprobarSiHayRelacionesEnELObjeto(proveedorBuscado);
         if(pasaFiltroBorrar){
-            generador.eliminarFilaSeleccionadaProveedor(jTable_Proveedores, proveedor);
-            generador.generarXMLParaProveedor(proveedor, "proveedores.dat");
-            proveedor = (ArrayList<Proveedor>) generador.leerXMLDeProveedores("proveedores.dat");
+            generador.eliminarFilaSeleccionada(jTable_Proveedores);
+            try {
+                conector.eliminarObjetoBaseDatos(proveedorBuscado.getCodigoProveedor(),"DELETE FROM proveedor WHERE Codigo = ?");
+            } catch (SQLException ex) {
+                Logger.getLogger(Ventana1.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            proveedor = (ArrayList<Proveedor>) conector.consultarBaseDatosProveedor(conector.conectorBaseDatos());
             generador.cargarDatosEnJTableProveedores(proveedor, jTable_Proveedores);
-        }*/
+        }
     }//GEN-LAST:event_jButton_borrar_proveedorActionPerformed
 
     private void jButton_guardar_personaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_guardar_personaActionPerformed

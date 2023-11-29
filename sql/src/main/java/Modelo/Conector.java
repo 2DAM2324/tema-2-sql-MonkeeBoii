@@ -151,6 +151,8 @@ public class Conector {
                 Producto producto = new Producto(resultado.getInt(1), resultado.getString(2), resultado.getInt(3));
                 PreparedStatement consulta1 = conn.prepareStatement("SELECT * FROM proyecto WHERE codigoProducto==" + resultado.getInt(1));
                 ResultSet resultado1 = consulta1.executeQuery();
+                
+                if(resultado.getInt(4) != 0)
                 producto.setCodigoProveedor(resultado.getInt(4));
 
                 while (resultado1.next()) {
@@ -196,6 +198,7 @@ public class Conector {
 
             while (resultado.next()) {
                 Proveedor proveedor = new Proveedor(resultado.getInt(1), resultado.getString(2));
+                if(resultado.getInt(3) != 0)
                 proveedor.setProductoProveedor(resultado.getInt(3));
 
                 proveedores.add(proveedor);

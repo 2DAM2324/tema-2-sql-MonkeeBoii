@@ -7,11 +7,13 @@ public class Proveedor{
     private Integer productoProveedor;
 
     public Proveedor(){
+        productoProveedor = null;
     }
 
     public Proveedor(Integer codigoProveedor, String nombreProveedor){
         this.codigoProveedor = codigoProveedor;
         this.nombreProveedor = nombreProveedor;
+        productoProveedor = null;
     }
 
     public void setCodigoProveedor(Integer codigoProveedor) {
