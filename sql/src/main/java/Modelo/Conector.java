@@ -603,7 +603,7 @@ public class Conector {
         List<Integer> integers = new ArrayList<Integer>();
 
         try {
-            consulta = conn.prepareStatement("SELECT * FROM trabajan WHERE CodigoEmpleado==" + id);
+            consulta = conn.prepareStatement("SELECT * FROM trabajan WHERE CodigoProyecto==" + id);
             resultado = consulta.executeQuery();
 
             while (resultado.next()) {
@@ -635,7 +635,7 @@ public class Conector {
         List<Integer> integers = new ArrayList<Integer>();
 
         try {
-            consulta = conn.prepareStatement("SELECT * FROM trabajan WHERE CodigoProyecto==" + id);
+            consulta = conn.prepareStatement("SELECT * FROM trabajan WHERE CodigoEmpleado==" + id);
             resultado = consulta.executeQuery();
 
             while (resultado.next()) {

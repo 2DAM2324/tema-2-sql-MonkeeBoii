@@ -12,6 +12,7 @@ import Modelo.Proyecto;
 import Controlador.GeneratorAndRead;
 import Modelo.Conector;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -1232,12 +1233,16 @@ public class Ventana1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_modificar_EmpleadoActionPerformed
 
     private void jTable_EmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_EmpleadoMouseClicked
-        /*
+        
         int filaSeleccionada = jTable_Empleado.getSelectedRow();
-        String dni = jTable_Empleado.getValueAt(filaSeleccionada, 0).toString();
-        if(generador.buscarObjetoEnArrayEmpleado(dni, empleados) != null)
-            generador.cargarDatosEnJTableProyectos(generador.buscarObjetoEnArrayEmpleado(dni, empleados).getProyectosAsignados(), jTable_Proyectos_Empleados_Relacion);
-            */
+        String codigo = jTable_Empleado.getValueAt(filaSeleccionada, 0).toString();
+        lista = conector.buscarProyectoRelacioTrabajan(Integer.valueOf(codigo));
+        ArrayList<Proyecto> proyectosBuscados = new ArrayList<>();
+        for(Integer n : lista){
+            proyectosBuscados.add(generador.buscarObjetoEnArrayProyecto(n, proyectos));
+        }
+        generador.cargarDatosEnJTableProyectos(proyectosBuscados, jTable_Proyectos_Empleados_Relacion);
+        jTable_Empleado.clearSelection();
     }//GEN-LAST:event_jTable_EmpleadoMouseClicked
 
     private void jButton_anadir_empleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_anadir_empleadosActionPerformed
@@ -1750,6 +1755,7 @@ public class Ventana1 extends javax.swing.JFrame {
     private ArrayList<Proyecto> proyectos = new ArrayList<>();
     private ArrayList<Producto> productos = new ArrayList<>();
     private ArrayList<Proveedor> proveedor = new ArrayList<>();
+    List<Integer> lista = new ArrayList<>();
     String col1Antiguo;
     boolean pasaFiltro1;
     boolean pasaFiltro2;
