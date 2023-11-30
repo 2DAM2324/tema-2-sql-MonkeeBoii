@@ -596,7 +596,7 @@ public class Conector {
             stat.getConnection().setAutoCommit(oldAutoCommit);
         }
     }
-
+    
     public List<Integer> buscarEmpleadoRelacioTrabajan(Integer id) {
         PreparedStatement consulta = null;
         ResultSet resultado = null;
@@ -660,4 +660,6 @@ public class Conector {
         }
         return integers;
     }
+    
+    
 }

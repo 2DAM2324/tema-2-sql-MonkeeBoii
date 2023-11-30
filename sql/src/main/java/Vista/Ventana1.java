@@ -20,27 +20,27 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class Ventana1 extends javax.swing.JFrame {
+
     GeneratorAndRead generador = new GeneratorAndRead();
     Conector conector = new Conector();
     boolean continuar = false;
-    
-    
+
     public Ventana1() throws IOException, FileNotFoundException, ClassNotFoundException, NotSerializableException, SAXException {
         initComponents();
         empleados = (ArrayList<Empleado>) conector.consultarBaseDatosEmpleado(conector.conectorBaseDatos());
         generador.cargarDatosEnJTableEmpleados(empleados, jTable_Empleado);
-        
+
         proyectos = (ArrayList<Proyecto>) conector.consultarBaseDatosProyecto(conector.conectorBaseDatos());
         generador.cargarDatosEnJTableProyectos(proyectos, jTable_Proyectos);
-        
+
         productos = (ArrayList<Producto>) conector.consultarBaseDatosProducto(conector.conectorBaseDatos());
         generador.cargarDatosEnJTableProductos(productos, jTable_Productos);
- 
+
         proveedor = (ArrayList<Proveedor>) conector.consultarBaseDatosProveedor(conector.conectorBaseDatos());
         generador.cargarDatosEnJTableProveedores(proveedor, jTable_Proveedores);
-        
+
     }
-   
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -1039,19 +1039,19 @@ public class Ventana1 extends javax.swing.JFrame {
     private void jButton_anadir_productosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_anadir_productosActionPerformed
         String col2;
         Integer col3;
-        
+
         col2 = jTextField_nombre_productos.getText();
         col3 = Integer.valueOf(jTextField_precio_productos.getText());
-        
+
         pasaFiltro2 = generador.tieneAlgunAtributoVacio(col2, col3.toString());
-        
-        if(pasaFiltro2){
+
+        if (pasaFiltro2) {
             try {
                 conector.anadirProductoBaseDatos(col2, col3);
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "ERROR: Fallo al añadir un producto.", "Error", JOptionPane.ERROR_MESSAGE);
             }
-            
+
             productos = (ArrayList<Producto>) conector.consultarBaseDatosProducto(conector.conectorBaseDatos());
             generador.cargarDatosEnJTableProductos(productos, jTable_Productos);
             generador.resetearCamposProducto(jTextField_nombre_productos, jTextField_precio_productos);
@@ -1062,17 +1062,17 @@ public class Ventana1 extends javax.swing.JFrame {
         boolean funcionamientoCorrecto;
         funcionamientoCorrecto = generador.generarCamposVistaProducto(jTextField_nombre_productos, jTextField_precio_productos, jTable_Productos);
         col1Antiguo = jTable_Productos.getValueAt(jTable_Productos.getSelectedRow(), 0).toString();
-        if(funcionamientoCorrecto)
-           continuar = true;
+        if (funcionamientoCorrecto)
+            continuar = true;
     }//GEN-LAST:event_jButton_modificar_ProductosActionPerformed
 
     private void jButton_borrar_productosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_borrar_productosActionPerformed
         Producto productoBuscado = generador.buscarObjetoEnArrayProducto(Integer.valueOf(jTable_Productos.getValueAt(jTable_Productos.getSelectedRow(), 0).toString()), productos);
         pasaFiltroBorrar = generador.comprobarSiHayRelacionesEnELObjeto(productoBuscado);
-        if(pasaFiltroBorrar){
+        if (pasaFiltroBorrar) {
             generador.eliminarFilaSeleccionada(jTable_Productos);
             try {
-                conector.eliminarObjetoBaseDatos(productoBuscado.getCodigo(),"DELETE FROM producto WHERE Codigo = ?");
+                conector.eliminarObjetoBaseDatos(productoBuscado.getCodigo(), "DELETE FROM producto WHERE Codigo = ?");
             } catch (SQLException ex) {
                 Logger.getLogger(Ventana1.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -1088,18 +1088,18 @@ public class Ventana1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_cancelar_libroActionPerformed
 
     private void jButton_guardar_libroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_guardar_libroActionPerformed
-        
-        if(continuar){
+
+        if (continuar) {
             String col1 = jTable_Productos.getValueAt(jTable_Productos.getSelectedRow(), 0).toString();
             String col2 = jTextField_nombre_productos.getText();
             String col3 = jTextField_precio_productos.getText();
-            
-            if(!col1.equals(col1Antiguo)){
-                pasaFiltro1 = generador.comprobarSiElObjetoYaExisteProducto(productos, Integer.valueOf(col1)); 
+
+            if (!col1.equals(col1Antiguo)) {
+                pasaFiltro1 = generador.comprobarSiElObjetoYaExisteProducto(productos, Integer.valueOf(col1));
             }
-            if(col1.equals(col1Antiguo) || pasaFiltro1){
+            if (col1.equals(col1Antiguo) || pasaFiltro1) {
                 pasaFiltro2 = generador.tieneAlgunAtributoVacio(col2, col3);
-                if(pasaFiltro2){
+                if (pasaFiltro2) {
                     try {
                         conector.modificarProductoBaseDatos(Integer.valueOf(col1), col2, Integer.valueOf(col3));
                     } catch (SQLException ex) {
@@ -1120,10 +1120,10 @@ public class Ventana1 extends javax.swing.JFrame {
     private void jButton_borrar_ProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_borrar_ProyectoActionPerformed
         Proyecto proyectoBuscado = generador.buscarObjetoEnArrayProyecto(Integer.valueOf(jTable_Proyectos.getValueAt(jTable_Proyectos.getSelectedRow(), 0).toString()), proyectos);
         pasaFiltroBorrar = generador.comprobarSiHayRelacionesEnELObjeto(proyectoBuscado);
-        if(pasaFiltroBorrar){
+        if (pasaFiltroBorrar) {
             generador.eliminarFilaSeleccionada(jTable_Proyectos);
             try {
-                conector.eliminarObjetoBaseDatos(proyectoBuscado.getCodigo(),"DELETE FROM proyecto WHERE Codigo = ?");
+                conector.eliminarObjetoBaseDatos(proyectoBuscado.getCodigo(), "DELETE FROM proyecto WHERE Codigo = ?");
             } catch (SQLException ex) {
                 Logger.getLogger(Ventana1.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -1136,26 +1136,26 @@ public class Ventana1 extends javax.swing.JFrame {
         boolean funcionamientoCorrecto;
         funcionamientoCorrecto = generador.generarCamposVistaProyecto(jTextField_Nombre_Proyectos, jTextField_Presupuesto_Proyecto, jTable_Proyectos);
         col1Antiguo = jTable_Proyectos.getValueAt(jTable_Proyectos.getSelectedRow(), 0).toString();
-        if(funcionamientoCorrecto)
-           continuar = true;
+        if (funcionamientoCorrecto)
+            continuar = true;
     }//GEN-LAST:event_jButton_modificar_ProyectosActionPerformed
 
     private void jButton_anadir_proyectosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_anadir_proyectosActionPerformed
         String col2;
         Integer col3;
-        
+
         col2 = jTextField_Nombre_Proyectos.getText();
         col3 = Integer.valueOf(jTextField_Presupuesto_Proyecto.getText());
-        
+
         pasaFiltro2 = generador.tieneAlgunAtributoVacio(col2, col3.toString());
-        
-        if(pasaFiltro2){
+
+        if (pasaFiltro2) {
             try {
                 conector.anadirProyectoBaseDatos(col2, col3);
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "ERROR: Fallo al añadir un proyecto.", "Error", JOptionPane.ERROR_MESSAGE);
             }
-            
+
             proyectos = (ArrayList<Proyecto>) conector.consultarBaseDatosProyecto(conector.conectorBaseDatos());
             generador.cargarDatosEnJTableProyectos(proyectos, jTable_Proyectos);
             generador.resetearCamposProyecto(jTextField_nombre_productos, jTextField_precio_productos);
@@ -1170,18 +1170,18 @@ public class Ventana1 extends javax.swing.JFrame {
 
     private void jButton_guardar_bibliotecaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_guardar_bibliotecaActionPerformed
 
-        if(continuar){
+        if (continuar) {
             Integer col1 = Integer.valueOf(jTable_Proyectos.getValueAt(jTable_Proyectos.getSelectedRow(), 0).toString());
             String col2 = jTextField_Nombre_Proyectos.getText();
             Integer col3 = Integer.valueOf(jTextField_Presupuesto_Proyecto.getText());
-            
-            if(!col1.toString().equals(col1Antiguo)){
-            pasaFiltro1 = generador.comprobarSiElObjetoYaExisteProyecto(proyectos, col1);
+
+            if (!col1.toString().equals(col1Antiguo)) {
+                pasaFiltro1 = generador.comprobarSiElObjetoYaExisteProyecto(proyectos, col1);
             }
-            if(col1.toString().equals(col1Antiguo) || pasaFiltro1){
+            if (col1.toString().equals(col1Antiguo) || pasaFiltro1) {
                 pasaFiltro2 = generador.tieneAlgunAtributoVacio(col2, col3.toString());
-                
-                if(pasaFiltro2){
+
+                if (pasaFiltro2) {
                     generador.eliminarFilaSeleccionada(jTable_Proyectos);
                     try {
                         conector.modificarProyectoBaseDatos(col1, col2, col3);
@@ -1190,40 +1190,38 @@ public class Ventana1 extends javax.swing.JFrame {
                     }
                     proyectos = (ArrayList<Proyecto>) conector.consultarBaseDatosProyecto(conector.conectorBaseDatos());
                     generador.cargarDatosEnJTableProyectos(proyectos, jTable_Proyectos);
-                    generador.resetearCamposProyecto(jTextField_Nombre_Proyectos, jTextField_Presupuesto_Proyecto);   
+                    generador.resetearCamposProyecto(jTextField_Nombre_Proyectos, jTextField_Presupuesto_Proyecto);
                 }
             }
         }
     }//GEN-LAST:event_jButton_guardar_bibliotecaActionPerformed
 
     private void jTable_ProyectosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_ProyectosMouseClicked
-        
+
         int filaSeleccionada = jTable_Proyectos.getSelectedRow();
         String codigo = jTable_Proyectos.getValueAt(filaSeleccionada, 0).toString();
         lista = conector.buscarEmpleadoRelacioTrabajan(Integer.valueOf(codigo));
         ArrayList<Empleado> empleadosBuscados = new ArrayList<>();
-        for(Integer n : lista){
+        for (Integer n : lista) {
             empleadosBuscados.add(generador.buscarObjetoEnArrayEmpleado(n, empleados));
         }
         generador.cargarDatosEnJTableEmpleados(empleadosBuscados, tabla_relacion_proyecto_empleado);
         //TODO(1): HACER LA VISUALIZACION DE LOS PRODUCTOS.
-        jTable_Proyectos.clearSelection();
-        
-        
-            
+
+
     }//GEN-LAST:event_jTable_ProyectosMouseClicked
 
     private void jTextField_dni_EmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_dni_EmpleadoActionPerformed
-        
+
     }//GEN-LAST:event_jTextField_dni_EmpleadoActionPerformed
 
     private void jButton_borrar_EmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_borrar_EmpleadosActionPerformed
         Empleado empleadoBuscado = generador.buscarObjetoEnArrayEmpleado(Integer.valueOf(jTable_Empleado.getValueAt(jTable_Empleado.getSelectedRow(), 0).toString()), empleados);
         pasaFiltroBorrar = generador.comprobarSiHayRelacionesEnELObjeto(empleadoBuscado);
-        if(pasaFiltroBorrar){
+        if (pasaFiltroBorrar) {
             generador.eliminarFilaSeleccionada(jTable_Empleado);
             try {
-                conector.eliminarObjetoBaseDatos(empleadoBuscado.getCodigo(),"DELETE FROM empleado WHERE Codigo = ?");
+                conector.eliminarObjetoBaseDatos(empleadoBuscado.getCodigo(), "DELETE FROM empleado WHERE Codigo = ?");
             } catch (SQLException ex) {
                 Logger.getLogger(Ventana1.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -1233,42 +1231,41 @@ public class Ventana1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_borrar_EmpleadosActionPerformed
 
     private void jButton_modificar_EmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_modificar_EmpleadoActionPerformed
-       boolean funcionamientoCorrecto;
+        boolean funcionamientoCorrecto;
         funcionamientoCorrecto = generador.generarCamposVistaEmpleado(jTextField_dni_Empleado, jTextField_Nombre_Empleado, jTable_Empleado);
         col1Antiguo = jTable_Empleado.getValueAt(jTable_Empleado.getSelectedRow(), 0).toString();
-        if(funcionamientoCorrecto)
-           continuar = true;
+        if (funcionamientoCorrecto)
+            continuar = true;
     }//GEN-LAST:event_jButton_modificar_EmpleadoActionPerformed
 
     private void jTable_EmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_EmpleadoMouseClicked
-        
+
         int filaSeleccionada = jTable_Empleado.getSelectedRow();
         String codigo = jTable_Empleado.getValueAt(filaSeleccionada, 0).toString();
         lista = conector.buscarProyectoRelacioTrabajan(Integer.valueOf(codigo));
         ArrayList<Proyecto> proyectosBuscados = new ArrayList<>();
-        for(Integer n : lista){
+        for (Integer n : lista) {
             proyectosBuscados.add(generador.buscarObjetoEnArrayProyecto(n, proyectos));
         }
         generador.cargarDatosEnJTableProyectos(proyectosBuscados, jTable_Proyectos_Empleados_Relacion);
-        jTable_Empleado.clearSelection();
     }//GEN-LAST:event_jTable_EmpleadoMouseClicked
 
     private void jButton_anadir_empleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_anadir_empleadosActionPerformed
         String col2;
         String col3;
-        
+
         col2 = jTextField_Nombre_Empleado.getText();
         col3 = jTextField_dni_Empleado.getText();
-        
+
         pasaFiltro2 = generador.tieneAlgunAtributoVacio(col2, col3);
-        
-        if(pasaFiltro2){
+
+        if (pasaFiltro2) {
             try {
                 conector.anadirEmpleadoBaseDatos(col3, col2);
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "ERROR: Fallo al añadir un proyecto.", "Error", JOptionPane.ERROR_MESSAGE);
             }
-            
+
             empleados = (ArrayList<Empleado>) conector.consultarBaseDatosEmpleado(conector.conectorBaseDatos());
             generador.cargarDatosEnJTableEmpleados(empleados, jTable_Empleado);
             generador.resetearCamposEmpleado(jTextField_dni_Empleado, jTextField_Nombre_Empleado);
@@ -1284,19 +1281,19 @@ public class Ventana1 extends javax.swing.JFrame {
 
     private void jButton_guardar_empleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_guardar_empleadoActionPerformed
 
-        if(continuar){
+        if (continuar) {
             Integer col1 = Integer.valueOf(jTable_Empleado.getValueAt(jTable_Empleado.getSelectedRow(), 0).toString());
             String col2 = jTextField_dni_Empleado.getText();
             String col3 = jTextField_Nombre_Empleado.getText();
-            
-            if(!col1.toString().equals(col1Antiguo)){
+
+            if (!col1.toString().equals(col1Antiguo)) {
                 pasaFiltro1 = generador.comprobarSiElObjetoYaExisteEmpleado(empleados, col1.toString());
             }
-            if(col1.toString().equals(col1Antiguo) || pasaFiltro1){
+            if (col1.toString().equals(col1Antiguo) || pasaFiltro1) {
                 pasaFiltro2 = generador.tieneAlgunAtributoVacio(col2, col3);
-                
-                if(pasaFiltro2){
-                    
+
+                if (pasaFiltro2) {
+
                     generador.eliminarFilaSeleccionada(jTable_Empleado);
                     try {
                         conector.modificarEmpleadoBaseDatos(col1, col2, col3);
@@ -1304,7 +1301,7 @@ public class Ventana1 extends javax.swing.JFrame {
                         Logger.getLogger(Ventana1.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     empleados = (ArrayList<Empleado>) conector.consultarBaseDatosEmpleado(conector.conectorBaseDatos());
-                    generador.cargarDatosEnJTableEmpleados(empleados, jTable_Empleado); 
+                    generador.cargarDatosEnJTableEmpleados(empleados, jTable_Empleado);
                     generador.resetearCamposEmpleado(jTextField_dni_Empleado, jTextField_Nombre_Empleado);
                 }
             }
@@ -1317,14 +1314,14 @@ public class Ventana1 extends javax.swing.JFrame {
         col2 = jTextField_Nombre_proveedor.getText();
 
         pasaFiltro2 = col2.isBlank();
-        
-        if(!pasaFiltro2){
+
+        if (!pasaFiltro2) {
             try {
                 conector.anadirProveedorBaseDatos(col2);
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "ERROR: Fallo al añadir un proveedores.", "Error", JOptionPane.ERROR_MESSAGE);
             }
-            
+
             proveedor = (ArrayList<Proveedor>) conector.consultarBaseDatosProveedor(conector.conectorBaseDatos());
             generador.cargarDatosEnJTableProveedores(proveedor, jTable_Proveedores);
             generador.resetearCamposProveedor(jTextField_Nombre_proveedor);
@@ -1335,17 +1332,17 @@ public class Ventana1 extends javax.swing.JFrame {
         boolean funcionamientoCorrecto;
         funcionamientoCorrecto = generador.generarCamposVistaProveedor(jTextField_Nombre_proveedor, jTable_Proveedores);
         col1Antiguo = jTable_Proveedores.getValueAt(jTable_Proveedores.getSelectedRow(), 0).toString();
-        if(funcionamientoCorrecto)
-           continuar = true;
+        if (funcionamientoCorrecto)
+            continuar = true;
     }//GEN-LAST:event_jButton_modificar_ProveedoresActionPerformed
 
     private void jButton_borrar_proveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_borrar_proveedorActionPerformed
         Proveedor proveedorBuscado = generador.buscarObjetoEnArrayProveedor(Integer.valueOf(jTable_Proveedores.getValueAt(jTable_Proveedores.getSelectedRow(), 0).toString()), proveedor);
         pasaFiltroBorrar = generador.comprobarSiHayRelacionesEnELObjeto(proveedorBuscado);
-        if(pasaFiltroBorrar){
+        if (pasaFiltroBorrar) {
             generador.eliminarFilaSeleccionada(jTable_Proveedores);
             try {
-                conector.eliminarObjetoBaseDatos(proveedorBuscado.getCodigoProveedor(),"DELETE FROM proveedor WHERE Codigo = ?");
+                conector.eliminarObjetoBaseDatos(proveedorBuscado.getCodigoProveedor(), "DELETE FROM proveedor WHERE Codigo = ?");
             } catch (SQLException ex) {
                 Logger.getLogger(Ventana1.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -1355,16 +1352,16 @@ public class Ventana1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_borrar_proveedorActionPerformed
 
     private void jButton_guardar_personaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_guardar_personaActionPerformed
-            if(continuar){
+        if (continuar) {
             Integer col1 = Integer.valueOf(jTable_Proveedores.getValueAt(jTable_Proveedores.getSelectedRow(), 0).toString());
             String col2 = jTextField_Nombre_proveedor.getText();
-            
-            if(!col1.toString().equals(col1Antiguo)){
-            pasaFiltro1 = generador.comprobarSiElObjetoYaExisteProveedor(proveedor, col1.toString());
+
+            if (!col1.toString().equals(col1Antiguo)) {
+                pasaFiltro1 = generador.comprobarSiElObjetoYaExisteProveedor(proveedor, col1.toString());
             }
-            if(col1.toString().equals(col1Antiguo) || pasaFiltro1){
+            if (col1.toString().equals(col1Antiguo) || pasaFiltro1) {
                 pasaFiltro2 = generador.tieneAlgunAtributoVacio(null, col2);
-                if(pasaFiltro2){
+                if (pasaFiltro2) {
                     proveedor.add(generador.modificarProveedores(col1, col2, jTable_Proveedores, proveedor));
                     generador.eliminarFilaSeleccionada(jTable_Proveedores);
                     try {
@@ -1375,93 +1372,80 @@ public class Ventana1 extends javax.swing.JFrame {
                     proveedor = (ArrayList<Proveedor>) conector.consultarBaseDatosProveedor(conector.conectorBaseDatos());
                     generador.cargarDatosEnJTableProveedores(proveedor, jTable_Proveedores);
                     generador.resetearCamposProveedor(jTextField_Nombre_proveedor);
-                    
+
                 }
             }
-       }
+        }
     }//GEN-LAST:event_jButton_guardar_personaActionPerformed
 
     private void jTable_ProveedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_ProveedoresMouseClicked
-/*
+        /*
         int filaSeleccionada = jTable_Proveedores.getSelectedRow();
         String dni = jTable_Proveedores.getValueAt(filaSeleccionada, 0).toString();
         if(!generador.buscarObjetoEnArrayProveedor(dni, proveedor).getProductoProveedor().getCodigoProductos().isBlank())
             generador.cargarDatosEnJTableProductos(generador.buscarObjetoEnArrayProveedor(dni, proveedor).getProductoProveedor(), jTable_Productos1);
-*/
+         */
     }//GEN-LAST:event_jTable_ProveedoresMouseClicked
 
     private void anadir_relacion_EmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anadir_relacion_EmpleadoActionPerformed
-      /*  
-        String id = texto_relacion_empleados.getText();
-        DefaultTableModel modelo = (DefaultTableModel) jTable_Empleado.getModel();
+        String codigo = texto_relacion_empleados.getText();
         int filaSeleccionada = jTable_Empleado.getSelectedRow();
-        
-        
-        if (filaSeleccionada != -1){
-            
-            //Crea y asigna la relacion al empleado
-            String dni = jTable_Empleado.getValueAt(filaSeleccionada, 0).toString();
-            if(generador.buscarObjetoEnArrayEmpleado(dni, empleados) != null){
-                generador.anadirProyectoAEmpleado(generador.buscarObjetoEnArrayEmpleado(dni, empleados).getProyectosAsignados(), generador.buscarObjetoEnArrayProyecto(id, proyectos));
-                generador.generarXMLParaEmpleados(empleados, "empleados.dat");
-                empleados = (ArrayList<Empleado>) generador.leerXMLDeEmpleados("empleados.dat");
 
-                //carga los datos en la vista
-                generador.cargarDatosEnJTableEmpleados(empleados, jTable_Empleado);
+        if (filaSeleccionada != -1) {
+
+            //Crea y asigna la relacion al proyecto
+            String id = jTable_Empleado.getValueAt(filaSeleccionada, 0).toString();
+            if (conector.buscarEmpleado(Integer.valueOf(id)) != null && conector.buscarProyecto(Integer.valueOf(codigo)) != null) {
+                try {
+                    conector.anadirRelacionProyectoEmpleado(Integer.valueOf(codigo), Integer.valueOf(id));
+                } catch (SQLException ex) {
+                    Logger.getLogger(Ventana1.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                empleados = (ArrayList<Empleado>) conector.consultarBaseDatosEmpleado(conector.conectorBaseDatos());
             }
-            if(generador.buscarObjetoEnArrayProyecto(id, proyectos) != null){
-            //Asigna el empleado al Proyecto
-                generador.anadirEmpleadoAProyecto(generador.buscarObjetoEnArrayProyecto(id, proyectos).getAsignacionesEmpleados(), generador.buscarObjetoEnArrayEmpleado(dni, empleados));
-                generador.generarXMLParaProyecto(proyectos, "Proyectos.dat");
-                proyectos = (ArrayList<Proyecto>) generador.leerXMLDeProyectos("Proyectos.dat");
-            }
-            
-        }else{
+            jTable_Empleado.clearSelection();
+
+        } else {
             JOptionPane.showMessageDialog(null, "Por favor, Tienes que seleccionar en la tabla a quien quieres añadir la relacion.", "Error", JOptionPane.ERROR_MESSAGE);
         }
         texto_relacion_empleados.setText("");
-*/
     }//GEN-LAST:event_anadir_relacion_EmpleadoActionPerformed
 
     private void Eliminar_relacion_empleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Eliminar_relacion_empleadosActionPerformed
-/*
-        DefaultTableModel modeloEmpleado = (DefaultTableModel) jTable_Empleado.getModel();
-        int filaSeleccionadaEmpleado = jTable_Empleado.getSelectedRow();
-        
-        DefaultTableModel modeloProyecto = (DefaultTableModel) jTable_Proyectos_Empleados_Relacion.getModel();
-        int filaSeleccionadaProyecto = jTable_Proyectos_Empleados_Relacion.getSelectedRow();
-        
-        if(filaSeleccionadaProyecto != -1 && filaSeleccionadaEmpleado != -1){
-            if(generador.buscarObjetoEnArrayEmpleado(modeloEmpleado.getValueAt(filaSeleccionadaEmpleado, 0).toString(), empleados) != null){
-                generador.eliminarProyecto(generador.buscarObjetoEnArrayEmpleado(modeloEmpleado.getValueAt(filaSeleccionadaEmpleado, 0).toString(), empleados).getProyectosAsignados(), modeloProyecto.getValueAt(filaSeleccionadaProyecto, 0).toString());
-                generador.generarXMLParaEmpleados(empleados, "empleados.dat");
-                empleados = (ArrayList<Empleado>) generador.leerXMLDeEmpleados("empleados.dat");
-                generador.cargarDatosEnJTableEmpleados(empleados, jTable_Empleado);
-                String dni = jTable_Empleado.getValueAt(filaSeleccionadaEmpleado, 0).toString();
-                if(generador.buscarObjetoEnArrayProyecto(modeloProyecto.getValueAt(filaSeleccionadaProyecto, 0).toString(), proyectos) != null){
-                    generador.eliminarEmpleadoEnProyecto(generador.buscarObjetoEnArrayProyecto(modeloProyecto.getValueAt(filaSeleccionadaProyecto, 0).toString(), proyectos).getAsignacionesEmpleados(), dni);
-                    generador.cargarDatosEnJTableProyectos(generador.buscarObjetoEnArrayEmpleado(dni, empleados).getProyectosAsignados(), jTable_Proyectos_Empleados_Relacion);
-                    generador.generarXMLParaProyecto(proyectos, "Proyectos.dat");
+
+        int filaSeleccionada = jTable_Proyectos_Empleados_Relacion.getSelectedRow();
+        if (filaSeleccionada != -1) {
+
+            //Crea y asigna la relacion al proyecto
+            String id = jTable_Proyectos_Empleados_Relacion.getValueAt(filaSeleccionada, 0).toString();
+            if (conector.buscarProyecto(Integer.valueOf(id)) != null) {
+                try {
+                    conector.eliminarObjetoBaseDatos(Integer.parseInt(id), "DELETE FROM trabajan WHERE Codigo = ?");
+                } catch (SQLException ex) {
+                    Logger.getLogger(Ventana1.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                empleados = (ArrayList<Empleado>) conector.consultarBaseDatosEmpleado(conector.conectorBaseDatos());
             }
-        }else{
-            if(filaSeleccionadaProyecto == -1)
-                JOptionPane.showMessageDialog(null, "Por favor, Tienes que seleccionar en la tabla que relacion quieres eliminar.", "Error", JOptionPane.ERROR_MESSAGE);
-            else
-               JOptionPane.showMessageDialog(null, "Por favor, Tienes que seleccionar el empleado en la tabla.", "Error", JOptionPane.ERROR_MESSAGE);
-        }*/
+            jTable_Empleado.clearSelection();
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Por favor, Tienes que seleccionar en la tabla a quien quieres añadir la relacion.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        texto_relacion_empleados.setText("");
+        DefaultTableModel modeloTabla = (DefaultTableModel) jTable_Proyectos_Empleados_Relacion.getModel();
+        modeloTabla.setRowCount(0);
     }//GEN-LAST:event_Eliminar_relacion_empleadosActionPerformed
 
     private void jTable_Proyectos1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_Proyectos1MouseClicked
-        
+
     }//GEN-LAST:event_jTable_Proyectos1MouseClicked
 
     private void jTable_Proyectos_Empleados_RelacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_Proyectos_Empleados_RelacionMouseClicked
-        
+
     }//GEN-LAST:event_jTable_Proyectos_Empleados_RelacionMouseClicked
 
     private void texto_relacion_empleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_texto_relacion_empleadosActionPerformed
-        
+
     }//GEN-LAST:event_texto_relacion_empleadosActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -1489,15 +1473,13 @@ public class Ventana1 extends javax.swing.JFrame {
 
     private void boton_relacion_proyecto_empleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_relacion_proyecto_empleadoActionPerformed
         String codigo = texto_relacion_proyecto_empleado.getText();
-        DefaultTableModel modelo = (DefaultTableModel) jTable_Proyectos.getModel();
         int filaSeleccionada = jTable_Proyectos.getSelectedRow();
-        
-        
-        if (filaSeleccionada != -1){
-            
+
+        if (filaSeleccionada != -1) {
+
             //Crea y asigna la relacion al proyecto
             String id = jTable_Proyectos.getValueAt(filaSeleccionada, 0).toString();
-            if(conector.buscarProyecto(Integer.valueOf(id)) != null && conector.buscarEmpleado(Integer.valueOf(codigo)) != null){
+            if (conector.buscarProyecto(Integer.valueOf(id)) != null && conector.buscarEmpleado(Integer.valueOf(codigo)) != null) {
                 try {
                     conector.anadirRelacionProyectoEmpleado(Integer.valueOf(id), Integer.valueOf(codigo));
                 } catch (SQLException ex) {
@@ -1505,11 +1487,11 @@ public class Ventana1 extends javax.swing.JFrame {
                 }
                 proyectos = (ArrayList<Proyecto>) conector.consultarBaseDatosProyecto(conector.conectorBaseDatos());
             }
-            
+
             //carga los datos en la vista
             generador.cargarDatosEnJTableProyectos(proyectos, jTable_Proyectos);
-            
-        }else{
+
+        } else {
             JOptionPane.showMessageDialog(null, "Por favor, Tienes que seleccionar en la tabla a quien quieres añadir la relacion.", "Error", JOptionPane.ERROR_MESSAGE);
         }
         texto_relacion_empleados.setText("");
@@ -1635,11 +1617,11 @@ public class Ventana1 extends javax.swing.JFrame {
             else
                JOptionPane.showMessageDialog(null, "Por favor, Tienes que seleccionar el empleado en la tabla.", "Error", JOptionPane.ERROR_MESSAGE);
         }*/
-        
+
     }//GEN-LAST:event_Eliminar_relacion_empleados2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-       /* String codigo = jTextField4.getText();
+        /* String codigo = jTextField4.getText();
         int filaSeleccionada = jTable_Proveedores.getSelectedRow();
         
         
@@ -1758,7 +1740,7 @@ public class Ventana1 extends javax.swing.JFrame {
     private javax.swing.JTextField texto_relacion_empleados;
     private javax.swing.JTextField texto_relacion_proyecto_empleado;
     // End of variables declaration//GEN-END:variables
-    
+
     private ArrayList<Empleado> empleados = new ArrayList<>();
     private ArrayList<Proyecto> proyectos = new ArrayList<>();
     private ArrayList<Producto> productos = new ArrayList<>();
