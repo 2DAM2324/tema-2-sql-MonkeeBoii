@@ -1287,10 +1287,10 @@ public class Ventana1 extends javax.swing.JFrame {
             String col2 = jTextField_dni_Empleado.getText();
             String col3 = jTextField_Nombre_Empleado.getText();
             
-            if(!col1.equals(col1Antiguo)){
+            if(!col1.toString().equals(col1Antiguo)){
                 pasaFiltro1 = generador.comprobarSiElObjetoYaExisteEmpleado(empleados, col1.toString());
             }
-            if(col1.equals(col1Antiguo) || pasaFiltro1){
+            if(col1.toString().equals(col1Antiguo) || pasaFiltro1){
                 pasaFiltro2 = generador.tieneAlgunAtributoVacio(col2, col3);
                 
                 if(pasaFiltro2){
@@ -1330,11 +1330,11 @@ public class Ventana1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_anadir_proveedoresActionPerformed
 
     private void jButton_modificar_ProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_modificar_ProveedoresActionPerformed
-       /* boolean funcionamientoCorrecto;
-        funcionamientoCorrecto = generador.generarCamposVistaProveedor(jTextField_codigo_Proveedor, jTextField_Nombre_proveedor, jTable_Proveedores);
-        col1Antiguo = jTextField_codigo_Proveedor.getText();
+        boolean funcionamientoCorrecto;
+        funcionamientoCorrecto = generador.generarCamposVistaProveedor(jTextField_Nombre_proveedor, jTable_Proveedores);
+        col1Antiguo = jTable_Proveedores.getValueAt(jTable_Proveedores.getSelectedRow(), 0).toString();
         if(funcionamientoCorrecto)
-           continuar = true;*/
+           continuar = true;
     }//GEN-LAST:event_jButton_modificar_ProveedoresActionPerformed
 
     private void jButton_borrar_proveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_borrar_proveedorActionPerformed
@@ -1353,33 +1353,30 @@ public class Ventana1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_borrar_proveedorActionPerformed
 
     private void jButton_guardar_personaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_guardar_personaActionPerformed
-         /*if(continuar){
-            String col1 = jTextField_codigo_Proveedor.getText();
+            if(continuar){
+            Integer col1 = Integer.valueOf(jTable_Proveedores.getValueAt(jTable_Proveedores.getSelectedRow(), 0).toString());
             String col2 = jTextField_Nombre_proveedor.getText();
             
-            if(!col1.equals(col1Antiguo)){
-            pasaFiltro1 = generador.comprobarSiElObjetoYaExisteProveedor(proveedor, col1);
+            if(!col1.toString().equals(col1Antiguo)){
+            pasaFiltro1 = generador.comprobarSiElObjetoYaExisteProveedor(proveedor, col1.toString());
             }
-            if(col1.equals(col1Antiguo) || pasaFiltro1){
-                pasaFiltro2 = generador.tieneAlgunAtributoVacio(col1, col2, null);
+            if(col1.toString().equals(col1Antiguo) || pasaFiltro1){
+                pasaFiltro2 = generador.tieneAlgunAtributoVacio(null, col2);
                 if(pasaFiltro2){
                     proveedor.add(generador.modificarProveedores(col1, col2, jTable_Proveedores, proveedor));
-                    generador.eliminarFilaSeleccionadaProveedor(jTable_Proveedores, proveedor);
-                    generador.generarXMLParaProveedor(proveedor, "proveedores.dat");
-                    proveedor = (ArrayList<Proveedor>) generador.leerXMLDeProveedores("proveedores.dat");
-                    generador.cargarDatosEnJTableProveedores(proveedor, jTable_Proveedores);
-                    generador.resetearCamposProveedor(jTextField_codigo_Proveedor, jTextField_Nombre_proveedor);
-                    
-                    for(Producto producto : productos){
-                        if(producto.getProveedorProducto().getCodigoProveedor().equals(col1)){
-                            producto.setProveedorProducto(generador.buscarObjetoEnArrayProveedor(col1, proveedor));
-                            generador.generarXMLParaProducto(productos, "Productos.dat");
-                            productos = (ArrayList<Producto>) generador.leerXMLDeProductos("Productos.dat");
-                        }
+                    generador.eliminarFilaSeleccionada(jTable_Proveedores);
+                    try {
+                        conector.modificarProveedorBaseDatos(col1, col2);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Ventana1.class.getName()).log(Level.SEVERE, null, ex);
                     }
+                    proveedor = (ArrayList<Proveedor>) conector.consultarBaseDatosProveedor(conector.conectorBaseDatos());
+                    generador.cargarDatosEnJTableProveedores(proveedor, jTable_Proveedores);
+                    generador.resetearCamposProveedor(jTextField_Nombre_proveedor);
+                    
                 }
             }
-       }*/
+       }
     }//GEN-LAST:event_jButton_guardar_personaActionPerformed
 
     private void jTable_ProveedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_ProveedoresMouseClicked

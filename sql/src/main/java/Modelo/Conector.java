@@ -465,7 +465,7 @@ public class Conector {
     }
 
     public void modificarProveedorBaseDatos(Integer id, String nombre) throws SQLException {
-        String sentencia = "UPDATE empleado SET Nombre = ? WHERE Codigo = ?";
+        String sentencia = "UPDATE proveedor SET Nombre = ? WHERE Codigo = ?";
         try (PreparedStatement stat = conn.prepareStatement(sentencia)) {
             stat.setString(1, nombre);
             stat.setInt(2, id);

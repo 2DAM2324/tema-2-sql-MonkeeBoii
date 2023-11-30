@@ -257,16 +257,15 @@ public class GeneratorAndRead {
         return null;
     }
 
-    public boolean generarCamposVistaProveedor(JTextField id, JTextField nombre, JTable tabla) {
+    public boolean generarCamposVistaProveedor(JTextField nombre, JTable tabla) {
         boolean a = false;
         DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
         int filaSeleccionada = tabla.getSelectedRow();
 
         if (filaSeleccionada != -1) {
-            String valor1 = modelo.getValueAt(filaSeleccionada, 0).toString();
+
             String valor2 = modelo.getValueAt(filaSeleccionada, 1).toString();
 
-            id.setText(valor1);
             nombre.setText(valor2);
             a = true;
         }
