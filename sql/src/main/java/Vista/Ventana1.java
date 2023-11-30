@@ -11,6 +11,7 @@ import Modelo.Proveedor;
 import Modelo.Proyecto;
 import Controlador.GeneratorAndRead;
 import Modelo.Conector;
+import java.awt.Component;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
@@ -38,7 +39,6 @@ public class Ventana1 extends javax.swing.JFrame {
         proveedor = (ArrayList<Proveedor>) conector.consultarBaseDatosProveedor(conector.conectorBaseDatos());
         generador.cargarDatosEnJTableProveedores(proveedor, jTable_Proveedores);
         
-
     }
    
     @SuppressWarnings("unchecked")
@@ -482,7 +482,7 @@ public class Ventana1 extends javax.swing.JFrame {
 
         tabla_relacion_proyecto_empleado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null}
+
             },
             new String [] {
                 "DNI", "Nombre"
@@ -1199,7 +1199,15 @@ public class Ventana1 extends javax.swing.JFrame {
     private void jTable_ProyectosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_ProyectosMouseClicked
         
         int filaSeleccionada = jTable_Proyectos.getSelectedRow();
-        Integer codigo = Integer.valueOf(jTable_Proyectos.getValueAt(filaSeleccionada, 0).toString());
+        String codigo = jTable_Proyectos.getValueAt(filaSeleccionada, 0).toString();
+        lista = conector.buscarEmpleadoRelacioTrabajan(Integer.valueOf(codigo));
+        ArrayList<Empleado> empleadosBuscados = new ArrayList<>();
+        for(Integer n : lista){
+            empleadosBuscados.add(generador.buscarObjetoEnArrayEmpleado(n, empleados));
+        }
+        generador.cargarDatosEnJTableEmpleados(empleadosBuscados, tabla_relacion_proyecto_empleado);
+        //TODO(1): HACER LA VISUALIZACION DE LOS PRODUCTOS.
+        jTable_Proyectos.clearSelection();
         
         
             
