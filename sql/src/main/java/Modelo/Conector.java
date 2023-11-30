@@ -536,4 +536,56 @@ public class Conector {
         }
         return null;
     }
+    
+    public Producto buscarProducto(Integer id) {
+        PreparedStatement consulta = null;
+        ResultSet resultado = null;
+        try {
+            consulta = conn.prepareStatement("SELECT * FROM producto WHERE Codigo==" + id);
+            resultado = consulta.executeQuery();
+            Producto producto = new Producto(resultado.getInt(1), resultado.getString(2), resultado.getInt(3));
+            return producto;
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+        } finally {
+            if (consulta != null) {
+                try {
+                    consulta.close();
+                    if (resultado != null) {
+                        resultado.close();
+                    }
+                } catch (SQLException sqle2) {
+                    sqle2.printStackTrace();
+                }
+
+            }
+        }
+        return null;
+    }
+    
+    public Proveedor buscarProveedor(Integer id) {
+        PreparedStatement consulta = null;
+        ResultSet resultado = null;
+        try {
+            consulta = conn.prepareStatement("SELECT * FROM producto WHERE Codigo==" + id);
+            resultado = consulta.executeQuery();
+            Proveedor proveedor = new Proveedor(resultado.getInt(1), resultado.getString(2));
+            return proveedor;
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+        } finally {
+            if (consulta != null) {
+                try {
+                    consulta.close();
+                    if (resultado != null) {
+                        resultado.close();
+                    }
+                } catch (SQLException sqle2) {
+                    sqle2.printStackTrace();
+                }
+
+            }
+        }
+        return null;
+    }
 }
