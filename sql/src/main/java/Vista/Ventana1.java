@@ -1409,6 +1409,8 @@ public class Ventana1 extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Por favor, Tienes que seleccionar en la tabla a quien quieres añadir la relacion.", "Error", JOptionPane.ERROR_MESSAGE);
         }
         texto_relacion_empleados.setText("");
+        DefaultTableModel modeloTabla = (DefaultTableModel) jTable_Proyectos_Empleados_Relacion.getModel();
+        modeloTabla.setRowCount(0);
     }//GEN-LAST:event_anadir_relacion_EmpleadoActionPerformed
 
     private void Eliminar_relacion_empleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Eliminar_relacion_empleadosActionPerformed
@@ -1495,6 +1497,8 @@ public class Ventana1 extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Por favor, Tienes que seleccionar en la tabla a quien quieres añadir la relacion.", "Error", JOptionPane.ERROR_MESSAGE);
         }
         texto_relacion_empleados.setText("");
+        DefaultTableModel modeloTabla = (DefaultTableModel) jTable_Proyectos_Empleados_Relacion.getModel();
+        modeloTabla.setRowCount(0);
 
     }//GEN-LAST:event_boton_relacion_proyecto_empleadoActionPerformed
 
