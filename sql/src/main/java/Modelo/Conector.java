@@ -55,23 +55,9 @@ public class Conector {
 
             while (resultado.next()) {
                 Empleado empleado = new Empleado(resultado.getInt(1), resultado.getString(2), resultado.getString(3));
-                PreparedStatement consulta1 = conn.prepareStatement("SELECT * FROM trabajan WHERE codigoEmpleado==" + resultado.getInt(1));
-                ResultSet resultado1 = consulta1.executeQuery();
-
-                while (resultado1.next()) {
-                    empleado.setCodigoProyecto(resultado1.getInt(3));
-                }
 
                 empleados.add(empleado);
 
-                if (consulta1 != null) {
-                    try {
-                        consulta1.close();
-                        resultado1.close();
-                    } catch (SQLException sqle2) {
-                        sqle2.printStackTrace();
-                    }
-                }
             }
         } catch (SQLException sqle) {
             sqle.printStackTrace();
@@ -102,23 +88,10 @@ public class Conector {
 
             while (resultado.next()) {
                 Proyecto proyecto = new Proyecto(resultado.getInt(1), resultado.getString(2), resultado.getInt(3));
-                PreparedStatement consulta1 = conn.prepareStatement("SELECT * FROM trabajan WHERE codigoProyecto==" + resultado.getInt(1));
-                ResultSet resultado1 = consulta1.executeQuery();
                 proyecto.setCodigoProducto(resultado.getInt(4));
 
-                while (resultado1.next()) {
-                    proyecto.setCodigoEmpleado(resultado1.getInt(2));
-                }
-
                 proyectos.add(proyecto);
-                if (consulta1 != null) {
-                    try {
-                        consulta1.close();
-                        resultado1.close();
-                    } catch (SQLException sqle2) {
-                        sqle2.printStackTrace();
-                    }
-                }
+
             }
         } catch (SQLException sqle) {
             sqle.printStackTrace();
@@ -510,7 +483,7 @@ public class Conector {
         }
         return null;
     }
-    
+
     public Proyecto buscarProyecto(Integer id) {
         PreparedStatement consulta = null;
         ResultSet resultado = null;
@@ -536,7 +509,7 @@ public class Conector {
         }
         return null;
     }
-    
+
     public Producto buscarProducto(Integer id) {
         PreparedStatement consulta = null;
         ResultSet resultado = null;
@@ -562,7 +535,7 @@ public class Conector {
         }
         return null;
     }
-    
+
     public Proveedor buscarProveedor(Integer id) {
         PreparedStatement consulta = null;
         ResultSet resultado = null;
@@ -587,5 +560,104 @@ public class Conector {
             }
         }
         return null;
+    }
+
+    public void anadirRelacionProyectoEmpleado(Integer id, Integer id2) throws SQLException {
+        String sent = "INSERT INTO trabajan (Codigo, CodigoProyecto, CodigoEmpleado) VALUES (?, ?, ?)";
+        PreparedStatement stat = conn.prepareStatement(sent);
+        final boolean oldAutoCommit = stat.getConnection().getAutoCommit();
+        stat.getConnection().setAutoCommit(false);
+        try {
+            try {
+                stat = conn.prepareStatement(sent);
+
+                stat.setInt(2, id);
+                stat.setInt(3, id2);
+
+                stat.executeUpdate();
+                ResultSet generateKeys = stat.getGeneratedKeys();
+                if (generateKeys.next()) {
+                    int id1 = generateKeys.getInt(1);
+                    stat.setInt(1, id1);
+                }
+            } catch (SQLException sqle) {
+                sqle.printStackTrace();
+            } finally {
+                try {
+                    stat.close();
+                } catch (SQLException sqle2) {
+                    sqle2.printStackTrace();
+                }
+            }
+        } catch (Exception e) {
+            stat.getConnection().rollback();
+        } finally {
+            stat.getConnection().commit();
+            stat.getConnection().setAutoCommit(oldAutoCommit);
+        }
+    }
+
+    public List<Integer> buscarEmpleadoRelacioTrabajan(Integer id) {
+        PreparedStatement consulta = null;
+        ResultSet resultado = null;
+        List<Integer> integers = new ArrayList<Integer>();
+
+        try {
+            consulta = conn.prepareStatement("SELECT * FROM trabajan WHERE CodigoEmpleado==" + id);
+            resultado = consulta.executeQuery();
+
+            while (resultado.next()) {
+
+                integers.add(resultado.getInt(2));
+
+            }
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+        } finally {
+            if (consulta != null) {
+                try {
+                    consulta.close();
+                    if (resultado != null) {
+                        resultado.close();
+                    }
+                } catch (SQLException sqle2) {
+                    sqle2.printStackTrace();
+                }
+
+            }
+        }
+        return integers;
+    }
+
+    public List<Integer> buscarProyectoRelacioTrabajan(Integer id) {
+        PreparedStatement consulta = null;
+        ResultSet resultado = null;
+        List<Integer> integers = new ArrayList<Integer>();
+
+        try {
+            consulta = conn.prepareStatement("SELECT * FROM trabajan WHERE CodigoProyecto==" + id);
+            resultado = consulta.executeQuery();
+
+            while (resultado.next()) {
+
+                integers.add(resultado.getInt(3));
+
+            }
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+        } finally {
+            if (consulta != null) {
+                try {
+                    consulta.close();
+                    if (resultado != null) {
+                        resultado.close();
+                    }
+                } catch (SQLException sqle2) {
+                    sqle2.printStackTrace();
+                }
+
+            }
+        }
+        return integers;
     }
 }

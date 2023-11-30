@@ -15,6 +15,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class Ventana1 extends javax.swing.JFrame {
     GeneratorAndRead generador = new GeneratorAndRead();
@@ -331,8 +332,8 @@ public class Ventana1 extends javax.swing.JFrame {
                             .addComponent(jButton_anadir_empleados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton_borrar_Empleados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel_ciudadLayout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(texto_relacion_empleados, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -381,7 +382,7 @@ public class Ventana1 extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(Eliminar_relacion_empleados))
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addContainerGap(126, Short.MAX_VALUE))
         );
 
         jTabbedPane.addTab("Empleados", jPanel_ciudad);
@@ -469,7 +470,7 @@ public class Ventana1 extends javax.swing.JFrame {
 
         jLabel6.setText("Codigo Producto");
 
-        jLabel7.setText("Codigo DNI");
+        jLabel7.setText("Codigo empleado");
 
         boton_relacion_proyecto_empleado.setText("Añadir Relacion");
         boton_relacion_proyecto_empleado.addActionListener(new java.awt.event.ActionListener() {
@@ -566,16 +567,9 @@ public class Ventana1 extends javax.swing.JFrame {
         jPanel_bibliotecaLayout.setHorizontalGroup(
             jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton_modificar_Proyectos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton_anadir_proyectos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton_borrar_Proyecto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addGroup(jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -592,32 +586,37 @@ public class Ventana1 extends javax.swing.JFrame {
                             .addComponent(jButton_cancelar_biblioteca, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(47, 47, 47))
                     .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
-                        .addGap(30, 30, 30)
                         .addGroup(jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_bibliotecaLayout.createSequentialGroup()
-                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jButton_modificar_Proyectos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButton_anadir_proyectos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButton_borrar_Proyecto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
+                                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Eliminar_relacion_empleados1))
+                            .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
+                                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Eliminar_relacion_empleados3))
+                            .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jLabel7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(texto_relacion_proyecto_empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(boton_relacion_proyecto_empleado))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_bibliotecaLayout.createSequentialGroup()
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(24, 24, 24)
                                 .addComponent(texto_codigo_producto, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton6))))
-                    .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Eliminar_relacion_empleados1)))
+                                .addComponent(jButton6)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Eliminar_relacion_empleados3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel_bibliotecaLayout.setVerticalGroup(
             jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -662,8 +661,8 @@ public class Ventana1 extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(texto_relacion_proyecto_empleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(boton_relacion_proyecto_empleado)
-                    .addComponent(jLabel7))
+                    .addComponent(jLabel7)
+                    .addComponent(boton_relacion_proyecto_empleado))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addGroup(jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -962,8 +961,8 @@ public class Ventana1 extends javax.swing.JFrame {
                                     .addComponent(jButton_guardar_persona, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jButton_cancelar_persona, javax.swing.GroupLayout.PREFERRED_SIZE, 85, Short.MAX_VALUE)))
                             .addGroup(jPanel_personaLayout.createSequentialGroup()
-                                .addGap(27, 27, 27)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(14, 14, 14)
+                                .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1197,22 +1196,12 @@ public class Ventana1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_guardar_bibliotecaActionPerformed
 
     private void jTable_ProyectosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_ProyectosMouseClicked
-        /*
-        int filaSeleccionada = jTable_Proyectos.getSelectedRow();
-        String dni = jTable_Proyectos.getValueAt(filaSeleccionada, 0).toString();
-        if(generador.buscarObjetoEnArrayProyecto(dni, proyectos) != null)
-            generador.cargarDatosEnJTableEmpleados(generador.buscarObjetoEnArrayProyecto(dni, proyectos).getAsignacionesEmpleados(), tabla_relacion_proyecto_empleado);
         
-        if(generador.buscarObjetoEnArrayProyecto(dni, proyectos) != null){
-            ArrayList<Producto> proR = new ArrayList<>();
-            proR.add(generador.buscarObjetoEnArrayProyecto(dni, proyectos).getProductoProyecto());
-            if(!proR.get(0).getCodigoProductos().isBlank()){
-                generador.cargarDatosEnJTableProductos(proR, tabla_producto_relacion);
-            }else{
-                Producto p = null;
-                generador.cargarDatosEnJTableProductos(p, tabla_producto_relacion);
-            }
-        }*/
+        int filaSeleccionada = jTable_Proyectos.getSelectedRow();
+        Integer codigo = Integer.valueOf(jTable_Proyectos.getValueAt(filaSeleccionada, 0).toString());
+        
+        
+            
     }//GEN-LAST:event_jTable_ProyectosMouseClicked
 
     private void jTextField_dni_EmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_dni_EmpleadoActionPerformed
@@ -1486,7 +1475,7 @@ public class Ventana1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void boton_relacion_proyecto_empleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_relacion_proyecto_empleadoActionPerformed
-        /*String dni = texto_relacion_proyecto_empleado.getText();
+        String codigo = texto_relacion_proyecto_empleado.getText();
         DefaultTableModel modelo = (DefaultTableModel) jTable_Proyectos.getModel();
         int filaSeleccionada = jTable_Proyectos.getSelectedRow();
         
@@ -1495,27 +1484,23 @@ public class Ventana1 extends javax.swing.JFrame {
             
             //Crea y asigna la relacion al proyecto
             String id = jTable_Proyectos.getValueAt(filaSeleccionada, 0).toString();
-            if(generador.buscarObjetoEnArrayProyecto(id, proyectos) != null && generador.buscarObjetoEnArrayEmpleado(dni, empleados) != null){
-                generador.anadirEmpleadoAProyecto(generador.buscarObjetoEnArrayProyecto(id, proyectos).getAsignacionesEmpleados(), generador.buscarObjetoEnArrayEmpleado(dni, empleados));
-                generador.generarXMLParaProyecto(proyectos, "Proyectos.dat");
-                proyectos = (ArrayList<Proyecto>) generador.leerXMLDeProyectos("Proyectos.dat");
+            if(conector.buscarProyecto(Integer.valueOf(id)) != null && conector.buscarEmpleado(Integer.valueOf(codigo)) != null){
+                try {
+                    conector.anadirRelacionProyectoEmpleado(Integer.valueOf(id), Integer.valueOf(codigo));
+                } catch (SQLException ex) {
+                    Logger.getLogger(Ventana1.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                proyectos = (ArrayList<Proyecto>) conector.consultarBaseDatosProyecto(conector.conectorBaseDatos());
             }
             
             //carga los datos en la vista
             generador.cargarDatosEnJTableProyectos(proyectos, jTable_Proyectos);
             
-            //Asigna el proyecto al empleado
-            if(generador.buscarObjetoEnArrayEmpleado(dni, empleados) != null && generador.buscarObjetoEnArrayProyecto(id, proyectos) != null){
-                generador.anadirProyectoAEmpleado(generador.buscarObjetoEnArrayEmpleado(dni, empleados).getProyectosAsignados(), generador.buscarObjetoEnArrayProyecto(id, proyectos));
-                generador.generarXMLParaEmpleados(empleados, "empleados.dat");
-                empleados = (ArrayList<Empleado>) generador.leerXMLDeEmpleados("empleados.dat");
-            }
-            
         }else{
             JOptionPane.showMessageDialog(null, "Por favor, Tienes que seleccionar en la tabla a quien quieres añadir la relacion.", "Error", JOptionPane.ERROR_MESSAGE);
         }
         texto_relacion_empleados.setText("");
-*/
+
     }//GEN-LAST:event_boton_relacion_proyecto_empleadoActionPerformed
 
     private void tabla_relacion_proyecto_empleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_relacion_proyecto_empleadoMouseClicked
