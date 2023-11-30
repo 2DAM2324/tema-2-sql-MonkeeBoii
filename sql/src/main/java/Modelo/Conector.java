@@ -20,7 +20,7 @@ public class Conector {
 
     private Connection conn;
 
-    public Conector() { 
+    public Conector() {
         try {
             String url = "jdbc:sqlite:baseDeDatos.db3";
             conn = DriverManager.getConnection(url);
@@ -483,5 +483,57 @@ public class Conector {
                 conn.rollback();
             }
         }
+    }
+
+    public Empleado buscarEmpleado(Integer id) {
+        PreparedStatement consulta = null;
+        ResultSet resultado = null;
+        try {
+            consulta = conn.prepareStatement("SELECT * FROM empleado WHERE Codigo==" + id);
+            resultado = consulta.executeQuery();
+            Empleado empleado = new Empleado(resultado.getInt(1), resultado.getString(2), resultado.getString(3));
+            return empleado;
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+        } finally {
+            if (consulta != null) {
+                try {
+                    consulta.close();
+                    if (resultado != null) {
+                        resultado.close();
+                    }
+                } catch (SQLException sqle2) {
+                    sqle2.printStackTrace();
+                }
+
+            }
+        }
+        return null;
+    }
+    
+    public Proyecto buscarProyecto(Integer id) {
+        PreparedStatement consulta = null;
+        ResultSet resultado = null;
+        try {
+            consulta = conn.prepareStatement("SELECT * FROM proyecto WHERE Codigo==" + id);
+            resultado = consulta.executeQuery();
+            Proyecto proyecto = new Proyecto(resultado.getInt(1), resultado.getString(2), resultado.getInt(3));
+            return proyecto;
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+        } finally {
+            if (consulta != null) {
+                try {
+                    consulta.close();
+                    if (resultado != null) {
+                        resultado.close();
+                    }
+                } catch (SQLException sqle2) {
+                    sqle2.printStackTrace();
+                }
+
+            }
+        }
+        return null;
     }
 }
