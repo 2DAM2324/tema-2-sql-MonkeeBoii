@@ -67,6 +67,32 @@ public class Ventana1 extends javax.swing.JFrame {
         Eliminar_relacion_empleados = new javax.swing.JButton();
         jScrollPane6 = new javax.swing.JScrollPane();
         jTable_Proyectos_Empleados_Relacion = new javax.swing.JTable();
+        jPanel_biblioteca = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable_Proyectos = new javax.swing.JTable();
+        jLabel_telefono = new javax.swing.JLabel();
+        jLabel_direccion = new javax.swing.JLabel();
+        jTextField_Nombre_Proyectos = new javax.swing.JTextField();
+        jTextField_Presupuesto_Proyecto = new javax.swing.JTextField();
+        jButton_guardar_biblioteca = new javax.swing.JButton();
+        jButton_cancelar_biblioteca = new javax.swing.JButton();
+        jButton_anadir_proyectos = new javax.swing.JButton();
+        jButton_modificar_Proyectos = new javax.swing.JButton();
+        jButton_borrar_Proyecto = new javax.swing.JButton();
+        jLabel_ciudades_bibliotecas = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        texto_codigo_producto = new javax.swing.JTextField();
+        jButton6 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        texto_relacion_proyecto_empleado = new javax.swing.JTextField();
+        boton_relacion_proyecto_empleado = new javax.swing.JButton();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        tabla_relacion_proyecto_empleado = new javax.swing.JTable();
+        Eliminar_relacion_empleados1 = new javax.swing.JButton();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        tabla_producto_relacion = new javax.swing.JTable();
+        Eliminar_relacion_empleados3 = new javax.swing.JButton();
         jPanel_libro = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable_Productos = new javax.swing.JTable();
@@ -97,32 +123,6 @@ public class Ventana1 extends javax.swing.JFrame {
         jScrollPane9 = new javax.swing.JScrollPane();
         jTable_Productos1 = new javax.swing.JTable();
         Eliminar_relacion_empleados2 = new javax.swing.JButton();
-        jPanel_biblioteca = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable_Proyectos = new javax.swing.JTable();
-        jLabel_telefono = new javax.swing.JLabel();
-        jLabel_direccion = new javax.swing.JLabel();
-        jTextField_Nombre_Proyectos = new javax.swing.JTextField();
-        jTextField_Presupuesto_Proyecto = new javax.swing.JTextField();
-        jButton_guardar_biblioteca = new javax.swing.JButton();
-        jButton_cancelar_biblioteca = new javax.swing.JButton();
-        jButton_anadir_proyectos = new javax.swing.JButton();
-        jButton_modificar_Proyectos = new javax.swing.JButton();
-        jButton_borrar_Proyecto = new javax.swing.JButton();
-        jLabel_ciudades_bibliotecas = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
-        texto_codigo_producto = new javax.swing.JTextField();
-        jButton6 = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        texto_relacion_proyecto_empleado = new javax.swing.JTextField();
-        boton_relacion_proyecto_empleado = new javax.swing.JButton();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        tabla_relacion_proyecto_empleado = new javax.swing.JTable();
-        Eliminar_relacion_empleados1 = new javax.swing.JButton();
-        jScrollPane8 = new javax.swing.JScrollPane();
-        tabla_producto_relacion = new javax.swing.JTable();
-        Eliminar_relacion_empleados3 = new javax.swing.JButton();
 
         jTable_Proyectos1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -343,7 +343,7 @@ public class Ventana1 extends javax.swing.JFrame {
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Eliminar_relacion_empleados)))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
         jPanel_ciudadLayout.setVerticalGroup(
             jPanel_ciudadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -386,357 +386,10 @@ public class Ventana1 extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(Eliminar_relacion_empleados, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap(126, Short.MAX_VALUE))
+                .addContainerGap(138, Short.MAX_VALUE))
         );
 
         jTabbedPane.addTab("Empleados", jPanel_ciudad);
-
-        jTable_Productos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Codigo", "Nombre", "Precio"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jTable_Productos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable_ProductosMouseClicked(evt);
-            }
-        });
-        jScrollPane3.setViewportView(jTable_Productos);
-        if (jTable_Productos.getColumnModel().getColumnCount() > 0) {
-            jTable_Productos.getColumnModel().getColumn(0).setResizable(false);
-            jTable_Productos.getColumnModel().getColumn(1).setResizable(false);
-            jTable_Productos.getColumnModel().getColumn(2).setResizable(false);
-        }
-
-        jLabel_autor.setText("Nombre");
-
-        jLabel_edad_recomendada.setText("Precio");
-
-        jButton_guardar_libro.setText("Guardar");
-        jButton_guardar_libro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_guardar_libroActionPerformed(evt);
-            }
-        });
-
-        jButton_cancelar_libro.setText("Cancelar");
-        jButton_cancelar_libro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_cancelar_libroActionPerformed(evt);
-            }
-        });
-
-        jButton_borrar_productos.setText("Borrar");
-        jButton_borrar_productos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_borrar_productosActionPerformed(evt);
-            }
-        });
-
-        jButton_modificar_Productos.setText("Modificar");
-        jButton_modificar_Productos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_modificar_ProductosActionPerformed(evt);
-            }
-        });
-
-        jButton_anadir_productos.setText("Añadir");
-        jButton_anadir_productos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_anadir_productosActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel_libroLayout = new javax.swing.GroupLayout(jPanel_libro);
-        jPanel_libro.setLayout(jPanel_libroLayout);
-        jPanel_libroLayout.setHorizontalGroup(
-            jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_libroLayout.createSequentialGroup()
-                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel_libroLayout.createSequentialGroup()
-                        .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel_libroLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButton_modificar_Productos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton_anadir_productos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton_borrar_productos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(jPanel_libroLayout.createSequentialGroup()
-                                .addGap(27, 27, 27)
-                                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel_autor)
-                                    .addComponent(jLabel_edad_recomendada))
-                                .addGap(39, 39, 39)
-                                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField_nombre_productos)
-                                    .addComponent(jTextField_precio_productos))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButton_cancelar_libro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton_guardar_libro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addGap(0, 65, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        jPanel_libroLayout.setVerticalGroup(
-            jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_libroLayout.createSequentialGroup()
-                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel_libroLayout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(jButton_anadir_productos)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton_modificar_Productos, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton_borrar_productos))
-                    .addGroup(jPanel_libroLayout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(78, 78, 78)
-                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel_libroLayout.createSequentialGroup()
-                        .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel_autor)
-                            .addComponent(jTextField_nombre_productos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel_edad_recomendada)
-                            .addComponent(jTextField_precio_productos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel_libroLayout.createSequentialGroup()
-                        .addComponent(jButton_guardar_libro)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton_cancelar_libro)))
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(293, Short.MAX_VALUE))
-        );
-
-        jTabbedPane.addTab("Productos", jPanel_libro);
-
-        jTable_Proveedores.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "CodigoProveedor", "NombreProveedor"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jTable_Proveedores.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable_ProveedoresMouseClicked(evt);
-            }
-        });
-        jScrollPane4.setViewportView(jTable_Proveedores);
-        if (jTable_Proveedores.getColumnModel().getColumnCount() > 0) {
-            jTable_Proveedores.getColumnModel().getColumn(0).setResizable(false);
-            jTable_Proveedores.getColumnModel().getColumn(1).setResizable(false);
-        }
-
-        jLabel_DNI.setText("NombreProveedor");
-
-        jButton_guardar_persona.setText("Guardar");
-        jButton_guardar_persona.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_guardar_personaActionPerformed(evt);
-            }
-        });
-
-        jButton_cancelar_persona.setText("Cancelar");
-        jButton_cancelar_persona.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_cancelar_personaActionPerformed(evt);
-            }
-        });
-
-        jButton_borrar_proveedor.setText("Borrar");
-        jButton_borrar_proveedor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_borrar_proveedorActionPerformed(evt);
-            }
-        });
-
-        jButton_modificar_Proveedores.setText("Modificar");
-        jButton_modificar_Proveedores.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_modificar_ProveedoresActionPerformed(evt);
-            }
-        });
-
-        jButton_anadir_proveedores.setText("Añadir");
-        jButton_anadir_proveedores.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_anadir_proveedoresActionPerformed(evt);
-            }
-        });
-
-        jButton4.setText("Añadir Relacion");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
-        jLabel4.setText("Codigo Producto");
-
-        jTable_Productos1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Codigo", "Nombre", "Precio"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jTable_Productos1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable_Productos1MouseClicked(evt);
-            }
-        });
-        jScrollPane9.setViewportView(jTable_Productos1);
-        if (jTable_Productos1.getColumnModel().getColumnCount() > 0) {
-            jTable_Productos1.getColumnModel().getColumn(0).setResizable(false);
-            jTable_Productos1.getColumnModel().getColumn(1).setResizable(false);
-            jTable_Productos1.getColumnModel().getColumn(2).setResizable(false);
-        }
-
-        Eliminar_relacion_empleados2.setText("Eliminar Relacion");
-        Eliminar_relacion_empleados2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Eliminar_relacion_empleados2ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel_personaLayout = new javax.swing.GroupLayout(jPanel_persona);
-        jPanel_persona.setLayout(jPanel_personaLayout);
-        jPanel_personaLayout.setHorizontalGroup(
-            jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_personaLayout.createSequentialGroup()
-                .addGroup(jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel_personaLayout.createSequentialGroup()
-                        .addGroup(jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel_personaLayout.createSequentialGroup()
-                                .addGap(14, 14, 14)
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton4))
-                            .addGroup(jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel_personaLayout.createSequentialGroup()
-                                    .addGap(27, 27, 27)
-                                    .addComponent(jLabel_DNI)
-                                    .addGap(24, 24, 24)
-                                    .addComponent(jTextField_Nombre_proveedor)
-                                    .addGap(18, 18, 18)
-                                    .addGroup(jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jButton_cancelar_persona, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton_guardar_persona, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel_personaLayout.createSequentialGroup()
-                                    .addContainerGap()
-                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addGroup(jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jButton_modificar_Proveedores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton_anadir_proveedores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton_borrar_proveedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(jPanel_personaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Eliminar_relacion_empleados2)
-                .addContainerGap(27, Short.MAX_VALUE))
-        );
-        jPanel_personaLayout.setVerticalGroup(
-            jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_personaLayout.createSequentialGroup()
-                .addGroup(jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel_personaLayout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(jButton_anadir_proveedores)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton_modificar_Proveedores, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton_borrar_proveedor))
-                    .addGroup(jPanel_personaLayout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
-                .addGroup(jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel_DNI)
-                        .addComponent(jTextField_Nombre_proveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel_personaLayout.createSequentialGroup()
-                        .addComponent(jButton_guardar_persona)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton_cancelar_persona)))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_personaLayout.createSequentialGroup()
-                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addGroup(jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton4)
-                            .addComponent(jLabel4))
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(Eliminar_relacion_empleados2, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(124, 124, 124))
-        );
-
-        jTabbedPane.addTab("Proveedores", jPanel_persona);
 
         jTable_Proyectos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1004,7 +657,7 @@ public class Ventana1 extends javax.swing.JFrame {
                             .addComponent(texto_codigo_producto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton6)
                             .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                         .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -1014,7 +667,7 @@ public class Ventana1 extends javax.swing.JFrame {
                     .addComponent(texto_relacion_proyecto_empleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
                     .addComponent(boton_relacion_proyecto_empleado))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
@@ -1025,20 +678,364 @@ public class Ventana1 extends javax.swing.JFrame {
 
         jTabbedPane.addTab("Proyectos", jPanel_biblioteca);
 
+        jTable_Productos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Codigo", "Nombre", "Precio"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable_Productos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable_ProductosMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(jTable_Productos);
+        if (jTable_Productos.getColumnModel().getColumnCount() > 0) {
+            jTable_Productos.getColumnModel().getColumn(0).setResizable(false);
+            jTable_Productos.getColumnModel().getColumn(1).setResizable(false);
+            jTable_Productos.getColumnModel().getColumn(2).setResizable(false);
+        }
+
+        jLabel_autor.setText("Nombre");
+
+        jLabel_edad_recomendada.setText("Precio");
+
+        jButton_guardar_libro.setText("Guardar");
+        jButton_guardar_libro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_guardar_libroActionPerformed(evt);
+            }
+        });
+
+        jButton_cancelar_libro.setText("Cancelar");
+        jButton_cancelar_libro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_cancelar_libroActionPerformed(evt);
+            }
+        });
+
+        jButton_borrar_productos.setText("Borrar");
+        jButton_borrar_productos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_borrar_productosActionPerformed(evt);
+            }
+        });
+
+        jButton_modificar_Productos.setText("Modificar");
+        jButton_modificar_Productos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_modificar_ProductosActionPerformed(evt);
+            }
+        });
+
+        jButton_anadir_productos.setText("Añadir");
+        jButton_anadir_productos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_anadir_productosActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel_libroLayout = new javax.swing.GroupLayout(jPanel_libro);
+        jPanel_libro.setLayout(jPanel_libroLayout);
+        jPanel_libroLayout.setHorizontalGroup(
+            jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_libroLayout.createSequentialGroup()
+                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel_libroLayout.createSequentialGroup()
+                        .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel_libroLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jButton_modificar_Productos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButton_anadir_productos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButton_borrar_productos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPanel_libroLayout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel_autor)
+                                    .addComponent(jLabel_edad_recomendada))
+                                .addGap(39, 39, 39)
+                                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextField_nombre_productos)
+                                    .addComponent(jTextField_precio_productos))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jButton_cancelar_libro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButton_guardar_libro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(0, 47, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel_libroLayout.setVerticalGroup(
+            jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_libroLayout.createSequentialGroup()
+                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel_libroLayout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(jButton_anadir_productos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton_modificar_Productos, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton_borrar_productos))
+                    .addGroup(jPanel_libroLayout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(78, 78, 78)
+                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel_libroLayout.createSequentialGroup()
+                        .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel_autor)
+                            .addComponent(jTextField_nombre_productos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel_edad_recomendada)
+                            .addComponent(jTextField_precio_productos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel_libroLayout.createSequentialGroup()
+                        .addComponent(jButton_guardar_libro)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton_cancelar_libro)))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(305, Short.MAX_VALUE))
+        );
+
+        jTabbedPane.addTab("Productos", jPanel_libro);
+
+        jTable_Proveedores.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "CodigoProveedor", "NombreProveedor"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable_Proveedores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable_ProveedoresMouseClicked(evt);
+            }
+        });
+        jScrollPane4.setViewportView(jTable_Proveedores);
+        if (jTable_Proveedores.getColumnModel().getColumnCount() > 0) {
+            jTable_Proveedores.getColumnModel().getColumn(0).setResizable(false);
+            jTable_Proveedores.getColumnModel().getColumn(1).setResizable(false);
+        }
+
+        jLabel_DNI.setText("NombreProveedor");
+
+        jButton_guardar_persona.setText("Guardar");
+        jButton_guardar_persona.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_guardar_personaActionPerformed(evt);
+            }
+        });
+
+        jButton_cancelar_persona.setText("Cancelar");
+        jButton_cancelar_persona.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_cancelar_personaActionPerformed(evt);
+            }
+        });
+
+        jButton_borrar_proveedor.setText("Borrar");
+        jButton_borrar_proveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_borrar_proveedorActionPerformed(evt);
+            }
+        });
+
+        jButton_modificar_Proveedores.setText("Modificar");
+        jButton_modificar_Proveedores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_modificar_ProveedoresActionPerformed(evt);
+            }
+        });
+
+        jButton_anadir_proveedores.setText("Añadir");
+        jButton_anadir_proveedores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_anadir_proveedoresActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("Añadir Relacion");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Codigo Producto");
+
+        jTable_Productos1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Codigo", "Nombre", "Precio"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable_Productos1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable_Productos1MouseClicked(evt);
+            }
+        });
+        jScrollPane9.setViewportView(jTable_Productos1);
+        if (jTable_Productos1.getColumnModel().getColumnCount() > 0) {
+            jTable_Productos1.getColumnModel().getColumn(0).setResizable(false);
+            jTable_Productos1.getColumnModel().getColumn(1).setResizable(false);
+            jTable_Productos1.getColumnModel().getColumn(2).setResizable(false);
+        }
+
+        Eliminar_relacion_empleados2.setText("Eliminar Relacion");
+        Eliminar_relacion_empleados2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Eliminar_relacion_empleados2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel_personaLayout = new javax.swing.GroupLayout(jPanel_persona);
+        jPanel_persona.setLayout(jPanel_personaLayout);
+        jPanel_personaLayout.setHorizontalGroup(
+            jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_personaLayout.createSequentialGroup()
+                .addGroup(jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel_personaLayout.createSequentialGroup()
+                        .addGroup(jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel_personaLayout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton4))
+                            .addGroup(jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel_personaLayout.createSequentialGroup()
+                                    .addGap(27, 27, 27)
+                                    .addComponent(jLabel_DNI)
+                                    .addGap(24, 24, 24)
+                                    .addComponent(jTextField_Nombre_proveedor)
+                                    .addGap(18, 18, 18)
+                                    .addGroup(jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jButton_cancelar_persona, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jButton_guardar_persona, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel_personaLayout.createSequentialGroup()
+                                    .addContainerGap()
+                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addGroup(jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jButton_modificar_Proveedores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jButton_anadir_proveedores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jButton_borrar_proveedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(jPanel_personaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Eliminar_relacion_empleados2)
+                .addContainerGap(9, Short.MAX_VALUE))
+        );
+        jPanel_personaLayout.setVerticalGroup(
+            jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_personaLayout.createSequentialGroup()
+                .addGroup(jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel_personaLayout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(jButton_anadir_proveedores)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton_modificar_Proveedores, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton_borrar_proveedor))
+                    .addGroup(jPanel_personaLayout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
+                .addGroup(jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel_DNI)
+                        .addComponent(jTextField_Nombre_proveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel_personaLayout.createSequentialGroup()
+                        .addComponent(jButton_guardar_persona)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton_cancelar_persona)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_personaLayout.createSequentialGroup()
+                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33)
+                        .addGroup(jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton4)
+                            .addComponent(jLabel4))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Eliminar_relacion_empleados2, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(124, 124, 124))
+        );
+
+        jTabbedPane.addTab("Proveedores", jPanel_persona);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTabbedPane))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 617, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTabbedPane)
-                .addContainerGap())
+            .addComponent(jTabbedPane, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         jTabbedPane.getAccessibleContext().setAccessibleName("Ciudad");
@@ -1462,26 +1459,24 @@ public class Ventana1 extends javax.swing.JFrame {
     }//GEN-LAST:event_texto_relacion_empleadosActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        /*
+
         String codigo = texto_codigo_producto.getText();
         int filaSeleccionada = jTable_Proyectos.getSelectedRow();
-        
-        if(filaSeleccionada != -1){
+
+        if (filaSeleccionada != -1) {
             //Crea y asigna la relacion al producto
             String id = jTable_Proyectos.getValueAt(filaSeleccionada, 0).toString();
 
-            if(generador.buscarObjetoEnArrayProyecto(id, proyectos) != null && generador.buscarObjetoEnArrayProducto(codigo, productos) != null){
-                generador.anadirProductoAProyecto(generador.buscarObjetoEnArrayProyecto(id, proyectos), generador.buscarObjetoEnArrayProducto(codigo, productos));
-                generador.generarXMLParaProyecto(proyectos, "Proyectos.dat");
-                proyectos = (ArrayList<Proyecto>) generador.leerXMLDeProyectos("Proyectos.dat");
+            if (conector.buscarProducto(Integer.valueOf(codigo)) != null) {
+                try {
+                    conector.insertarRelacionEnProyectoElProducto(Integer.valueOf(id), "UPDATE proyecto SET CodigoProducto = ? WHERE Codigo = ?", Integer.valueOf(codigo));
+                } catch (SQLException ex) {
+                    Logger.getLogger(Ventana1.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Por favor, Introduce un producto existente", "Error", JOptionPane.ERROR_MESSAGE);
             }
-            
-            if(generador.buscarObjetoEnArrayProyecto(id, proyectos) != null && generador.buscarObjetoEnArrayProducto(codigo, productos) != null){
-                generador.anadirProyectoAProducto(generador.buscarObjetoEnArrayProducto(codigo, productos).getProyectosProducto(), generador.buscarObjetoEnArrayProyecto(id, proyectos));
-                generador.generarXMLParaProducto(productos, "Productos.dat");
-                productos = (ArrayList<Producto>) generador.leerXMLDeProductos("Productos.dat");
-            }
-        }*/
+        }
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void boton_relacion_proyecto_empleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_relacion_proyecto_empleadoActionPerformed

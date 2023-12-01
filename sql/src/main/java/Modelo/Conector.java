@@ -661,5 +661,25 @@ public class Conector {
         return integers;
     }
     
+    public void insertarRelacionEnProyectoElProducto(Integer id, String consulta, Integer nuevo) throws SQLException{
+        String sentencia = consulta;
+        try (PreparedStatement stat = conn.prepareStatement(sentencia)) {
+            stat.setInt(1, nuevo);
+            stat.setInt(2, id);
+
+            int filasAfectadas = stat.executeUpdate();
+
+            if (filasAfectadas == 0) {
+                System.out.println("No se encontró ningún producto con la ID proporcionada.");
+            } else {
+                System.out.println("Producto modificado exitosamente.");
+            }
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+            if (conn != null) {
+                conn.rollback();
+            }
+        }
+    }
     
 }
