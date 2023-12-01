@@ -11,7 +11,6 @@ import Modelo.Proveedor;
 import Modelo.Proyecto;
 import Controlador.GeneratorAndRead;
 import Modelo.Conector;
-import java.awt.Component;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
@@ -68,32 +67,6 @@ public class Ventana1 extends javax.swing.JFrame {
         Eliminar_relacion_empleados = new javax.swing.JButton();
         jScrollPane6 = new javax.swing.JScrollPane();
         jTable_Proyectos_Empleados_Relacion = new javax.swing.JTable();
-        jPanel_biblioteca = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable_Proyectos = new javax.swing.JTable();
-        jLabel_telefono = new javax.swing.JLabel();
-        jLabel_direccion = new javax.swing.JLabel();
-        jTextField_Nombre_Proyectos = new javax.swing.JTextField();
-        jTextField_Presupuesto_Proyecto = new javax.swing.JTextField();
-        jButton_guardar_biblioteca = new javax.swing.JButton();
-        jButton_cancelar_biblioteca = new javax.swing.JButton();
-        jButton_anadir_proyectos = new javax.swing.JButton();
-        jButton_modificar_Proyectos = new javax.swing.JButton();
-        jButton_borrar_Proyecto = new javax.swing.JButton();
-        jLabel_ciudades_bibliotecas = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
-        texto_codigo_producto = new javax.swing.JTextField();
-        jButton6 = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        texto_relacion_proyecto_empleado = new javax.swing.JTextField();
-        boton_relacion_proyecto_empleado = new javax.swing.JButton();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        tabla_relacion_proyecto_empleado = new javax.swing.JTable();
-        Eliminar_relacion_empleados1 = new javax.swing.JButton();
-        jScrollPane8 = new javax.swing.JScrollPane();
-        tabla_producto_relacion = new javax.swing.JTable();
-        Eliminar_relacion_empleados3 = new javax.swing.JButton();
         jPanel_libro = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable_Productos = new javax.swing.JTable();
@@ -124,6 +97,32 @@ public class Ventana1 extends javax.swing.JFrame {
         jScrollPane9 = new javax.swing.JScrollPane();
         jTable_Productos1 = new javax.swing.JTable();
         Eliminar_relacion_empleados2 = new javax.swing.JButton();
+        jPanel_biblioteca = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable_Proyectos = new javax.swing.JTable();
+        jLabel_telefono = new javax.swing.JLabel();
+        jLabel_direccion = new javax.swing.JLabel();
+        jTextField_Nombre_Proyectos = new javax.swing.JTextField();
+        jTextField_Presupuesto_Proyecto = new javax.swing.JTextField();
+        jButton_guardar_biblioteca = new javax.swing.JButton();
+        jButton_cancelar_biblioteca = new javax.swing.JButton();
+        jButton_anadir_proyectos = new javax.swing.JButton();
+        jButton_modificar_Proyectos = new javax.swing.JButton();
+        jButton_borrar_Proyecto = new javax.swing.JButton();
+        jLabel_ciudades_bibliotecas = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        texto_codigo_producto = new javax.swing.JTextField();
+        jButton6 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        texto_relacion_proyecto_empleado = new javax.swing.JTextField();
+        boton_relacion_proyecto_empleado = new javax.swing.JButton();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        tabla_relacion_proyecto_empleado = new javax.swing.JTable();
+        Eliminar_relacion_empleados1 = new javax.swing.JButton();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        tabla_producto_relacion = new javax.swing.JTable();
+        Eliminar_relacion_empleados3 = new javax.swing.JButton();
 
         jTable_Proyectos1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -176,7 +175,7 @@ public class Ventana1 extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false
@@ -318,12 +317,12 @@ public class Ventana1 extends javax.swing.JFrame {
                             .addComponent(jLabel_pais))
                         .addGap(37, 37, 37)
                         .addGroup(jPanel_ciudadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField_dni_Empleado, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
+                            .addComponent(jTextField_dni_Empleado, javax.swing.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
                             .addComponent(jTextField_Nombre_Empleado))
-                        .addGap(38, 38, 38)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel_ciudadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton_guardar_empleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton_cancelar_Empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 85, Short.MAX_VALUE)))
+                            .addComponent(jButton_cancelar_Empleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton_guardar_empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel_ciudadLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -334,7 +333,7 @@ public class Ventana1 extends javax.swing.JFrame {
                             .addComponent(jButton_borrar_Empleados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel_ciudadLayout.createSequentialGroup()
                         .addGap(12, 12, 12)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(texto_relacion_empleados, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -344,7 +343,7 @@ public class Ventana1 extends javax.swing.JFrame {
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Eliminar_relacion_empleados)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         jPanel_ciudadLayout.setVerticalGroup(
             jPanel_ciudadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -369,11 +368,15 @@ public class Ventana1 extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel_ciudadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel_pais)
-                            .addComponent(jTextField_Nombre_Empleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton_guardar_empleado))
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton_cancelar_Empleado)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jTextField_Nombre_Empleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel_ciudadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel_ciudadLayout.createSequentialGroup()
+                            .addGap(36, 36, 36)
+                            .addComponent(jButton_cancelar_Empleado))
+                        .addComponent(jButton_guardar_empleado)))
+                .addGap(54, 54, 54)
+                .addGroup(jPanel_ciudadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_ciudadLayout.createSequentialGroup()
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(33, 33, 33)
                         .addGroup(jPanel_ciudadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -382,298 +385,11 @@ public class Ventana1 extends javax.swing.JFrame {
                             .addComponent(jLabel1))
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(Eliminar_relacion_empleados))
+                    .addComponent(Eliminar_relacion_empleados, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap(126, Short.MAX_VALUE))
         );
 
         jTabbedPane.addTab("Empleados", jPanel_ciudad);
-
-        jTable_Proyectos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Codigo", "Nombre", "Presupuesto"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jTable_Proyectos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable_ProyectosMouseClicked(evt);
-            }
-        });
-        jScrollPane2.setViewportView(jTable_Proyectos);
-        if (jTable_Proyectos.getColumnModel().getColumnCount() > 0) {
-            jTable_Proyectos.getColumnModel().getColumn(0).setResizable(false);
-            jTable_Proyectos.getColumnModel().getColumn(1).setResizable(false);
-            jTable_Proyectos.getColumnModel().getColumn(2).setResizable(false);
-        }
-
-        jLabel_telefono.setText("Nombre");
-
-        jLabel_direccion.setText("Presupuesto");
-
-        jButton_guardar_biblioteca.setText("Guardar");
-        jButton_guardar_biblioteca.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_guardar_bibliotecaActionPerformed(evt);
-            }
-        });
-
-        jButton_cancelar_biblioteca.setText("Cancelar");
-        jButton_cancelar_biblioteca.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_cancelar_bibliotecaActionPerformed(evt);
-            }
-        });
-
-        jButton_anadir_proyectos.setText("Añadir");
-        jButton_anadir_proyectos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_anadir_proyectosActionPerformed(evt);
-            }
-        });
-
-        jButton_modificar_Proyectos.setText("Modificar");
-        jButton_modificar_Proyectos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_modificar_ProyectosActionPerformed(evt);
-            }
-        });
-
-        jButton_borrar_Proyecto.setText("Borrar");
-        jButton_borrar_Proyecto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_borrar_ProyectoActionPerformed(evt);
-            }
-        });
-
-        jButton6.setText("Añadir Relacion");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-
-        jLabel6.setText("Codigo Producto");
-
-        jLabel7.setText("Codigo empleado");
-
-        boton_relacion_proyecto_empleado.setText("Añadir Relacion");
-        boton_relacion_proyecto_empleado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_relacion_proyecto_empleadoActionPerformed(evt);
-            }
-        });
-
-        tabla_relacion_proyecto_empleado.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "DNI", "Nombre"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tabla_relacion_proyecto_empleado.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tabla_relacion_proyecto_empleadoMouseClicked(evt);
-            }
-        });
-        jScrollPane7.setViewportView(tabla_relacion_proyecto_empleado);
-        if (tabla_relacion_proyecto_empleado.getColumnModel().getColumnCount() > 0) {
-            tabla_relacion_proyecto_empleado.getColumnModel().getColumn(0).setResizable(false);
-            tabla_relacion_proyecto_empleado.getColumnModel().getColumn(1).setResizable(false);
-        }
-
-        Eliminar_relacion_empleados1.setText("Eliminar Relacion");
-        Eliminar_relacion_empleados1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Eliminar_relacion_empleados1ActionPerformed(evt);
-            }
-        });
-
-        tabla_producto_relacion.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Codigo", "Nombre", "Precio"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tabla_producto_relacion.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tabla_producto_relacionMouseClicked(evt);
-            }
-        });
-        jScrollPane8.setViewportView(tabla_producto_relacion);
-        if (tabla_producto_relacion.getColumnModel().getColumnCount() > 0) {
-            tabla_producto_relacion.getColumnModel().getColumn(0).setResizable(false);
-            tabla_producto_relacion.getColumnModel().getColumn(1).setResizable(false);
-            tabla_producto_relacion.getColumnModel().getColumn(2).setResizable(false);
-        }
-
-        Eliminar_relacion_empleados3.setText("Eliminar Relacion");
-        Eliminar_relacion_empleados3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Eliminar_relacion_empleados3ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel_bibliotecaLayout = new javax.swing.GroupLayout(jPanel_biblioteca);
-        jPanel_biblioteca.setLayout(jPanel_bibliotecaLayout);
-        jPanel_bibliotecaLayout.setHorizontalGroup(
-            jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addGroup(jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel_telefono)
-                            .addComponent(jLabel_direccion)
-                            .addComponent(jLabel_ciudades_bibliotecas))
-                        .addGap(24, 24, 24)
-                        .addGroup(jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField_Nombre_Proyectos)
-                            .addComponent(jTextField_Presupuesto_Proyecto))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton_guardar_biblioteca, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton_cancelar_biblioteca, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(47, 47, 47))
-                    .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
-                        .addGroup(jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButton_modificar_Proyectos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton_anadir_proyectos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton_borrar_Proyecto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
-                                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Eliminar_relacion_empleados1))
-                            .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
-                                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Eliminar_relacion_empleados3))
-                            .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(texto_relacion_proyecto_empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(boton_relacion_proyecto_empleado))
-                            .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(24, 24, 24)
-                                .addComponent(texto_codigo_producto, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton6)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        jPanel_bibliotecaLayout.setVerticalGroup(
-            jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
-                .addGroup(jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(jButton_anadir_proyectos)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton_modificar_Proyectos, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton_borrar_Proyecto))
-                    .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(75, 75, 75)
-                .addGroup(jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel_telefono)
-                    .addComponent(jTextField_Nombre_Proyectos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_guardar_biblioteca))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel_direccion)
-                    .addComponent(jTextField_Presupuesto_Proyecto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_cancelar_biblioteca))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel_ciudades_bibliotecas)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
-                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(texto_codigo_producto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton6)
-                            .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
-                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(Eliminar_relacion_empleados3)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(texto_relacion_proyecto_empleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7)
-                    .addComponent(boton_relacion_proyecto_empleado))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
-                .addGroup(jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(Eliminar_relacion_empleados1)))
-                .addContainerGap())
-        );
-
-        jTabbedPane.addTab("Proyectos", jPanel_biblioteca);
 
         jTable_Productos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -757,7 +473,7 @@ public class Ventana1 extends javax.swing.JFrame {
                 .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel_libroLayout.createSequentialGroup()
-                        .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel_libroLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -772,14 +488,14 @@ public class Ventana1 extends javax.swing.JFrame {
                                     .addComponent(jLabel_autor)
                                     .addComponent(jLabel_edad_recomendada))
                                 .addGap(39, 39, 39)
-                                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jTextField_nombre_productos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
-                                    .addComponent(jTextField_precio_productos, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addGap(38, 38, 38)
+                                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextField_nombre_productos)
+                                    .addComponent(jTextField_precio_productos))
+                                .addGap(18, 18, 18)
                                 .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButton_guardar_libro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton_cancelar_libro, javax.swing.GroupLayout.PREFERRED_SIZE, 85, Short.MAX_VALUE))))
-                        .addGap(0, 44, Short.MAX_VALUE)))
+                                    .addComponent(jButton_cancelar_libro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButton_guardar_libro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(0, 65, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel_libroLayout.setVerticalGroup(
@@ -797,15 +513,19 @@ public class Ventana1 extends javax.swing.JFrame {
                         .addGap(11, 11, 11)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(78, 78, 78)
-                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel_autor)
-                    .addComponent(jTextField_nombre_productos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_guardar_libro))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel_edad_recomendada)
-                    .addComponent(jTextField_precio_productos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_cancelar_libro))
+                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel_libroLayout.createSequentialGroup()
+                        .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel_autor)
+                            .addComponent(jTextField_nombre_productos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel_edad_recomendada)
+                            .addComponent(jTextField_precio_productos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel_libroLayout.createSequentialGroup()
+                        .addComponent(jButton_guardar_libro)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton_cancelar_libro)))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(293, Short.MAX_VALUE))
@@ -945,29 +665,30 @@ public class Ventana1 extends javax.swing.JFrame {
                     .addGroup(jPanel_personaLayout.createSequentialGroup()
                         .addGroup(jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel_personaLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButton_modificar_Proveedores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton_anadir_proveedores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton_borrar_proveedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(jPanel_personaLayout.createSequentialGroup()
-                                .addGap(27, 27, 27)
-                                .addComponent(jLabel_DNI)
-                                .addGap(24, 24, 24)
-                                .addComponent(jTextField_Nombre_proveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(38, 38, 38)
-                                .addGroup(jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButton_guardar_persona, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton_cancelar_persona, javax.swing.GroupLayout.PREFERRED_SIZE, 85, Short.MAX_VALUE)))
-                            .addGroup(jPanel_personaLayout.createSequentialGroup()
                                 .addGap(14, 14, 14)
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton4)))
+                                .addComponent(jButton4))
+                            .addGroup(jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel_personaLayout.createSequentialGroup()
+                                    .addGap(27, 27, 27)
+                                    .addComponent(jLabel_DNI)
+                                    .addGap(24, 24, 24)
+                                    .addComponent(jTextField_Nombre_proveedor)
+                                    .addGap(18, 18, 18)
+                                    .addGroup(jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jButton_cancelar_persona, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jButton_guardar_persona, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel_personaLayout.createSequentialGroup()
+                                    .addContainerGap()
+                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addGroup(jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jButton_modificar_Proveedores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jButton_anadir_proveedores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jButton_borrar_proveedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel_personaLayout.createSequentialGroup()
@@ -975,7 +696,7 @@ public class Ventana1 extends javax.swing.JFrame {
                 .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Eliminar_relacion_empleados2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         jPanel_personaLayout.setVerticalGroup(
             jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -993,14 +714,16 @@ public class Ventana1 extends javax.swing.JFrame {
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
                 .addGroup(jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_personaLayout.createSequentialGroup()
-                        .addGroup(jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel_DNI)
-                            .addComponent(jTextField_Nombre_proveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton_guardar_persona))
+                    .addGroup(jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel_DNI)
+                        .addComponent(jTextField_Nombre_proveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel_personaLayout.createSequentialGroup()
+                        .addComponent(jButton_guardar_persona)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton_cancelar_persona)
-                        .addGap(18, 18, 18)
+                        .addComponent(jButton_cancelar_persona)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_personaLayout.createSequentialGroup()
                         .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(33, 33, 33)
                         .addGroup(jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1014,6 +737,293 @@ public class Ventana1 extends javax.swing.JFrame {
         );
 
         jTabbedPane.addTab("Proveedores", jPanel_persona);
+
+        jTable_Proyectos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Codigo", "Nombre", "Presupuesto"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable_Proyectos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable_ProyectosMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jTable_Proyectos);
+        if (jTable_Proyectos.getColumnModel().getColumnCount() > 0) {
+            jTable_Proyectos.getColumnModel().getColumn(0).setResizable(false);
+            jTable_Proyectos.getColumnModel().getColumn(1).setResizable(false);
+            jTable_Proyectos.getColumnModel().getColumn(2).setResizable(false);
+        }
+
+        jLabel_telefono.setText("Nombre");
+
+        jLabel_direccion.setText("Presupuesto");
+
+        jButton_guardar_biblioteca.setText("Guardar");
+        jButton_guardar_biblioteca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_guardar_bibliotecaActionPerformed(evt);
+            }
+        });
+
+        jButton_cancelar_biblioteca.setText("Cancelar");
+        jButton_cancelar_biblioteca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_cancelar_bibliotecaActionPerformed(evt);
+            }
+        });
+
+        jButton_anadir_proyectos.setText("Añadir");
+        jButton_anadir_proyectos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_anadir_proyectosActionPerformed(evt);
+            }
+        });
+
+        jButton_modificar_Proyectos.setText("Modificar");
+        jButton_modificar_Proyectos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_modificar_ProyectosActionPerformed(evt);
+            }
+        });
+
+        jButton_borrar_Proyecto.setText("Borrar");
+        jButton_borrar_Proyecto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_borrar_ProyectoActionPerformed(evt);
+            }
+        });
+
+        jButton6.setText("Añadir Relacion");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("Codigo Producto");
+
+        jLabel7.setText("Codigo empleado");
+
+        boton_relacion_proyecto_empleado.setText("Añadir Relacion");
+        boton_relacion_proyecto_empleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_relacion_proyecto_empleadoActionPerformed(evt);
+            }
+        });
+
+        tabla_relacion_proyecto_empleado.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Codigo", "DNI", "Nombre"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                true, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tabla_relacion_proyecto_empleado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabla_relacion_proyecto_empleadoMouseClicked(evt);
+            }
+        });
+        jScrollPane7.setViewportView(tabla_relacion_proyecto_empleado);
+        if (tabla_relacion_proyecto_empleado.getColumnModel().getColumnCount() > 0) {
+            tabla_relacion_proyecto_empleado.getColumnModel().getColumn(1).setResizable(false);
+            tabla_relacion_proyecto_empleado.getColumnModel().getColumn(2).setResizable(false);
+        }
+
+        Eliminar_relacion_empleados1.setText("Eliminar Relacion");
+        Eliminar_relacion_empleados1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Eliminar_relacion_empleados1ActionPerformed(evt);
+            }
+        });
+
+        tabla_producto_relacion.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Codigo", "Nombre", "Precio"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tabla_producto_relacion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabla_producto_relacionMouseClicked(evt);
+            }
+        });
+        jScrollPane8.setViewportView(tabla_producto_relacion);
+        if (tabla_producto_relacion.getColumnModel().getColumnCount() > 0) {
+            tabla_producto_relacion.getColumnModel().getColumn(0).setResizable(false);
+            tabla_producto_relacion.getColumnModel().getColumn(1).setResizable(false);
+            tabla_producto_relacion.getColumnModel().getColumn(2).setResizable(false);
+        }
+
+        Eliminar_relacion_empleados3.setText("Eliminar Relacion");
+        Eliminar_relacion_empleados3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Eliminar_relacion_empleados3ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel_bibliotecaLayout = new javax.swing.GroupLayout(jPanel_biblioteca);
+        jPanel_biblioteca.setLayout(jPanel_bibliotecaLayout);
+        jPanel_bibliotecaLayout.setHorizontalGroup(
+            jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addGroup(jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel_telefono)
+                            .addComponent(jLabel_direccion)
+                            .addComponent(jLabel_ciudades_bibliotecas))
+                        .addGap(24, 24, 24)
+                        .addGroup(jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField_Nombre_Proyectos)
+                            .addComponent(jTextField_Presupuesto_Proyecto))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton_cancelar_biblioteca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton_guardar_biblioteca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(43, 43, 43))
+                    .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
+                        .addGroup(jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jButton_modificar_Proyectos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButton_anadir_proyectos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButton_borrar_Proyecto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
+                                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Eliminar_relacion_empleados1))
+                            .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
+                                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Eliminar_relacion_empleados3))
+                            .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(texto_relacion_proyecto_empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(boton_relacion_proyecto_empleado))
+                            .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(24, 24, 24)
+                                .addComponent(texto_codigo_producto, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton6)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel_bibliotecaLayout.setVerticalGroup(
+            jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
+                .addGroup(jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(jButton_anadir_proyectos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton_modificar_Proyectos, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton_borrar_Proyecto))
+                    .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(75, 75, 75)
+                .addGroup(jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel_telefono)
+                    .addComponent(jTextField_Nombre_Proyectos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_guardar_biblioteca))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel_direccion)
+                    .addComponent(jTextField_Presupuesto_Proyecto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_cancelar_biblioteca))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel_ciudades_bibliotecas)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(texto_codigo_producto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton6)
+                            .addComponent(jLabel6))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(Eliminar_relacion_empleados3)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(texto_relacion_proyecto_empleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7)
+                    .addComponent(boton_relacion_proyecto_empleado))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addGroup(jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel_bibliotecaLayout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addComponent(Eliminar_relacion_empleados1)))
+                .addContainerGap())
+        );
+
+        jTabbedPane.addTab("Proyectos", jPanel_biblioteca);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1419,10 +1429,11 @@ public class Ventana1 extends javax.swing.JFrame {
         if (filaSeleccionada != -1) {
 
             //Crea y asigna la relacion al proyecto
+            String codigo = jTable_Empleado.getValueAt(jTable_Empleado.getSelectedRow(), 0).toString();
             String id = jTable_Proyectos_Empleados_Relacion.getValueAt(filaSeleccionada, 0).toString();
             if (conector.buscarProyecto(Integer.valueOf(id)) != null) {
                 try {
-                    conector.eliminarObjetoBaseDatos(Integer.parseInt(id), "DELETE FROM trabajan WHERE Codigo = ?");
+                    conector.eliminarObjetoBaseDatos(Integer.parseInt(id), "DELETE FROM trabajan WHERE CodigoProyecto = ? AND CodigoEmpleado== " + codigo);
                 } catch (SQLException ex) {
                     Logger.getLogger(Ventana1.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -1496,7 +1507,6 @@ public class Ventana1 extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Por favor, Tienes que seleccionar en la tabla a quien quieres añadir la relacion.", "Error", JOptionPane.ERROR_MESSAGE);
         }
-        texto_relacion_empleados.setText("");
         DefaultTableModel modeloTabla = (DefaultTableModel) jTable_Proyectos_Empleados_Relacion.getModel();
         modeloTabla.setRowCount(0);
 
@@ -1507,35 +1517,27 @@ public class Ventana1 extends javax.swing.JFrame {
     }//GEN-LAST:event_tabla_relacion_proyecto_empleadoMouseClicked
 
     private void Eliminar_relacion_empleados1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Eliminar_relacion_empleados1ActionPerformed
-        /*DefaultTableModel modeloEmpleado = (DefaultTableModel) jTable_Proyectos.getModel();
-        int filaSeleccionadaEmpleado = jTable_Proyectos.getSelectedRow();
-        
-        DefaultTableModel modeloProyecto = (DefaultTableModel) tabla_relacion_proyecto_empleado.getModel();
-        int filaSeleccionadaProyecto = tabla_relacion_proyecto_empleado.getSelectedRow();
-        
-        if(filaSeleccionadaProyecto != -1 && filaSeleccionadaEmpleado != -1){
-            
-            if(generador.buscarObjetoEnArrayProyecto(modeloEmpleado.getValueAt(filaSeleccionadaEmpleado, 0).toString(), proyectos) != null){
-                generador.eliminarEmpleadoEnProyecto(generador.buscarObjetoEnArrayProyecto(modeloEmpleado.getValueAt(filaSeleccionadaEmpleado, 0).toString(), proyectos).getAsignacionesEmpleados(), modeloProyecto.getValueAt(filaSeleccionadaProyecto, 0).toString());            
-                generador.generarXMLParaProyecto(proyectos, "Proyectos.dat");
-                proyectos = (ArrayList<Proyecto>) generador.leerXMLDeProyectos("Proyectos.dat");
-                generador.cargarDatosEnJTableProyectos(proyectos, jTable_Proyectos);
-                String dni = jTable_Proyectos.getValueAt(filaSeleccionadaEmpleado, 0).toString();
-                
-                if(generador.buscarObjetoEnArrayEmpleado(modeloProyecto.getValueAt(filaSeleccionadaProyecto, 0).toString(), empleados) != null){
-                    generador.eliminarProyecto(generador.buscarObjetoEnArrayEmpleado(modeloProyecto.getValueAt(filaSeleccionadaProyecto, 0).toString(), empleados).getProyectosAsignados(), dni);
+        int filaSeleccionada = tabla_relacion_proyecto_empleado.getSelectedRow();
+        if (filaSeleccionada != -1) {
+
+            //Crea y asigna la relacion al proyecto
+            String id = tabla_relacion_proyecto_empleado.getValueAt(filaSeleccionada, 0).toString();
+            String codigo = jTable_Proyectos.getValueAt(jTable_Proyectos.getSelectedRow(), 0).toString();
+            if (conector.buscarEmpleado(Integer.valueOf(id)) != null) {
+                try {
+                    conector.eliminarObjetoBaseDatos(Integer.parseInt(id), "DELETE FROM trabajan WHERE CodigoEmpleado = ? AND CodigoProyecto== " + codigo);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Ventana1.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                if(generador.buscarObjetoEnArrayProyecto(dni, proyectos) != null){
-                    generador.cargarDatosEnJTableEmpleados(generador.buscarObjetoEnArrayProyecto(dni, proyectos).getAsignacionesEmpleados(), tabla_relacion_proyecto_empleado);
-                }
-                generador.generarXMLParaEmpleados(empleados, "empleados.dat");
+                proyectos = (ArrayList<Proyecto>) conector.consultarBaseDatosProyecto(conector.conectorBaseDatos());
             }
-        }else{
-            if(filaSeleccionadaProyecto == -1)
-                JOptionPane.showMessageDialog(null, "Por favor, Tienes que seleccionar en la tabla que relacion quieres eliminar.", "Error", JOptionPane.ERROR_MESSAGE);
-            else
-               JOptionPane.showMessageDialog(null, "Por favor, Tienes que seleccionar el empleado en la tabla.", "Error", JOptionPane.ERROR_MESSAGE);
-        }*/
+            jTable_Proyectos.clearSelection();
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Por favor, Tienes que seleccionar en la tabla a quien quieres añadir la relacion.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        DefaultTableModel modeloTabla = (DefaultTableModel) tabla_relacion_proyecto_empleado.getModel();
+        modeloTabla.setRowCount(0);
     }//GEN-LAST:event_Eliminar_relacion_empleados1ActionPerformed
 
     private void tabla_producto_relacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_producto_relacionMouseClicked
