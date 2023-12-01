@@ -1213,7 +1213,9 @@ public class Ventana1 extends javax.swing.JFrame {
             empleadosBuscados.add(generador.buscarObjetoEnArrayEmpleado(n, empleados));
         }
         generador.cargarDatosEnJTableEmpleados(empleadosBuscados, tabla_relacion_proyecto_empleado);
-        //TODO(1): HACER LA VISUALIZACION DE LOS PRODUCTOS.
+        Integer codigoProducto = conector.buscarProyecto(Integer.valueOf(codigo)).getCodigoProducto();
+        if(codigoProducto != 0)
+            generador.cargarDatosEnJTableProductos(conector.buscarProducto(codigoProducto), tabla_producto_relacion );
 
 
     }//GEN-LAST:event_jTable_ProyectosMouseClicked
@@ -1531,6 +1533,7 @@ public class Ventana1 extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Por favor, Tienes que seleccionar en la tabla a quien quieres añadir la relacion.", "Error", JOptionPane.ERROR_MESSAGE);
         }
+        proyectos = (ArrayList<Proyecto>) conector.consultarBaseDatosProyecto(conector.conectorBaseDatos());
         DefaultTableModel modeloTabla = (DefaultTableModel) tabla_relacion_proyecto_empleado.getModel();
         modeloTabla.setRowCount(0);
     }//GEN-LAST:event_Eliminar_relacion_empleados1ActionPerformed

@@ -491,6 +491,7 @@ public class Conector {
             consulta = conn.prepareStatement("SELECT * FROM proyecto WHERE Codigo==" + id);
             resultado = consulta.executeQuery();
             Proyecto proyecto = new Proyecto(resultado.getInt(1), resultado.getString(2), resultado.getInt(3));
+            proyecto.setCodigoProducto(resultado.getInt(4));
             return proyecto;
         } catch (SQLException sqle) {
             sqle.printStackTrace();
