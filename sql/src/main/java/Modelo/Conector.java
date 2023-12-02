@@ -576,6 +576,7 @@ public class Conector {
             // Verificar si hay resultados antes de intentar crear un objeto Proveedor
             if (resultado.next()) {
                 Proveedor proveedor = new Proveedor(resultado.getInt(1), resultado.getString(2));
+                proveedor.setProductoProveedor(resultado.getInt(3));
                 return proveedor;
             } else {
                 // No hay resultados, puedes manejarlo de alguna manera (lanzar una excepción, devolver un valor predeterminado, etc.)

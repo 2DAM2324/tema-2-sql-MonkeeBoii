@@ -1399,12 +1399,15 @@ public class Ventana1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_guardar_personaActionPerformed
 
     private void jTable_ProveedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_ProveedoresMouseClicked
-        /*
         int filaSeleccionada = jTable_Proveedores.getSelectedRow();
-        String dni = jTable_Proveedores.getValueAt(filaSeleccionada, 0).toString();
-        if(!generador.buscarObjetoEnArrayProveedor(dni, proveedor).getProductoProveedor().getCodigoProductos().isBlank())
-            generador.cargarDatosEnJTableProductos(generador.buscarObjetoEnArrayProveedor(dni, proveedor).getProductoProveedor(), jTable_Productos1);
-         */
+        String codigo = jTable_Proveedores.getValueAt(filaSeleccionada, 0).toString();
+        
+        Integer codigoProducto = conector.buscarProveedor(Integer.valueOf(codigo)).getProductoProveedor();
+        if (codigoProducto != 0) {
+            generador.cargarDatosEnJTableProductos(conector.buscarProducto(codigoProducto), jTable_Productos1);
+        } else {
+            generador.cargarDatosEnJTableProductos(new ArrayList<>(), jTable_Productos1);
+        }
     }//GEN-LAST:event_jTable_ProveedoresMouseClicked
 
     private void anadir_relacion_EmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anadir_relacion_EmpleadoActionPerformed
@@ -1612,8 +1615,27 @@ public class Ventana1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jTable_Productos1MouseClicked
 
     private void Eliminar_relacion_empleados2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Eliminar_relacion_empleados2ActionPerformed
+        int filaSeleccionada = jTable_Productos1.getSelectedRow();
+        if (filaSeleccionada != -1) {
 
-
+            //Crea y asigna la relacion al proyecto
+            String id = jTable_Productos1.getValueAt(filaSeleccionada, 0).toString();
+            String codigo = jTable_Proveedores.getValueAt(jTable_Proveedores.getSelectedRow(), 0).toString();
+            if (conector.buscarProducto(Integer.valueOf(id)) != null) {
+                try {
+                    conector.eliminarRelacion(codigo, "UPDATE proveedor SET CodigoProducto = ? WHERE Codigo = ");
+                } catch (SQLException ex) {
+                    Logger.getLogger(Ventana1.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                proveedor = (ArrayList<Proveedor>) conector.consultarBaseDatosProveedor(conector.conectorBaseDatos());
+            }
+            jTable_Proveedores.clearSelection();
+            proveedor = (ArrayList<Proveedor>) conector.consultarBaseDatosProveedor(conector.conectorBaseDatos());
+            DefaultTableModel modeloTabla = (DefaultTableModel) jTable_Productos1.getModel();
+            modeloTabla.setRowCount(0);
+        } else {
+            JOptionPane.showMessageDialog(null, "Por favor, Tienes que seleccionar en la tabla a quien quieres añadir la relacion.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_Eliminar_relacion_empleados2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -1635,7 +1657,7 @@ public class Ventana1 extends javax.swing.JFrame {
                 }
                 Integer codigoProducto = conector.buscarProyecto(Integer.valueOf(codigo)).getCodigoProducto();
                 if (codigoProducto != null) {
-                    generador.cargarDatosEnJTableProductos(conector.buscarProducto(codigoProducto), tabla_producto_relacion);
+                    generador.cargarDatosEnJTableProductos(conector.buscarProducto(codigoProducto), jTable_Productos1);
                 } else {
                     JOptionPane.showMessageDialog(null, "Por favor, Introduce un id valido.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
