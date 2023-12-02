@@ -462,10 +462,20 @@ public class Conector {
         PreparedStatement consulta = null;
         ResultSet resultado = null;
         try {
-            consulta = conn.prepareStatement("SELECT * FROM empleado WHERE Codigo==" + id);
+            consulta = conn.prepareStatement("SELECT * FROM empleado WHERE Codigo = ?");
+            consulta.setInt(1, id);
+
             resultado = consulta.executeQuery();
-            Empleado empleado = new Empleado(resultado.getInt(1), resultado.getString(2), resultado.getString(3));
-            return empleado;
+
+            // Verificar si hay resultados antes de intentar crear un objeto Empleado
+            if (resultado.next()) {
+                Empleado empleado = new Empleado(resultado.getInt(1), resultado.getString(2), resultado.getString(3));
+                return empleado;
+            } else {
+                // No hay resultados, puedes manejarlo de alguna manera (lanzar una excepción, devolver un valor predeterminado, etc.)
+                System.out.println("No se encontró ningún empleado con el ID: " + id);
+                return null;
+            }
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
@@ -478,7 +488,6 @@ public class Conector {
                 } catch (SQLException sqle2) {
                     sqle2.printStackTrace();
                 }
-
             }
         }
         return null;
@@ -488,11 +497,21 @@ public class Conector {
         PreparedStatement consulta = null;
         ResultSet resultado = null;
         try {
-            consulta = conn.prepareStatement("SELECT * FROM proyecto WHERE Codigo==" + id);
+            consulta = conn.prepareStatement("SELECT * FROM proyecto WHERE Codigo = ?");
+            consulta.setInt(1, id);
+
             resultado = consulta.executeQuery();
-            Proyecto proyecto = new Proyecto(resultado.getInt(1), resultado.getString(2), resultado.getInt(3));
-            proyecto.setCodigoProducto(resultado.getInt(4));
-            return proyecto;
+
+            // Verificar si hay resultados antes de intentar crear un objeto Proyecto
+            if (resultado.next()) {
+                Proyecto proyecto = new Proyecto(resultado.getInt(1), resultado.getString(2), resultado.getInt(3));
+                proyecto.setCodigoProducto(resultado.getInt(4));
+                return proyecto;
+            } else {
+                // No hay resultados, puedes manejarlo de alguna manera (lanzar una excepción, devolver un valor predeterminado, etc.)
+                System.out.println("No se encontró ningún proyecto con el ID: " + id);
+                return null;
+            }
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
@@ -505,7 +524,6 @@ public class Conector {
                 } catch (SQLException sqle2) {
                     sqle2.printStackTrace();
                 }
-
             }
         }
         return null;
@@ -515,10 +533,20 @@ public class Conector {
         PreparedStatement consulta = null;
         ResultSet resultado = null;
         try {
-            consulta = conn.prepareStatement("SELECT * FROM producto WHERE Codigo==" + id);
+            consulta = conn.prepareStatement("SELECT * FROM producto WHERE Codigo = ?");
+            consulta.setInt(1, id);
+
             resultado = consulta.executeQuery();
-            Producto producto = new Producto(resultado.getInt(1), resultado.getString(2), resultado.getInt(3));
-            return producto;
+
+            // Verificar si hay resultados antes de intentar crear un objeto Producto
+            if (resultado.next()) {
+                Producto producto = new Producto(resultado.getInt(1), resultado.getString(2), resultado.getInt(3));
+                return producto;
+            } else {
+                // No hay resultados, puedes manejarlo de alguna manera (lanzar una excepción, devolver un valor predeterminado, etc.)
+                System.out.println("No se encontró ningún producto con el ID: " + id);
+                return null;
+            }
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
@@ -531,7 +559,6 @@ public class Conector {
                 } catch (SQLException sqle2) {
                     sqle2.printStackTrace();
                 }
-
             }
         }
         return null;
@@ -541,10 +568,20 @@ public class Conector {
         PreparedStatement consulta = null;
         ResultSet resultado = null;
         try {
-            consulta = conn.prepareStatement("SELECT * FROM producto WHERE Codigo==" + id);
+            consulta = conn.prepareStatement("SELECT * FROM proveedor WHERE Codigo = ?");
+            consulta.setInt(1, id);
+
             resultado = consulta.executeQuery();
-            Proveedor proveedor = new Proveedor(resultado.getInt(1), resultado.getString(2));
-            return proveedor;
+
+            // Verificar si hay resultados antes de intentar crear un objeto Proveedor
+            if (resultado.next()) {
+                Proveedor proveedor = new Proveedor(resultado.getInt(1), resultado.getString(2));
+                return proveedor;
+            } else {
+                // No hay resultados, puedes manejarlo de alguna manera (lanzar una excepción, devolver un valor predeterminado, etc.)
+                System.out.println("No se encontró ningún proveedor con el ID: " + id);
+                return null;
+            }
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         } finally {
@@ -557,7 +594,6 @@ public class Conector {
                 } catch (SQLException sqle2) {
                     sqle2.printStackTrace();
                 }
-
             }
         }
         return null;
@@ -597,7 +633,7 @@ public class Conector {
             stat.getConnection().setAutoCommit(oldAutoCommit);
         }
     }
-    
+
     public List<Integer> buscarEmpleadoRelacioTrabajan(Integer id) {
         PreparedStatement consulta = null;
         ResultSet resultado = null;
@@ -661,8 +697,8 @@ public class Conector {
         }
         return integers;
     }
-    
-    public void insertarRelacionEnProyectoElProducto(Integer id, String consulta, Integer nuevo) throws SQLException{
+
+    public void insertarRelacionEnProyectoElProducto(Integer id, String consulta, Integer nuevo) throws SQLException {
         String sentencia = consulta;
         try (PreparedStatement stat = conn.prepareStatement(sentencia)) {
             stat.setInt(1, nuevo);
@@ -682,5 +718,24 @@ public class Conector {
             }
         }
     }
-    
+
+    public void eliminarRelacion(String id, String consulta) throws SQLException {
+        String sentencia = consulta + id;
+        try (PreparedStatement stat = conn.prepareStatement(sentencia)) {
+            stat.setString(1, null);
+
+            int filasAfectadas = stat.executeUpdate();
+
+            if (filasAfectadas == 0) {
+                System.out.println("No se encontró ningún producto con la ID proporcionada.");
+            } else {
+                System.out.println("Producto modificado exitosamente.");
+            }
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+            if (conn != null) {
+                conn.rollback();
+            }
+        }
+    }
 }
