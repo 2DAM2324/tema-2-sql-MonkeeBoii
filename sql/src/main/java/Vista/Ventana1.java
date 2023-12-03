@@ -106,6 +106,10 @@ public class Ventana1 extends javax.swing.JFrame {
         jButton_modificar_Productos = new javax.swing.JButton();
         jButton_anadir_productos = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JSeparator();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        jTable_Proyectos2 = new javax.swing.JTable();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        jTable_Proveedores1 = new javax.swing.JTable();
         jPanel_persona = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable_Proveedores = new javax.swing.JTable();
@@ -752,6 +756,75 @@ public class Ventana1 extends javax.swing.JFrame {
             }
         });
 
+        jTable_Proyectos2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Codigo", "Nombre", "Presupuesto"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable_Proyectos2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable_Proyectos2MouseClicked(evt);
+            }
+        });
+        jScrollPane10.setViewportView(jTable_Proyectos2);
+        if (jTable_Proyectos2.getColumnModel().getColumnCount() > 0) {
+            jTable_Proyectos2.getColumnModel().getColumn(0).setResizable(false);
+            jTable_Proyectos2.getColumnModel().getColumn(1).setResizable(false);
+            jTable_Proyectos2.getColumnModel().getColumn(2).setResizable(false);
+        }
+
+        jTable_Proveedores1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "CodigoProveedor", "NombreProveedor"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable_Proveedores1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable_Proveedores1MouseClicked(evt);
+            }
+        });
+        jScrollPane11.setViewportView(jTable_Proveedores1);
+        if (jTable_Proveedores1.getColumnModel().getColumnCount() > 0) {
+            jTable_Proveedores1.getColumnModel().getColumn(0).setResizable(false);
+            jTable_Proveedores1.getColumnModel().getColumn(1).setResizable(false);
+        }
+
         javax.swing.GroupLayout jPanel_libroLayout = new javax.swing.GroupLayout(jPanel_libro);
         jPanel_libro.setLayout(jPanel_libroLayout);
         jPanel_libroLayout.setHorizontalGroup(
@@ -760,29 +833,35 @@ public class Ventana1 extends javax.swing.JFrame {
                 .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel_libroLayout.createSequentialGroup()
-                        .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanel_libroLayout.createSequentialGroup()
+                                    .addContainerGap()
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jButton_modificar_Productos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jButton_anadir_productos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jButton_borrar_productos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGroup(jPanel_libroLayout.createSequentialGroup()
+                                    .addGap(27, 27, 27)
+                                    .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel_autor)
+                                        .addComponent(jLabel_edad_recomendada))
+                                    .addGap(39, 39, 39)
+                                    .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jTextField_nombre_productos)
+                                        .addComponent(jTextField_precio_productos))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jButton_cancelar_libro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jButton_guardar_libro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                             .addGroup(jPanel_libroLayout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButton_modificar_Productos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton_anadir_productos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton_borrar_productos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(jPanel_libroLayout.createSequentialGroup()
-                                .addGap(27, 27, 27)
                                 .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel_autor)
-                                    .addComponent(jLabel_edad_recomendada))
-                                .addGap(39, 39, 39)
-                                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField_nombre_productos)
-                                    .addComponent(jTextField_precio_productos))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButton_cancelar_libro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton_guardar_libro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addGap(0, 47, Short.MAX_VALUE)))
+                                    .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 54, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel_libroLayout.setVerticalGroup(
@@ -815,7 +894,11 @@ public class Ventana1 extends javax.swing.JFrame {
                         .addComponent(jButton_cancelar_libro)))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(305, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(97, Short.MAX_VALUE))
         );
 
         jTabbedPane.addTab("Productos", jPanel_libro);
@@ -1681,6 +1764,14 @@ public class Ventana1 extends javax.swing.JFrame {
         conector.cerrarConexion(conector.conectorBaseDatos());
     }//GEN-LAST:event_formWindowClosing
 
+    private void jTable_Proyectos2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_Proyectos2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTable_Proyectos2MouseClicked
+
+    private void jTable_Proveedores1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_Proveedores1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTable_Proveedores1MouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Eliminar_relacion_empleados;
     private javax.swing.JButton Eliminar_relacion_empleados1;
@@ -1728,6 +1819,8 @@ public class Ventana1 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel_persona;
     private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -1745,8 +1838,10 @@ public class Ventana1 extends javax.swing.JFrame {
     private javax.swing.JTable jTable_Productos;
     private javax.swing.JTable jTable_Productos1;
     public javax.swing.JTable jTable_Proveedores;
+    public javax.swing.JTable jTable_Proveedores1;
     private javax.swing.JTable jTable_Proyectos;
     private javax.swing.JTable jTable_Proyectos1;
+    private javax.swing.JTable jTable_Proyectos2;
     private javax.swing.JTable jTable_Proyectos_Empleados_Relacion;
     private javax.swing.JTextField jTextField4;
     public javax.swing.JTextField jTextField_Nombre_Empleado;
