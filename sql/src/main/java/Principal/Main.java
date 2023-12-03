@@ -20,8 +20,6 @@ public class Main {
             ventana.setVisible(true);
         }catch(Exception e){
              JOptionPane.showMessageDialog(null, "Error inesperado.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-        
-            
+        } 
     }
 }

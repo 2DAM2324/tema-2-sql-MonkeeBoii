@@ -34,7 +34,7 @@ public class Ventana1 extends javax.swing.JFrame {
 
         productos = (ArrayList<Producto>) conector.consultarBaseDatosProducto(conector.conectorBaseDatos());
         generador.cargarDatosEnJTableProductos(productos, jTable_Productos);
-
+        
         proveedor = (ArrayList<Proveedor>) conector.consultarBaseDatosProveedor(conector.conectorBaseDatos());
         generador.cargarDatosEnJTableProveedores(proveedor, jTable_Proveedores);
 
@@ -1113,8 +1113,9 @@ public class Ventana1 extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 617, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap()
+                .addComponent(jTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 617, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1207,7 +1208,32 @@ public class Ventana1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_guardar_libroActionPerformed
 
     private void jTable_ProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_ProductosMouseClicked
-        //NADA
+        //TODO(2)
+        int filaSeleccionada = jTable_Productos.getSelectedRow();
+        String codigo = jTable_Productos.getValueAt(filaSeleccionada, 0).toString();
+        
+        proyectos = (ArrayList<Proyecto>) conector.consultarBaseDatosProyecto(conector.conectorBaseDatos());
+        ArrayList<Integer> proyectosBuscados = new ArrayList<>();
+        for(Proyecto proyecto : proyectos){
+            if(proyecto.getCodigoProducto().equals(Integer.valueOf(codigo))){
+                proyectosBuscados.add(proyecto.getCodigo());
+            }
+        }
+         ArrayList<Proyecto> proyectoTabla = new ArrayList<>();
+        for (Integer n : proyectosBuscados) {
+            proyectoTabla.add(generador.buscarObjetoEnArrayProyecto(n, proyectos));
+        }
+        generador.cargarDatosEnJTableProyectos(proyectoTabla, jTable_Proyectos2);
+        
+        Integer codigoProveedor = conector.buscarProducto(Integer.valueOf(codigo)).getCodigoProveedor();
+        System.out.println(codigoProveedor);
+        if (codigoProveedor != null) {
+            ArrayList<Proveedor> listaProveedores = new ArrayList<>();
+            listaProveedores.add(conector.buscarProveedor(codigoProveedor));
+            generador.cargarDatosEnJTableProveedores(listaProveedores, jTable_Proveedores1);
+        } else {
+            generador.cargarDatosEnJTableProductos(new ArrayList<>(), tabla_producto_relacion);
+        }
     }//GEN-LAST:event_jTable_ProductosMouseClicked
 
     private void jButton_borrar_ProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_borrar_ProyectoActionPerformed
@@ -1731,14 +1757,17 @@ public class Ventana1 extends javax.swing.JFrame {
             if (!codigo.isBlank()) {
                 if (conector.buscarProducto(Integer.valueOf(codigo)) != null) {
                     try {
-                        conector.insertarRelacionEnProveedorElProducto(Integer.valueOf(id), "UPDATE Proveedor SET CodigoProducto = ? WHERE Codigo = ?", Integer.valueOf(codigo));
+                        conector.insertarRelacionEnProveedorElProducto(Integer.valueOf(id), "UPDATE proveedor SET CodigoProducto = ? WHERE Codigo = ?", Integer.valueOf(codigo));
+                        conector.insertarRelacionEnProveedorElProducto(Integer.valueOf(codigo), "UPDATE producto SET CodigoProveedor = ? WHERE Codigo = ?", Integer.valueOf(id));
+                        productos = (ArrayList<Producto>) conector.consultarBaseDatosProducto(conector.conectorBaseDatos());
+                        proveedor = (ArrayList<Proveedor>) conector.consultarBaseDatosProveedor(conector.conectorBaseDatos());
                     } catch (SQLException ex) {
                         Logger.getLogger(Ventana1.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "Por favor, Introduce un producto existente", "Error", JOptionPane.ERROR_MESSAGE);
                 }
-                Integer codigoProducto = conector.buscarProyecto(Integer.valueOf(codigo)).getCodigoProducto();
+                Integer codigoProducto = conector.buscarProveedor(Integer.valueOf(id)).getProductoProveedor();
                 if (codigoProducto != null) {
                     generador.cargarDatosEnJTableProductos(conector.buscarProducto(codigoProducto), jTable_Productos1);
                 } else {

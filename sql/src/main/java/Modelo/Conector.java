@@ -541,6 +541,7 @@ public class Conector {
             // Verificar si hay resultados antes de intentar crear un objeto Producto
             if (resultado.next()) {
                 Producto producto = new Producto(resultado.getInt(1), resultado.getString(2), resultado.getInt(3));
+                producto.setCodigoProveedor(resultado.getInt(4));
                 return producto;
             } else {
                 // No hay resultados, puedes manejarlo de alguna manera (lanzar una excepción, devolver un valor predeterminado, etc.)
