@@ -21,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
 public class Ventana1 extends javax.swing.JFrame {
 
     GeneratorAndRead generador = new GeneratorAndRead();
-    Conector conector = new Conector("baseDeDatos.db3");
+    Conector conector = new Conector("BaseDeDatos.db3");
     boolean continuar = false;
 
     public Ventana1() throws IOException, FileNotFoundException, ClassNotFoundException, NotSerializableException, SAXException {
@@ -1227,12 +1227,12 @@ public class Ventana1 extends javax.swing.JFrame {
 
         Integer codigoProveedor = conector.buscarProducto(Integer.valueOf(codigo)).getCodigoProveedor();
         System.out.println(codigoProveedor);
-        if (codigoProveedor != null) {
+        if (codigoProveedor != 0) {
             ArrayList<Proveedor> listaProveedores = new ArrayList<>();
             listaProveedores.add(conector.buscarProveedor(codigoProveedor));
             generador.cargarDatosEnJTableProveedores(listaProveedores, jTable_Proveedores1);
         } else {
-            generador.cargarDatosEnJTableProductos(new ArrayList<>(), tabla_producto_relacion);
+            generador.cargarDatosEnJTableProductos(new ArrayList<>(), jTable_Proveedores1);
         }
     }//GEN-LAST:event_jTable_ProductosMouseClicked
 
@@ -1740,10 +1740,12 @@ public class Ventana1 extends javax.swing.JFrame {
             if (conector.buscarProducto(Integer.valueOf(id)) != null) {
                 try {
                     conector.eliminarRelacion(codigo, "UPDATE proveedor SET CodigoProducto = ? WHERE Codigo = ");
+                    conector.eliminarRelacion(id, "UPDATE producto SET CodigoProveedor = ? WHERE Codigo = ");
                 } catch (SQLException ex) {
                     Logger.getLogger(Ventana1.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 proveedor = (ArrayList<Proveedor>) conector.consultarBaseDatosProveedor(conector.conectorBaseDatos());
+                productos = (ArrayList<Producto>) conector.consultarBaseDatosProducto(conector.conectorBaseDatos());
             }
             jTable_Proveedores.clearSelection();
             proveedor = (ArrayList<Proveedor>) conector.consultarBaseDatosProveedor(conector.conectorBaseDatos());
