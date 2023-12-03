@@ -21,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
 public class Ventana1 extends javax.swing.JFrame {
 
     GeneratorAndRead generador = new GeneratorAndRead();
-    Conector conector = new Conector();
+    Conector conector = new Conector("baseDeDatos.db3");
     boolean continuar = false;
 
     public Ventana1() throws IOException, FileNotFoundException, ClassNotFoundException, NotSerializableException, SAXException {
@@ -34,7 +34,7 @@ public class Ventana1 extends javax.swing.JFrame {
 
         productos = (ArrayList<Producto>) conector.consultarBaseDatosProducto(conector.conectorBaseDatos());
         generador.cargarDatosEnJTableProductos(productos, jTable_Productos);
-        
+
         proveedor = (ArrayList<Proveedor>) conector.consultarBaseDatosProveedor(conector.conectorBaseDatos());
         generador.cargarDatosEnJTableProveedores(proveedor, jTable_Proveedores);
 
@@ -1151,7 +1151,7 @@ public class Ventana1 extends javax.swing.JFrame {
 
     private void jButton_modificar_ProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_modificar_ProductosActionPerformed
         boolean funcionamientoCorrecto;
-        
+
         funcionamientoCorrecto = generador.generarCamposVistaProducto(jTextField_nombre_productos, jTextField_precio_productos, jTable_Productos);
         col1Antiguo = jTable_Productos.getValueAt(jTable_Productos.getSelectedRow(), 0).toString();
         if (funcionamientoCorrecto)
@@ -1208,23 +1208,23 @@ public class Ventana1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_guardar_libroActionPerformed
 
     private void jTable_ProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_ProductosMouseClicked
-        //TODO(2)
+
         int filaSeleccionada = jTable_Productos.getSelectedRow();
         String codigo = jTable_Productos.getValueAt(filaSeleccionada, 0).toString();
-        
+
         proyectos = (ArrayList<Proyecto>) conector.consultarBaseDatosProyecto(conector.conectorBaseDatos());
         ArrayList<Integer> proyectosBuscados = new ArrayList<>();
-        for(Proyecto proyecto : proyectos){
-            if(proyecto.getCodigoProducto().equals(Integer.valueOf(codigo))){
+        for (Proyecto proyecto : proyectos) {
+            if (proyecto.getCodigoProducto().equals(Integer.valueOf(codigo))) {
                 proyectosBuscados.add(proyecto.getCodigo());
             }
         }
-         ArrayList<Proyecto> proyectoTabla = new ArrayList<>();
+        ArrayList<Proyecto> proyectoTabla = new ArrayList<>();
         for (Integer n : proyectosBuscados) {
             proyectoTabla.add(generador.buscarObjetoEnArrayProyecto(n, proyectos));
         }
         generador.cargarDatosEnJTableProyectos(proyectoTabla, jTable_Proyectos2);
-        
+
         Integer codigoProveedor = conector.buscarProducto(Integer.valueOf(codigo)).getCodigoProveedor();
         System.out.println(codigoProveedor);
         if (codigoProveedor != null) {
@@ -1321,12 +1321,18 @@ public class Ventana1 extends javax.swing.JFrame {
 
         int filaSeleccionada = jTable_Proyectos.getSelectedRow();
         String codigo = jTable_Proyectos.getValueAt(filaSeleccionada, 0).toString();
+
         lista = conector.buscarEmpleadoRelacionTrabajan(Integer.valueOf(codigo));
-        ArrayList<Empleado> empleadosBuscados = new ArrayList<>();
-        for (Integer n : lista) {
-            empleadosBuscados.add(generador.buscarObjetoEnArrayEmpleado(n, empleados));
+        if (!lista.isEmpty()) {
+            ArrayList<Empleado> empleadosBuscados = new ArrayList<>();
+            for (Integer n : lista) {
+                empleadosBuscados.add(generador.buscarObjetoEnArrayEmpleado(n, empleados));
+            }
+
+            generador.cargarDatosEnJTableEmpleados(empleadosBuscados, tabla_relacion_proyecto_empleado);
+        }else{
+            generador.cargarDatosEnJTableEmpleados(new ArrayList<>(), tabla_relacion_proyecto_empleado);
         }
-        generador.cargarDatosEnJTableEmpleados(empleadosBuscados, tabla_relacion_proyecto_empleado);
         Integer codigoProducto = conector.buscarProyecto(Integer.valueOf(codigo)).getCodigoProducto();
         if (codigoProducto != 0) {
             generador.cargarDatosEnJTableProductos(conector.buscarProducto(codigoProducto), tabla_producto_relacion);
@@ -1369,6 +1375,7 @@ public class Ventana1 extends javax.swing.JFrame {
 
         int filaSeleccionada = jTable_Empleado.getSelectedRow();
         String codigo = jTable_Empleado.getValueAt(filaSeleccionada, 0).toString();
+
         lista = conector.buscarProyectoRelacionTrabajan(Integer.valueOf(codigo));
         ArrayList<Proyecto> proyectosBuscados = new ArrayList<>();
         for (Integer n : lista) {
@@ -1510,7 +1517,7 @@ public class Ventana1 extends javax.swing.JFrame {
     private void jTable_ProveedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_ProveedoresMouseClicked
         int filaSeleccionada = jTable_Proveedores.getSelectedRow();
         String codigo = jTable_Proveedores.getValueAt(filaSeleccionada, 0).toString();
-        
+
         Integer codigoProducto = conector.buscarProveedor(Integer.valueOf(codigo)).getProductoProveedor();
         if (codigoProducto != 0) {
             generador.cargarDatosEnJTableProductos(conector.buscarProducto(codigoProducto), jTable_Productos1);

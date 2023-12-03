@@ -24,10 +24,10 @@ public class Conector {
      * Constructor de la clase Conector. Se encarga de establecer la conexión a
      * la base de datos SQLite.
      */
-    public Conector() {
+    public Conector(String nombreBaseDatos) {
         try {
             // URL de conexión a la base de datos SQLite
-            String url = "jdbc:sqlite:baseDeDatos.db3";
+            String url = "jdbc:sqlite:" + nombreBaseDatos;
 
             // Intentar establecer la conexión utilizando el DriverManager
             conn = DriverManager.getConnection(url);
@@ -928,7 +928,7 @@ public class Conector {
 
             // Recorrer los resultados y añadir las IDs de empleados a la lista
             while (resultado.next()) {
-                integers.add(resultado.getInt(3));
+                integers.add(resultado.getInt(2));
             }
         } catch (SQLException sqle) {
             // Imprimir la traza en caso de error
@@ -974,7 +974,7 @@ public class Conector {
 
             // Recorrer los resultados y añadir las IDs de proyectos a la lista
             while (resultado.next()) {
-                integers.add(resultado.getInt(2));
+                integers.add(resultado.getInt(3));
             }
         } catch (SQLException sqle) {
             // Imprimir la traza en caso de error
