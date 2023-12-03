@@ -1321,7 +1321,7 @@ public class Ventana1 extends javax.swing.JFrame {
 
         int filaSeleccionada = jTable_Proyectos.getSelectedRow();
         String codigo = jTable_Proyectos.getValueAt(filaSeleccionada, 0).toString();
-        lista = conector.buscarEmpleadoRelacioTrabajan(Integer.valueOf(codigo));
+        lista = conector.buscarEmpleadoRelacionTrabajan(Integer.valueOf(codigo));
         ArrayList<Empleado> empleadosBuscados = new ArrayList<>();
         for (Integer n : lista) {
             empleadosBuscados.add(generador.buscarObjetoEnArrayEmpleado(n, empleados));
@@ -1369,7 +1369,7 @@ public class Ventana1 extends javax.swing.JFrame {
 
         int filaSeleccionada = jTable_Empleado.getSelectedRow();
         String codigo = jTable_Empleado.getValueAt(filaSeleccionada, 0).toString();
-        lista = conector.buscarProyectoRelacioTrabajan(Integer.valueOf(codigo));
+        lista = conector.buscarProyectoRelacionTrabajan(Integer.valueOf(codigo));
         ArrayList<Proyecto> proyectosBuscados = new ArrayList<>();
         for (Integer n : lista) {
             proyectosBuscados.add(generador.buscarObjetoEnArrayProyecto(n, proyectos));
@@ -1644,7 +1644,7 @@ public class Ventana1 extends javax.swing.JFrame {
                 }
                 //carga los datos en la vista
                 generador.cargarDatosEnJTableProyectos(proyectos, jTable_Proyectos);
-                lista = conector.buscarEmpleadoRelacioTrabajan(Integer.valueOf(codigo));
+                lista = conector.buscarEmpleadoRelacionTrabajan(Integer.valueOf(codigo));
                 ArrayList<Empleado> empleadosBuscados = new ArrayList<>();
                 for (Integer n : lista) {
                     empleadosBuscados.add(generador.buscarObjetoEnArrayEmpleado(n, empleados));
